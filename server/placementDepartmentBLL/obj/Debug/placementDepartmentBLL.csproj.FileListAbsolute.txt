@@ -1,0 +1,8 @@
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentBLL\bin\Debug\placementDepartmentBLL.dll
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentBLL\bin\Debug\placementDepartmentBLL.pdb
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentBLL\bin\Debug\EAGetMail.dll
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentBLL\obj\Debug\placementDepartmentBLL.csprojAssemblyReference.cache
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentBLL\obj\Debug\placementDepartmentBLL.csproj.CoreCompileInputs.cache
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentBLL\obj\Debug\placementDepartmentBLL.csproj.CopyComplete
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentBLL\obj\Debug\placementDepartmentBLL.dll
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentBLL\obj\Debug\placementDepartmentBLL.pdb
