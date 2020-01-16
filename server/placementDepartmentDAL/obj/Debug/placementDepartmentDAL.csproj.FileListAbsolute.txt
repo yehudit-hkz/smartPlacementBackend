@@ -10,3 +10,9 @@ C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server
 C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentDAL\obj\Debug\placementDepartmentDAL.csproj.CoreCompileInputs.cache
 C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentDAL\obj\Debug\placementDepartmentDAL.dll
 C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentDAL\obj\Debug\placementDepartmentDAL.pdb
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentDAL\bin\Debug\placementDepartmentDAL.dll.config
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentDAL\bin\Debug\EntityFramework.dll
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentDAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentDAL\bin\Debug\EntityFramework.xml
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentDAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentDAL\obj\Debug\placementDepartmentDAL.csproj.CopyComplete
