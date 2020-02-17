@@ -31,9 +31,9 @@ namespace placementDepartmentDAL
         public virtual Contact Contact { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Coordinating_jobs_for_graduates> Coordinating_jobs_for_graduates { get; set; }
-        public virtual User User { get; set; }
-        public virtual User User1 { get; set; }
         public virtual Reason_for_closing_the_position Reason_for_closing_the_position { get; set; }
         public virtual subject subject { get; set; }
+        public virtual User User { get; set; }
+        public virtual User User1 { get; set; }
     }
 }

@@ -44,7 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GraduateDtoManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\placementDepartmentCOMMON\placementDepartmentCOMMON.csproj">
+      <Project>{95ca758f-ae76-4f5d-b5d7-b60996228405}</Project>
+      <Name>placementDepartmentCOMMON</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\placementDepartmentDAL\placementDepartmentDAL.csproj">
+      <Project>{e686ca46-ba10-488a-8a74-c3ecb8a32169}</Project>
+      <Name>placementDepartmentDAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

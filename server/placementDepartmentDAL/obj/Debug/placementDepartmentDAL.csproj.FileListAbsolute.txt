@@ -16,3 +16,8 @@ C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server
 C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentDAL\bin\Debug\EntityFramework.xml
 C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentDAL\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentDAL\obj\Debug\placementDepartmentDAL.csproj.CopyComplete
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentDAL\bin\Debug\AutoMapper.dll
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentDAL\bin\Debug\placementDepartmentCOMMON.dll
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentDAL\bin\Debug\placementDepartmentCOMMON.pdb
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentDAL\bin\Debug\AutoMapper.pdb
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentDAL\bin\Debug\AutoMapper.xml

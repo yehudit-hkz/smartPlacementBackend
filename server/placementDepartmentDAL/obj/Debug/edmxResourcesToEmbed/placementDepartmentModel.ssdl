@@ -81,8 +81,8 @@
     <Property Name="companyName" Type="nvarchar" MaxLength="50" />
     <Property Name="role" Type="nvarchar" MaxLength="50" />
     <Property Name="placedByThePlacementDepartment" Type="bit" />
-    <Property Name="hasExperience" Type="bit" />
-    <Property Name="isActive" Type="bit" />
+    <Property Name="hasExperience" Type="bit" Nullable="false" />
+    <Property Name="isActive" Type="bit" Nullable="false" />
     <Property Name="linkToCV" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Graduate languages">
@@ -221,7 +221,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Coordinat__jobId__793DFFAF">
+  <Association Name="FK__Coordinat__jobId__0880433F">
     <End Role="Job" Type="Self.Job" Multiplicity="1" />
     <End Role="Coordinating jobs for graduates" Type="Self.Coordinating jobs for graduates" Multiplicity="*" />
     <ReferentialConstraint>
@@ -305,66 +305,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Job__contactId__6CD828CA">
-    <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
-    <End Role="Job" Type="Self.Job" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Contact">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Job">
-        <PropertyRef Name="contactId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Job__gettingId__6AEFE058">
-    <End Role="User" Type="Self.User" Multiplicity="0..1" />
-    <End Role="Job" Type="Self.Job" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Job">
-        <PropertyRef Name="gettingId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Job__handlesId__6BE40491">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="Job" Type="Self.Job" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Job">
-        <PropertyRef Name="handlesId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Job__reasonForCl__690797E6">
-    <End Role="Reason for closing the position" Type="Self.Reason for closing the position" Multiplicity="0..1" />
-    <End Role="Job" Type="Self.Job" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Reason for closing the position">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Job">
-        <PropertyRef Name="reasonForClosing" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Job__subject__69FBBC1F">
-    <End Role="subject" Type="Self.subject" Multiplicity="1" />
-    <End Role="Job" Type="Self.Job" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="subject">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Job">
-        <PropertyRef Name="subject" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__Reminder__userId__73852659">
     <End Role="User" Type="Self.User" Multiplicity="1" />
     <End Role="Reminder" Type="Self.Reminder" Multiplicity="*" />
@@ -413,6 +353,66 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_1">
+    <End Role="Reason for closing the position" Type="Self.Reason for closing the position" Multiplicity="0..1" />
+    <End Role="Job" Type="Self.Job" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reason for closing the position">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Job">
+        <PropertyRef Name="reasonForClosing" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_2">
+    <End Role="subject" Type="Self.subject" Multiplicity="1" />
+    <End Role="Job" Type="Self.Job" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="subject">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Job">
+        <PropertyRef Name="subject" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_3">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Job" Type="Self.Job" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Job">
+        <PropertyRef Name="gettingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_4">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Job" Type="Self.Job" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Job">
+        <PropertyRef Name="handlesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_5">
+    <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+    <End Role="Job" Type="Self.Job" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contact">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Job">
+        <PropertyRef Name="contactId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="placementDepartmentDBModelStoreContainer">
     <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
@@ -447,7 +447,7 @@
       <End Role="Graduate" EntitySet="Graduate" />
       <End Role="Coordinating jobs for graduates" EntitySet="Coordinating jobs for graduates" />
     </AssociationSet>
-    <AssociationSet Name="FK__Coordinat__jobId__793DFFAF" Association="Self.FK__Coordinat__jobId__793DFFAF">
+    <AssociationSet Name="FK__Coordinat__jobId__0880433F" Association="Self.FK__Coordinat__jobId__0880433F">
       <End Role="Job" EntitySet="Job" />
       <End Role="Coordinating jobs for graduates" EntitySet="Coordinating jobs for graduates" />
     </AssociationSet>
@@ -475,26 +475,6 @@
       <End Role="Expertise" EntitySet="Expertise" />
       <End Role="Graduate" EntitySet="Graduate" />
     </AssociationSet>
-    <AssociationSet Name="FK__Job__contactId__6CD828CA" Association="Self.FK__Job__contactId__6CD828CA">
-      <End Role="Contact" EntitySet="Contact" />
-      <End Role="Job" EntitySet="Job" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Job__gettingId__6AEFE058" Association="Self.FK__Job__gettingId__6AEFE058">
-      <End Role="User" EntitySet="User" />
-      <End Role="Job" EntitySet="Job" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Job__handlesId__6BE40491" Association="Self.FK__Job__handlesId__6BE40491">
-      <End Role="User" EntitySet="User" />
-      <End Role="Job" EntitySet="Job" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Job__reasonForCl__690797E6" Association="Self.FK__Job__reasonForCl__690797E6">
-      <End Role="Reason for closing the position" EntitySet="Reason for closing the position" />
-      <End Role="Job" EntitySet="Job" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Job__subject__69FBBC1F" Association="Self.FK__Job__subject__69FBBC1F">
-      <End Role="subject" EntitySet="subject" />
-      <End Role="Job" EntitySet="Job" />
-    </AssociationSet>
     <AssociationSet Name="FK__Reminder__userId__73852659" Association="Self.FK__Reminder__userId__73852659">
       <End Role="User" EntitySet="User" />
       <End Role="Reminder" EntitySet="Reminder" />
@@ -510,6 +490,26 @@
     <AssociationSet Name="FK__User__permission__58D1301D" Association="Self.FK__User__permission__58D1301D">
       <End Role="Permission" EntitySet="Permission" />
       <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_1" Association="Self.FK_1">
+      <End Role="Reason for closing the position" EntitySet="Reason for closing the position" />
+      <End Role="Job" EntitySet="Job" />
+    </AssociationSet>
+    <AssociationSet Name="FK_2" Association="Self.FK_2">
+      <End Role="subject" EntitySet="subject" />
+      <End Role="Job" EntitySet="Job" />
+    </AssociationSet>
+    <AssociationSet Name="FK_3" Association="Self.FK_3">
+      <End Role="User" EntitySet="User" />
+      <End Role="Job" EntitySet="Job" />
+    </AssociationSet>
+    <AssociationSet Name="FK_4" Association="Self.FK_4">
+      <End Role="User" EntitySet="User" />
+      <End Role="Job" EntitySet="Job" />
+    </AssociationSet>
+    <AssociationSet Name="FK_5" Association="Self.FK_5">
+      <End Role="Contact" EntitySet="Contact" />
+      <End Role="Job" EntitySet="Job" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

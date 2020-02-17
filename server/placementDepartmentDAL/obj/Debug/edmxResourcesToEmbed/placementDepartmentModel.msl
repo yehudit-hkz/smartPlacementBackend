@@ -4,303 +4,303 @@
     <EntitySetMapping Name="Branch">
       <EntityTypeMapping TypeName="placementDepartmentDBModel.Branch">
         <MappingFragment StoreEntitySet="Branch">
-          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="City">
       <EntityTypeMapping TypeName="placementDepartmentDBModel.City">
         <MappingFragment StoreEntitySet="City">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="area" ColumnName="area" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Company">
       <EntityTypeMapping TypeName="placementDepartmentDBModel.Company">
         <MappingFragment StoreEntitySet="Company">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="address" ColumnName="address" />
           <ScalarProperty Name="descriptiovOfActivity" ColumnName="descriptiovOfActivity" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Contact">
       <EntityTypeMapping TypeName="placementDepartmentDBModel.Contact">
         <MappingFragment StoreEntitySet="Contact">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="officePhone" ColumnName="officePhone" />
-          <ScalarProperty Name="phone" ColumnName="phone" />
           <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="officePhone" ColumnName="officePhone" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Coordinating_jobs_for_graduates">
       <EntityTypeMapping TypeName="placementDepartmentDBModel.Coordinating_jobs_for_graduates">
         <MappingFragment StoreEntitySet="Coordinating jobs for graduates">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="dateReceived" ColumnName="dateReceived" />
           <ScalarProperty Name="lastUpdateDate" ColumnName="lastUpdateDate" />
+          <ScalarProperty Name="dateReceived" ColumnName="dateReceived" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Expertise">
       <EntityTypeMapping TypeName="placementDepartmentDBModel.Expertise">
         <MappingFragment StoreEntitySet="Expertise">
-          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Graduate">
       <EntityTypeMapping TypeName="placementDepartmentDBModel.Graduate">
         <MappingFragment StoreEntitySet="Graduate">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="gender" ColumnName="gender" />
-          <ScalarProperty Name="lastName" ColumnName="lastName" />
-          <ScalarProperty Name="firstName" ColumnName="firstName" />
-          <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
-          <ScalarProperty Name="address" ColumnName="address" />
-          <ScalarProperty Name="zipCode" ColumnName="zipCode" />
-          <ScalarProperty Name="phone" ColumnName="phone" />
-          <ScalarProperty Name="email" ColumnName="email" />
-          <ScalarProperty Name="startYear" ColumnName="startYear" />
-          <ScalarProperty Name="endYear" ColumnName="endYear" />
-          <ScalarProperty Name="dateOfRegistration" ColumnName="dateOfRegistration" />
-          <ScalarProperty Name="lastUpdate" ColumnName="lastUpdate" />
-          <ScalarProperty Name="didGraduate" ColumnName="didGraduate" />
-          <ScalarProperty Name="hasDiploma" ColumnName="hasDiploma" />
-          <ScalarProperty Name="isWorkerInProfession" ColumnName="isWorkerInProfession" />
-          <ScalarProperty Name="companyName" ColumnName="companyName" />
-          <ScalarProperty Name="role" ColumnName="role" />
-          <ScalarProperty Name="placedByThePlacementDepartment" ColumnName="placedByThePlacementDepartment" />
-          <ScalarProperty Name="hasExperience" ColumnName="hasExperience" />
-          <ScalarProperty Name="isActive" ColumnName="isActive" />
           <ScalarProperty Name="linkToCV" ColumnName="linkToCV" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="hasExperience" ColumnName="hasExperience" />
+          <ScalarProperty Name="placedByThePlacementDepartment" ColumnName="placedByThePlacementDepartment" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="companyName" ColumnName="companyName" />
+          <ScalarProperty Name="isWorkerInProfession" ColumnName="isWorkerInProfession" />
+          <ScalarProperty Name="hasDiploma" ColumnName="hasDiploma" />
+          <ScalarProperty Name="didGraduate" ColumnName="didGraduate" />
+          <ScalarProperty Name="lastUpdate" ColumnName="lastUpdate" />
+          <ScalarProperty Name="dateOfRegistration" ColumnName="dateOfRegistration" />
+          <ScalarProperty Name="endYear" ColumnName="endYear" />
+          <ScalarProperty Name="startYear" ColumnName="startYear" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="zipCode" ColumnName="zipCode" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Graduate_languages">
       <EntityTypeMapping TypeName="placementDepartmentDBModel.Graduate_languages">
         <MappingFragment StoreEntitySet="Graduate languages">
-          <ScalarProperty Name="graduateId" ColumnName="graduateId" />
-          <ScalarProperty Name="languageId" ColumnName="languageId" />
           <ScalarProperty Name="level" ColumnName="level" />
+          <ScalarProperty Name="languageId" ColumnName="languageId" />
+          <ScalarProperty Name="graduateId" ColumnName="graduateId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Job">
       <EntityTypeMapping TypeName="placementDepartmentDBModel.Job">
         <MappingFragment StoreEntitySet="Job">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="dateReceived" ColumnName="dateReceived" />
-          <ScalarProperty Name="title" ColumnName="title" />
-          <ScalarProperty Name="description" ColumnName="description" />
-          <ScalarProperty Name="isActive" ColumnName="isActive" />
-          <ScalarProperty Name="didSendCV" ColumnName="didSendCV" />
           <ScalarProperty Name="lastUpdateDate" ColumnName="lastUpdateDate" />
+          <ScalarProperty Name="didSendCV" ColumnName="didSendCV" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="dateReceived" ColumnName="dateReceived" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Job_coordination_status">
       <EntityTypeMapping TypeName="placementDepartmentDBModel.Job_coordination_status">
         <MappingFragment StoreEntitySet="Job coordination status">
-          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Language">
       <EntityTypeMapping TypeName="placementDepartmentDBModel.Language">
         <MappingFragment StoreEntitySet="Language">
-          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Permission">
       <EntityTypeMapping TypeName="placementDepartmentDBModel.Permission">
         <MappingFragment StoreEntitySet="Permission">
-          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Reason_for_closing_the_position">
       <EntityTypeMapping TypeName="placementDepartmentDBModel.Reason_for_closing_the_position">
         <MappingFragment StoreEntitySet="Reason for closing the position">
-          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Reminder">
       <EntityTypeMapping TypeName="placementDepartmentDBModel.Reminder">
         <MappingFragment StoreEntitySet="Reminder">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="dateTime" ColumnName="dateTime" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="subject">
       <EntityTypeMapping TypeName="placementDepartmentDBModel.subject">
         <MappingFragment StoreEntitySet="subject">
-          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="User">
       <EntityTypeMapping TypeName="placementDepartmentDBModel.User">
         <MappingFragment StoreEntitySet="User">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <AssociationSetMapping Name="FK__Graduate__branch__4B7734FF" TypeName="placementDepartmentDBModel.FK__Graduate__branch__4B7734FF" StoreEntitySet="Graduate">
+      <EndProperty Name="Graduate">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
       <EndProperty Name="Branch">
         <ScalarProperty Name="Id" ColumnName="branch" />
       </EndProperty>
-      <EndProperty Name="Graduate">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="FK__Company__city__607251E5" TypeName="placementDepartmentDBModel.FK__Company__city__607251E5" StoreEntitySet="Company">
-      <EndProperty Name="City">
-        <ScalarProperty Name="Id" ColumnName="city" />
-      </EndProperty>
       <EndProperty Name="Company">
         <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <EndProperty Name="City">
+        <ScalarProperty Name="Id" ColumnName="city" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="FK__Graduate__city__4D5F7D71" TypeName="placementDepartmentDBModel.FK__Graduate__city__4D5F7D71" StoreEntitySet="Graduate">
+      <EndProperty Name="Graduate">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
       <EndProperty Name="City">
         <ScalarProperty Name="Id" ColumnName="city" />
       </EndProperty>
-      <EndProperty Name="Graduate">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="FK__Company__mainSub__6166761E" TypeName="placementDepartmentDBModel.FK__Company__mainSub__6166761E" StoreEntitySet="Company">
+      <EndProperty Name="Company">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
       <EndProperty Name="subject">
         <ScalarProperty Name="Id" ColumnName="mainField" />
       </EndProperty>
-      <EndProperty Name="Company">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="FK__Contact__IDCompa__65370702" TypeName="placementDepartmentDBModel.FK__Contact__IDCompa__65370702" StoreEntitySet="Contact">
+      <EndProperty Name="Contact">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
       <EndProperty Name="Company">
         <ScalarProperty Name="Id" ColumnName="IDCompany" />
       </EndProperty>
-      <EndProperty Name="Contact">
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_5" TypeName="placementDepartmentDBModel.FK_5" StoreEntitySet="Job">
+      <EndProperty Name="Job">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK__Job__contactId__6CD828CA" TypeName="placementDepartmentDBModel.FK__Job__contactId__6CD828CA" StoreEntitySet="Job">
       <EndProperty Name="Contact">
         <ScalarProperty Name="Id" ColumnName="contactId" />
       </EndProperty>
-      <EndProperty Name="Job">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="FK__Coordinat__gradu__76619304" TypeName="placementDepartmentDBModel.FK__Coordinat__gradu__76619304" StoreEntitySet="Coordinating jobs for graduates">
+      <EndProperty Name="Coordinating_jobs_for_graduates">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
       <EndProperty Name="Graduate">
         <ScalarProperty Name="Id" ColumnName="graduateId" />
       </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK__Coordinat__jobId__0880433F" TypeName="placementDepartmentDBModel.FK__Coordinat__jobId__0880433F" StoreEntitySet="Coordinating jobs for graduates">
       <EndProperty Name="Coordinating_jobs_for_graduates">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK__Coordinat__jobId__793DFFAF" TypeName="placementDepartmentDBModel.FK__Coordinat__jobId__793DFFAF" StoreEntitySet="Coordinating jobs for graduates">
       <EndProperty Name="Job">
         <ScalarProperty Name="Id" ColumnName="jobId" />
       </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK__Coordinat__place__7755B73D" TypeName="placementDepartmentDBModel.FK__Coordinat__place__7755B73D" StoreEntitySet="Coordinating jobs for graduates">
       <EndProperty Name="Coordinating_jobs_for_graduates">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK__Coordinat__place__7755B73D" TypeName="placementDepartmentDBModel.FK__Coordinat__place__7755B73D" StoreEntitySet="Coordinating jobs for graduates">
       <EndProperty Name="Job_coordination_status">
         <ScalarProperty Name="Id" ColumnName="placementStatus" />
       </EndProperty>
-      <EndProperty Name="Coordinating_jobs_for_graduates">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="FK__Graduate__expert__4F47C5E3" TypeName="placementDepartmentDBModel.FK__Graduate__expert__4F47C5E3" StoreEntitySet="Graduate">
-      <EndProperty Name="Expertise">
-        <ScalarProperty Name="Id" ColumnName="expertise" />
-      </EndProperty>
       <EndProperty Name="Graduate">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK__Job__gettingId__6AEFE058" TypeName="placementDepartmentDBModel.FK__Job__gettingId__6AEFE058" StoreEntitySet="Job">
-      <EndProperty Name="User">
-        <ScalarProperty Name="Id" ColumnName="gettingId" />
+      <EndProperty Name="Expertise">
+        <ScalarProperty Name="Id" ColumnName="expertise" />
       </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_1" TypeName="placementDepartmentDBModel.FK_1" StoreEntitySet="Job">
       <EndProperty Name="Job">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
-      <Condition IsNull="false" ColumnName="gettingId" />
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK__Job__handlesId__6BE40491" TypeName="placementDepartmentDBModel.FK__Job__handlesId__6BE40491" StoreEntitySet="Job">
-      <EndProperty Name="User">
-        <ScalarProperty Name="Id" ColumnName="handlesId" />
-      </EndProperty>
-      <EndProperty Name="Job">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK__Job__reasonForCl__690797E6" TypeName="placementDepartmentDBModel.FK__Job__reasonForCl__690797E6" StoreEntitySet="Job">
       <EndProperty Name="Reason_for_closing_the_position">
         <ScalarProperty Name="Id" ColumnName="reasonForClosing" />
       </EndProperty>
+      <Condition ColumnName="reasonForClosing" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_2" TypeName="placementDepartmentDBModel.FK_2" StoreEntitySet="Job">
       <EndProperty Name="Job">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
-      <Condition IsNull="false" ColumnName="reasonForClosing" />
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="FK__Job__subject__69FBBC1F" TypeName="placementDepartmentDBModel.FK__Job__subject__69FBBC1F" StoreEntitySet="Job">
       <EndProperty Name="subject">
         <ScalarProperty Name="Id" ColumnName="subject" />
       </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_3" TypeName="placementDepartmentDBModel.FK_3" StoreEntitySet="Job">
       <EndProperty Name="Job">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="gettingId" />
+      </EndProperty>
+      <Condition ColumnName="gettingId" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_4" TypeName="placementDepartmentDBModel.FK_4" StoreEntitySet="Job">
+      <EndProperty Name="Job">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="handlesId" />
+      </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="FK__User__permission__58D1301D" TypeName="placementDepartmentDBModel.FK__User__permission__58D1301D" StoreEntitySet="User">
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
       <EndProperty Name="Permission">
         <ScalarProperty Name="Id" ColumnName="permission" />
       </EndProperty>
-      <EndProperty Name="User">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="FK__Reminder__userId__73852659" TypeName="placementDepartmentDBModel.FK__Reminder__userId__73852659" StoreEntitySet="Reminder">
-      <EndProperty Name="User">
-        <ScalarProperty Name="Id" ColumnName="userId" />
-      </EndProperty>
       <EndProperty Name="Reminder">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="Id" ColumnName="userId" />
+      </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="subjects_for_expertises" TypeName="placementDepartmentDBModel.subjects_for_expertises" StoreEntitySet="subjects for expertises">
-      <EndProperty Name="Expertise">
-        <ScalarProperty Name="Id" ColumnName="expertiseId" />
-      </EndProperty>
       <EndProperty Name="subject">
         <ScalarProperty Name="Id" ColumnName="subjectId" />
+      </EndProperty>
+      <EndProperty Name="Expertise">
+        <ScalarProperty Name="Id" ColumnName="expertiseId" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

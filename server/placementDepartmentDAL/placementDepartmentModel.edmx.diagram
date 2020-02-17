@@ -4,42 +4,42 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="65429925e3834c2a98a3da381a324798" Name="Diagram1" ZoomLevel="67">
-        <EntityTypeShape EntityType="placementDepartmentDBModel.Branch" Width="1.5" PointX="0.875" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="placementDepartmentDBModel.City" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="placementDepartmentDBModel.Company" Width="1.5" PointX="5.25" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="placementDepartmentDBModel.Contact" Width="1.5" PointX="7.5" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="placementDepartmentDBModel.Coordinating_jobs_for_graduates" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="placementDepartmentDBModel.Expertise" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="placementDepartmentDBModel.Graduate" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="placementDepartmentDBModel.Graduate_languages" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="placementDepartmentDBModel.Job" Width="1.5" PointX="11" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="placementDepartmentDBModel.Job_coordination_status" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="placementDepartmentDBModel.Language" Width="1.5" PointX="8.25" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="placementDepartmentDBModel.Permission" Width="1.5" PointX="5.375" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="placementDepartmentDBModel.Reason_for_closing_the_position" Width="1.5" PointX="7.5" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="placementDepartmentDBModel.Reminder" Width="1.5" PointX="9.875" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="placementDepartmentDBModel.subject" Width="1.5" PointX="2.875" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="placementDepartmentDBModel.User" Width="1.5" PointX="7.625" PointY="15.75" IsExpanded="true" />
-        <AssociationConnector Association="placementDepartmentDBModel.FK__Graduate__branch__4B7734FF" ManuallyRouted="false" />
-        <AssociationConnector Association="placementDepartmentDBModel.FK__Company__city__607251E5" ManuallyRouted="false" />
-        <AssociationConnector Association="placementDepartmentDBModel.FK__Graduate__city__4D5F7D71" ManuallyRouted="false" />
-        <AssociationConnector Association="placementDepartmentDBModel.FK__Company__mainSub__6166761E" ManuallyRouted="false" />
-        <AssociationConnector Association="placementDepartmentDBModel.FK__Contact__IDCompa__65370702" ManuallyRouted="false" />
-        <AssociationConnector Association="placementDepartmentDBModel.FK__Job__contactId__6CD828CA" ManuallyRouted="false" />
-        <AssociationConnector Association="placementDepartmentDBModel.FK__Coordinat__gradu__76619304" ManuallyRouted="false" />
-        <AssociationConnector Association="placementDepartmentDBModel.FK__Coordinat__jobId__793DFFAF" ManuallyRouted="false" />
-        <AssociationConnector Association="placementDepartmentDBModel.FK__Coordinat__place__7755B73D" ManuallyRouted="false" />
-        <AssociationConnector Association="placementDepartmentDBModel.FK__Graduate__expert__4F47C5E3" ManuallyRouted="false" />
-        <AssociationConnector Association="placementDepartmentDBModel.FK__Graduate___gradu__3C34F16F" ManuallyRouted="false" />
-        <AssociationConnector Association="placementDepartmentDBModel.FK__Graduate___langu__51300E55" ManuallyRouted="false" />
-        <AssociationConnector Association="placementDepartmentDBModel.FK__Job__gettingId__6AEFE058" ManuallyRouted="false" />
-        <AssociationConnector Association="placementDepartmentDBModel.FK__Job__handlesId__6BE40491" ManuallyRouted="false" />
-        <AssociationConnector Association="placementDepartmentDBModel.FK__Job__reasonForCl__690797E6" ManuallyRouted="false" />
-        <AssociationConnector Association="placementDepartmentDBModel.FK__Job__subject__69FBBC1F" ManuallyRouted="false" />
-        <AssociationConnector Association="placementDepartmentDBModel.FK__User__permission__58D1301D" ManuallyRouted="false" />
-        <AssociationConnector Association="placementDepartmentDBModel.FK__Reminder__userId__73852659" ManuallyRouted="false" />
-        <AssociationConnector Association="placementDepartmentDBModel.subjects_for_expertises" ManuallyRouted="false" />
+      <Diagram DiagramId="65429925e3834c2a98a3da381a324798" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="placementDepartmentDBModel.Branch" Width="1.5" PointX="0.75" PointY="9.125" />
+        <EntityTypeShape EntityType="placementDepartmentDBModel.City" Width="1.5" PointX="0.75" PointY="2.375" />
+        <EntityTypeShape EntityType="placementDepartmentDBModel.Company" Width="1.5" PointX="5.25" PointY="12.375" />
+        <EntityTypeShape EntityType="placementDepartmentDBModel.Contact" Width="1.5" PointX="7.5" PointY="12.375" />
+        <EntityTypeShape EntityType="placementDepartmentDBModel.Coordinating_jobs_for_graduates" Width="1.5" PointX="5.25" PointY="5.5" />
+        <EntityTypeShape EntityType="placementDepartmentDBModel.Expertise" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="placementDepartmentDBModel.Graduate" Width="1.5" PointX="3" PointY="3.5" />
+        <EntityTypeShape EntityType="placementDepartmentDBModel.Graduate_languages" Width="1.5" PointX="5.25" PointY="2.625" />
+        <EntityTypeShape EntityType="placementDepartmentDBModel.Job" Width="1.5" PointX="14.75" PointY="11.75" />
+        <EntityTypeShape EntityType="placementDepartmentDBModel.Job_coordination_status" Width="1.5" PointX="3" PointY="16" />
+        <EntityTypeShape EntityType="placementDepartmentDBModel.Language" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="placementDepartmentDBModel.Permission" Width="1.5" PointX="5.25" PointY="16.875" />
+        <EntityTypeShape EntityType="placementDepartmentDBModel.Reason_for_closing_the_position" Width="1.5" PointX="7.5" PointY="9.125" />
+        <EntityTypeShape EntityType="placementDepartmentDBModel.Reminder" Width="1.5" PointX="9.75" PointY="16.875" />
+        <EntityTypeShape EntityType="placementDepartmentDBModel.subject" Width="1.5" PointX="3" PointY="12.5" />
+        <EntityTypeShape EntityType="placementDepartmentDBModel.User" Width="1.5" PointX="7.5" PointY="16.5" />
+        <AssociationConnector Association="placementDepartmentDBModel.FK__Graduate__branch__4B7734FF" />
+        <AssociationConnector Association="placementDepartmentDBModel.FK__Company__city__607251E5" />
+        <AssociationConnector Association="placementDepartmentDBModel.FK__Graduate__city__4D5F7D71" />
+        <AssociationConnector Association="placementDepartmentDBModel.FK__Company__mainSub__6166761E" />
+        <AssociationConnector Association="placementDepartmentDBModel.FK__Contact__IDCompa__65370702" />
+        <AssociationConnector Association="placementDepartmentDBModel.FK_5" />
+        <AssociationConnector Association="placementDepartmentDBModel.FK__Coordinat__gradu__76619304" />
+        <AssociationConnector Association="placementDepartmentDBModel.FK__Coordinat__jobId__0880433F" />
+        <AssociationConnector Association="placementDepartmentDBModel.FK__Coordinat__place__7755B73D" />
+        <AssociationConnector Association="placementDepartmentDBModel.FK__Graduate__expert__4F47C5E3" />
+        <AssociationConnector Association="placementDepartmentDBModel.FK__Graduate___gradu__3C34F16F" />
+        <AssociationConnector Association="placementDepartmentDBModel.FK__Graduate___langu__51300E55" />
+        <AssociationConnector Association="placementDepartmentDBModel.FK_1" />
+        <AssociationConnector Association="placementDepartmentDBModel.FK_2" />
+        <AssociationConnector Association="placementDepartmentDBModel.FK_3" />
+        <AssociationConnector Association="placementDepartmentDBModel.FK_4" />
+        <AssociationConnector Association="placementDepartmentDBModel.FK__User__permission__58D1301D" />
+        <AssociationConnector Association="placementDepartmentDBModel.FK__Reminder__userId__73852659" />
+        <AssociationConnector Association="placementDepartmentDBModel.subjects_for_expertises" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

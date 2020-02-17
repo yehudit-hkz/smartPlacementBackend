@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -50,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoMapperConfiguration.cs" />
     <Compile Include="Branch.cs">
       <DependentUpon>placementDepartmentModel.tt</DependentUpon>
     </Compile>
@@ -71,6 +75,7 @@
     <Compile Include="Graduate.cs">
       <DependentUpon>placementDepartmentModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="GraduateManager.cs" />
     <Compile Include="Graduate_languages.cs">
       <DependentUpon>placementDepartmentModel.tt</DependentUpon>
     </Compile>
@@ -142,6 +147,12 @@
       <DependentUpon>placementDepartmentModel.edmx</DependentUpon>
       <LastGenOutput>placementDepartmentModel.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\placementDepartmentCOMMON\placementDepartmentCOMMON.csproj">
+      <Project>{95ca758f-ae76-4f5d-b5d7-b60996228405}</Project>
+      <Name>placementDepartmentCOMMON</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -91,6 +91,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\GraduateController.cs" />
+    <Compile Include="Controllers\JobsCoordinationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -106,9 +108,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+    <Folder Include="App_Data\‫תבניות מותאמות אישית של Office‬\" />
+    <Folder Include="ResumeFile\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\server\placementDepartmentBLL\placementDepartmentBL.csproj">
+      <Project>{a5afb5f0-e57e-46f1-875e-f586acce2f63}</Project>
+      <Name>placementDepartmentBL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\server\placementDepartmentCOMMON\placementDepartmentCOMMON.csproj">
+      <Project>{95ca758f-ae76-4f5d-b5d7-b60996228405}</Project>
+      <Name>placementDepartmentCOMMON</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

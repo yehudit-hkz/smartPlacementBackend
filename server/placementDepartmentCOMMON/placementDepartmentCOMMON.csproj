@@ -41,23 +41,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BranchCMN.cs" />
-    <Compile Include="CityCMN.cs" />
-    <Compile Include="CompanyCMN.cs" />
-    <Compile Include="ContactCMN.cs" />
-    <Compile Include="CoordinatingJobsForGraduatesCMN.cs" />
-    <Compile Include="ExpertiseCMN.cs" />
-    <Compile Include="GraduateCMN.cs" />
-    <Compile Include="GraduateLanguagesCMN.cs" />
-    <Compile Include="JobCMN.cs" />
-    <Compile Include="JobCoordinationStatusCMN.cs" />
-    <Compile Include="LanguageCMN.cs" />
-    <Compile Include="PermissionCMN.cs" />
+    <Compile Include="BranchDto.cs" />
+    <Compile Include="CityDto.cs" />
+    <Compile Include="CompanyDto.cs" />
+    <Compile Include="ContactDto.cs" />
+    <Compile Include="CoordinatingJobsForGraduatesDto.cs" />
+    <Compile Include="ExpertiseDto.cs" />
+    <Compile Include="GraduateDto.cs" />
+    <Compile Include="GraduateLanguagesDto.cs" />
+    <Compile Include="JobDto.cs" />
+    <Compile Include="JobCoordinationStatusDto.cs" />
+    <Compile Include="LanguageDto.cs" />
+    <Compile Include="PermissionDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReasonForClosingThePositionCMN.cs" />
-    <Compile Include="ReminderCMN.cs" />
-    <Compile Include="SubjectCMN.cs" />
-    <Compile Include="UserCMN.cs" />
+    <Compile Include="ReasonForClosingThePositionDto.cs" />
+    <Compile Include="ReminderDto.cs" />
+    <Compile Include="SubjectDto.cs" />
+    <Compile Include="UserDto.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
