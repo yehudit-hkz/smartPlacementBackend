@@ -77,3 +77,7 @@ C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\servic
 C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\service\placementDepartmentWebAPI\bin\AutoMapper.pdb
 C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\service\placementDepartmentWebAPI\bin\AutoMapper.xml
 C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\service\placementDepartmentWebAPI\bin\EntityFramework.xml
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\service\placementDepartmentWebAPI\obj\Debug\Interop.Microsoft.Office.Core.dll
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\service\placementDepartmentWebAPI\obj\Debug\Interop.Microsoft.Office.Interop.Word.dll
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\service\placementDepartmentWebAPI\obj\Debug\Interop.VBIDE.dll
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\service\placementDepartmentWebAPI\obj\Debug\placementDepartmentWebAPI.csproj.ResolveComReference.cache

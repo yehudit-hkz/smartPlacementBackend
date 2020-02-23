@@ -49,6 +49,7 @@ namespace placementDepartmentDAL
             Graduate graduate = AutoMapperConfiguration.mapper.Map<Graduate>(graduateDto);
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
+                graduate.dateOfRegistration=graduate.lastUpdate = DateTime.Now;
                 placementDepartmentDB.Graduate.Add(graduate);
                 placementDepartmentDB.SaveChanges();
             }
@@ -58,6 +59,7 @@ namespace placementDepartmentDAL
             Graduate graduate = AutoMapperConfiguration.mapper.Map<Graduate>(graduateDto);
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
+                graduate.lastUpdate = DateTime.Now;
                 placementDepartmentDB.Entry(graduate).State = EntityState.Modified;
                 placementDepartmentDB.SaveChanges();
             }

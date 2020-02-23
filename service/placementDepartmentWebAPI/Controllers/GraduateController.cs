@@ -6,6 +6,9 @@ using System.Net.Http;
 using System.Web.Http;
 using placementDepartmentCOMMON;
 using placementDepartmentBLL;
+using System.Web;
+using Microsoft.Office.Interop.Word;
+using System.IO;
 
 namespace placementDepartmentWebAPI.Controllers
 {
@@ -15,7 +18,7 @@ namespace placementDepartmentWebAPI.Controllers
         [Route("GetAll")]
         // GET: api/Graduate
         public List<GraduateDto> Get()
-        {
+        { 
             return GraduateDtoManager.GraduateDtoList();
         }
 
@@ -23,7 +26,7 @@ namespace placementDepartmentWebAPI.Controllers
         // GET: api/Graduate/5
         public GraduateDto Get(string id)
         {
-            return GraduateDtoManager.GraduateDtoById(id);
+           return GraduateDtoManager.GraduateDtoById(id);
         }
 
         [Route("GetBySubject")]
@@ -46,11 +49,30 @@ namespace placementDepartmentWebAPI.Controllers
             //why id? for case that id is changed
             GraduateDtoManager.GraduateDtoEditing(graduateDto);
         }
-        [Route("PutCVFile")]
+        [Route("UploadCVFile")]
+        [HttpPost]
         // PUT: api/Graduate/5
-        public void PutCVFile([FromBody]GraduateDto graduateDto)
+        public void UploadCVFile()
         {
-           //recaived file, convert word document to ptf, save, and update linkToCV.
+            //recaived file, convert word document to ptf, save, and update linkToCV.
+            var httpRequest = HttpContext.Current.Request;
+            string temp = "~/ResumeFile/";
+            if (httpRequest.Files.Count > 0)
+            {
+                foreach (string file in httpRequest.Files)
+                {
+                    var postedFile = httpRequest.Files[file];
+                    var filePath = HttpContext.Current.Server.MapPath(temp + postedFile.FileName);
+                    postedFile.SaveAs(filePath);
+                    if (Path.GetExtension(filePath)==".doc" || Path.GetExtension(filePath)==".docx") {
+                        Application appWord = new Application();
+                        var wordDocument = appWord.Documents.Open(filePath);
+                        wordDocument.ExportAsFixedFormat(Path.ChangeExtension(filePath, ".pdf"), WdExportFormat.wdExportFormatPDF);
+                        wordDocument.Close();
+                        File.Delete(filePath);
+                    }
+                }
+            }
         }
 
         [Route("Delete")]
