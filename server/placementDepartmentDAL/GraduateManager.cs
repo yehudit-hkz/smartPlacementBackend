@@ -21,7 +21,6 @@ namespace placementDepartmentDAL
                     .ToList();
                 //.Skip(p-1*s).Take(s)
                 return graduateDtos;
-
             }
         }
         public static GraduateDto GraduateById(string Id)
@@ -49,7 +48,9 @@ namespace placementDepartmentDAL
             Graduate graduate = AutoMapperConfiguration.mapper.Map<Graduate>(graduateDto);
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
-                graduate.dateOfRegistration=graduate.lastUpdate = DateTime.Now;
+                if (graduate.dateOfRegistration == null)
+                    graduate.dateOfRegistration =DateTime.Now; 
+                graduate.lastUpdate = DateTime.Now;
                 placementDepartmentDB.Graduate.Add(graduate);
                 placementDepartmentDB.SaveChanges();
             }
@@ -60,6 +61,7 @@ namespace placementDepartmentDAL
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
                 graduate.lastUpdate = DateTime.Now;
+                placementDepartmentDB.Graduate.Attach(graduate);
                 placementDepartmentDB.Entry(graduate).State = EntityState.Modified;
                 placementDepartmentDB.SaveChanges();
             }

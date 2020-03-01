@@ -11,13 +11,13 @@ namespace placementDepartmentWebAPI.Controllers
 {
     public class JobsCoordinationController : ApiController
     {
-        // GET: api/JobsCoordination
+       //// GET: api/JobsCoordination
         public List<CoordinatingJobsForGraduatesDto> Get(string graduateId)
         {
             return null;
         }
 
-        // GET: api/JobsCoordination/5
+        //// GET: api/JobsCoordination/5
         public List<CoordinatingJobsForGraduatesDto> Get(int jobId)
         {
             return null;

@@ -57,9 +57,11 @@
     <Compile Include="Branch.cs">
       <DependentUpon>placementDepartmentModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="BranchManager.cs" />
     <Compile Include="City.cs">
       <DependentUpon>placementDepartmentModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EnumerationsManager.cs" />
     <Compile Include="Company.cs">
       <DependentUpon>placementDepartmentModel.tt</DependentUpon>
     </Compile>
@@ -72,6 +74,7 @@
     <Compile Include="Expertise.cs">
       <DependentUpon>placementDepartmentModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ExpertiseManager.cs" />
     <Compile Include="Graduate.cs">
       <DependentUpon>placementDepartmentModel.tt</DependentUpon>
     </Compile>
@@ -116,6 +119,7 @@
     <Compile Include="subject.cs">
       <DependentUpon>placementDepartmentModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SubjectManager.cs" />
     <Compile Include="User.cs">
       <DependentUpon>placementDepartmentModel.tt</DependentUpon>
     </Compile>

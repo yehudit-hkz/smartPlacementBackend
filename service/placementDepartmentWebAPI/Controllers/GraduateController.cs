@@ -16,14 +16,12 @@ namespace placementDepartmentWebAPI.Controllers
     public class GraduateController : ApiController
     {
         [Route("GetAll")]
-        // GET: api/Graduate
         public List<GraduateDto> Get()
         { 
             return GraduateDtoManager.GraduateDtoList();
         }
 
         [Route("GetById")]
-        // GET: api/Graduate/5
         public GraduateDto Get(string id)
         {
            return GraduateDtoManager.GraduateDtoById(id);
@@ -36,22 +34,20 @@ namespace placementDepartmentWebAPI.Controllers
         }
 
         [Route("Save")]
-        // POST: api/Graduate
         public void Post([FromBody]GraduateDto graduateDto)
         {
             GraduateDtoManager.NewGraduateDto(graduateDto);
         }
 
         [Route("Edit")]
-        // PUT: api/Graduate/5
         public void Put(/*string id,*/ [FromBody]GraduateDto graduateDto)
         {
             //why id? for case that id is changed
             GraduateDtoManager.GraduateDtoEditing(graduateDto);
         }
+
         [Route("UploadCVFile")]
         [HttpPost]
-        // PUT: api/Graduate/5
         public void UploadCVFile()
         {
             //recaived file, convert word document to ptf, save, and update linkToCV.
@@ -76,7 +72,6 @@ namespace placementDepartmentWebAPI.Controllers
         }
 
         [Route("Delete")]
-        // DELETE: api/Graduate/5
         public void Delete(string id)
         {
             GraduateDtoManager.DeleteGraduateDto(id);
