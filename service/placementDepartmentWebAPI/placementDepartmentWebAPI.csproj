@@ -92,6 +92,8 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BranchController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\EnumerationsController.cs" />
     <Compile Include="Controllers\ExpertiseController.cs" />
     <Compile Include="Controllers\GraduateController.cs" />

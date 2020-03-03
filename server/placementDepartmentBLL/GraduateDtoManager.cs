@@ -34,8 +34,5 @@ namespace placementDepartmentBLL
         {
             GraduateManager.DeleteGraduate(id);
         }
-
-
-
     }
 }

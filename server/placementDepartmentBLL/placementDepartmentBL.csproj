@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BranchDtoManager.cs" />
+    <Compile Include="CompanyDtoManager.cs" />
+    <Compile Include="ContactDtoManager.cs" />
     <Compile Include="EnumerationsDtoManager.cs" />
     <Compile Include="ExpertiseDtoManager.cs" />
     <Compile Include="GraduateDtoManager.cs" />

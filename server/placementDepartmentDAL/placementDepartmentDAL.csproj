@@ -61,6 +61,8 @@
     <Compile Include="City.cs">
       <DependentUpon>placementDepartmentModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CompanyManager.cs" />
+    <Compile Include="ContactManager.cs" />
     <Compile Include="EnumerationsManager.cs" />
     <Compile Include="Company.cs">
       <DependentUpon>placementDepartmentModel.tt</DependentUpon>

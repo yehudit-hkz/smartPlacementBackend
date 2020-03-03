@@ -4,12 +4,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using placementDepartmentCOMMON;
-using placementDepartmentBLL;
 using System.Web;
 using Microsoft.Office.Interop.Word;
 using System.IO;
-
+using placementDepartmentCOMMON;
+using placementDepartmentBLL;
 namespace placementDepartmentWebAPI.Controllers
 {
     [RoutePrefix("api/Graduate")]
