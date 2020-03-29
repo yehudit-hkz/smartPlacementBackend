@@ -15,7 +15,6 @@ namespace placementDepartmentCOMMON
         public string address { get; set; }
         public string descriptiovOfActivity { get; set; }
         public virtual CityDto City { get; set; }
-
         public virtual SubjectDto Subject { get; set; }
     }
 }

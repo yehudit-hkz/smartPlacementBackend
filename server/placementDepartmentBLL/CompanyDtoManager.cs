@@ -12,7 +12,7 @@ namespace placementDepartmentBLL
     {
         public static List<CompanyDto> CompanyDtoList()
         {
-            return CompanyManager.CompanyList();
+            return placementDepartmentDAL.CompanyManager.CompanyList();
         }
         public static CompanyDto CompanyDtoById(int Id)
         {

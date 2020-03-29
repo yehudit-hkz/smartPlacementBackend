@@ -15,9 +15,10 @@ namespace placementDepartmentCOMMON
         public string officePhone { get; set; }
         public string phone { get; set; }
         public string email { get; set; }
-     //   public CompanyDto Company{get;set;}
-        public int CompanyId { get; set; }
-        public string CompanyName { get; set; }
+        public int companyId { get; set; }
+
+        //   public CompanyDto Company{get;set;}
+        public string companyName { get; set; }
 
     }
 }

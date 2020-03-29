@@ -14,13 +14,24 @@ namespace placementDepartmentDAL
         public static List<CompanyDto> CompanyList()
         {
             List<CompanyDto> companyDtos;
+
+            //why is it not work like other
+            //using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
+            //{
+            //    companyDtos = placementDepartmentDB.Company
+            //        .ProjectTo<CompanyDto>(AutoMapperConfiguration.config)
+            //        .ToList();
+            //    //.Skip(p-1*s).Take(s)
+            //    return companyDtos;
+            //}
+
+            List<Company> companies;
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
-                companyDtos = placementDepartmentDB.Company
-                    .ProjectTo<CompanyDto>(AutoMapperConfiguration.config)
-                    .ToList();
+                companies = placementDepartmentDB.Company.ToList();
                 //.Skip(p-1*s).Take(s)
-                return companyDtos;
+                companyDtos = AutoMapperConfiguration.mapper.Map<List<CompanyDto>>(companies);
+                return companyDtos  ;
             }
         }
         public static CompanyDto CompanyById(int Id)

@@ -29,17 +29,17 @@ namespace placementDepartmentDAL
         public virtual DbSet<City> City { get; set; }
         public virtual DbSet<Company> Company { get; set; }
         public virtual DbSet<Contact> Contact { get; set; }
-        public virtual DbSet<Coordinating_jobs_for_graduates> Coordinating_jobs_for_graduates { get; set; }
+        public virtual DbSet<CoordinatingJobsForGraduates> CoordinatingJobsForGraduates { get; set; }
         public virtual DbSet<Expertise> Expertise { get; set; }
         public virtual DbSet<Graduate> Graduate { get; set; }
-        public virtual DbSet<Graduate_languages> Graduate_languages { get; set; }
+        public virtual DbSet<GraduateLanguages> GraduateLanguages { get; set; }
         public virtual DbSet<Job> Job { get; set; }
-        public virtual DbSet<Job_coordination_status> Job_coordination_status { get; set; }
+        public virtual DbSet<JobCoordinationStatus> JobCoordinationStatus { get; set; }
         public virtual DbSet<Language> Language { get; set; }
         public virtual DbSet<Permission> Permission { get; set; }
-        public virtual DbSet<Reason_for_closing_the_position> Reason_for_closing_the_position { get; set; }
+        public virtual DbSet<ReasonForClosingThePosition> ReasonForClosingThePosition { get; set; }
         public virtual DbSet<Reminder> Reminder { get; set; }
-        public virtual DbSet<subject> subject { get; set; }
+        public virtual DbSet<Subject> Subject { get; set; }
         public virtual DbSet<User> User { get; set; }
     }
 }

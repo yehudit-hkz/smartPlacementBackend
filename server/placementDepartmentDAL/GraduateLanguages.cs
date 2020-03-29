@@ -12,14 +12,13 @@ namespace placementDepartmentDAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Coordinating_jobs_for_graduates
+    public partial class GraduateLanguages
     {
-        public int Id { get; set; }
-        public System.DateTime dateReceived { get; set; }
-        public Nullable<System.DateTime> lastUpdateDate { get; set; }
+        public string graduateId { get; set; }
+        public int languageId { get; set; }
+        public Nullable<int> level { get; set; }
     
         public virtual Graduate Graduate { get; set; }
-        public virtual Job Job { get; set; }
-        public virtual Job_coordination_status Job_coordination_status { get; set; }
+        public virtual Language Language { get; set; }
     }
 }

@@ -17,8 +17,8 @@ namespace placementDepartmentDAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Graduate()
         {
-            this.Coordinating_jobs_for_graduates = new HashSet<Coordinating_jobs_for_graduates>();
-            this.Graduate_languages = new HashSet<Graduate_languages>();
+            this.CoordinatingJobsForGraduates = new HashSet<CoordinatingJobsForGraduates>();
+            this.GraduateLanguages = new HashSet<GraduateLanguages>();
         }
     
         public string Id { get; set; }
@@ -27,9 +27,12 @@ namespace placementDepartmentDAL
         public string firstName { get; set; }
         public System.DateTime dateOfBirth { get; set; }
         public string address { get; set; }
+        public int cityId { get; set; }
         public string zipCode { get; set; }
         public string phone { get; set; }
         public string email { get; set; }
+        public int expertiseId { get; set; }
+        public int branchId { get; set; }
         public string startYear { get; set; }
         public string endYear { get; set; }
         public System.DateTime dateOfRegistration { get; set; }
@@ -47,9 +50,9 @@ namespace placementDepartmentDAL
         public virtual Branch Branch { get; set; }
         public virtual City City { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Coordinating_jobs_for_graduates> Coordinating_jobs_for_graduates { get; set; }
+        public virtual ICollection<CoordinatingJobsForGraduates> CoordinatingJobsForGraduates { get; set; }
         public virtual Expertise Expertise { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Graduate_languages> Graduate_languages { get; set; }
+        public virtual ICollection<GraduateLanguages> GraduateLanguages { get; set; }
     }
 }

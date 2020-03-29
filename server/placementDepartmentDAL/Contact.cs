@@ -22,6 +22,7 @@ namespace placementDepartmentDAL
     
         public int Id { get; set; }
         public string name { get; set; }
+        public int companyId { get; set; }
         public string officePhone { get; set; }
         public string phone { get; set; }
         public string email { get; set; }

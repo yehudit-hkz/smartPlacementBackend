@@ -17,13 +17,13 @@ namespace placementDepartmentDAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Language()
         {
-            this.Graduate_languages = new HashSet<Graduate_languages>();
+            this.GraduateLanguages = new HashSet<GraduateLanguages>();
         }
     
         public int Id { get; set; }
         public string name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Graduate_languages> Graduate_languages { get; set; }
+        public virtual ICollection<GraduateLanguages> GraduateLanguages { get; set; }
     }
 }

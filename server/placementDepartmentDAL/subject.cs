@@ -12,10 +12,10 @@ namespace placementDepartmentDAL
     using System;
     using System.Collections.Generic;
     
-    public partial class subject
+    public partial class Subject
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public subject()
+        public Subject()
         {
             this.Company = new HashSet<Company>();
             this.Job = new HashSet<Job>();

@@ -50,6 +50,7 @@
     <Compile Include="EnumerationsDtoManager.cs" />
     <Compile Include="ExpertiseDtoManager.cs" />
     <Compile Include="GraduateDtoManager.cs" />
+    <Compile Include="JobsCoordinationDtoManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubjectDtoManager.cs" />
   </ItemGroup>

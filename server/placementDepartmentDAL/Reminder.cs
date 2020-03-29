@@ -15,6 +15,7 @@ namespace placementDepartmentDAL
     public partial class Reminder
     {
         public int Id { get; set; }
+        public int userId { get; set; }
         public string description { get; set; }
         public System.DateTime dateTime { get; set; }
     

@@ -12,6 +12,21 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -55,110 +70,121 @@
   <ItemGroup>
     <Compile Include="AutoMapperConfiguration.cs" />
     <Compile Include="Branch.cs">
-      <DependentUpon>placementDepartmentModel.tt</DependentUpon>
+      <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="BranchManager.cs" />
     <Compile Include="City.cs">
-      <DependentUpon>placementDepartmentModel.tt</DependentUpon>
+      <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Company.cs">
+      <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="CompanyManager.cs" />
-    <Compile Include="ContactManager.cs" />
-    <Compile Include="EnumerationsManager.cs" />
-    <Compile Include="Company.cs">
-      <DependentUpon>placementDepartmentModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Contact.cs">
-      <DependentUpon>placementDepartmentModel.tt</DependentUpon>
+      <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Coordinating_jobs_for_graduates.cs">
-      <DependentUpon>placementDepartmentModel.tt</DependentUpon>
+    <Compile Include="ContactManager.cs" />
+    <Compile Include="CoordinatingJobsForGraduates.cs">
+      <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="EnumerationsManager.cs" />
     <Compile Include="Expertise.cs">
-      <DependentUpon>placementDepartmentModel.tt</DependentUpon>
+      <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="ExpertiseManager.cs" />
     <Compile Include="Graduate.cs">
-      <DependentUpon>placementDepartmentModel.tt</DependentUpon>
+      <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GraduateLanguages.cs">
+      <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="GraduateManager.cs" />
-    <Compile Include="Graduate_languages.cs">
-      <DependentUpon>placementDepartmentModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Job.cs">
-      <DependentUpon>placementDepartmentModel.tt</DependentUpon>
+      <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Job_coordination_status.cs">
-      <DependentUpon>placementDepartmentModel.tt</DependentUpon>
+    <Compile Include="JobCoordinationStatus.cs">
+      <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="JobsCoordinationManager.cs" />
     <Compile Include="Language.cs">
-      <DependentUpon>placementDepartmentModel.tt</DependentUpon>
+      <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Permission.cs">
-      <DependentUpon>placementDepartmentModel.tt</DependentUpon>
+      <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="placementDepartmentModel.Context.cs">
+    <Compile Include="placementDepartmentDBEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>placementDepartmentModel.Context.tt</DependentUpon>
+      <DependentUpon>placementDepartmentDBEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="placementDepartmentModel.cs">
+    <Compile Include="placementDepartmentDBEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>placementDepartmentModel.tt</DependentUpon>
+      <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="placementDepartmentModel.Designer.cs">
+    <Compile Include="placementDepartmentDBEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>placementDepartmentModel.edmx</DependentUpon>
+      <DependentUpon>placementDepartmentDBEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reason_for_closing_the_position.cs">
-      <DependentUpon>placementDepartmentModel.tt</DependentUpon>
+    <Compile Include="ReasonForClosingThePosition.cs">
+      <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Reminder.cs">
-      <DependentUpon>placementDepartmentModel.tt</DependentUpon>
+      <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="subject.cs">
-      <DependentUpon>placementDepartmentModel.tt</DependentUpon>
+    <Compile Include="Subject.cs">
+      <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="SubjectManager.cs" />
     <Compile Include="User.cs">
-      <DependentUpon>placementDepartmentModel.tt</DependentUpon>
+      <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="placementDepartmentModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>placementDepartmentModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.Config" />
     <None Include="packages.config" />
-    <None Include="placementDepartmentModel.edmx.diagram">
-      <DependentUpon>placementDepartmentModel.edmx</DependentUpon>
+    <EntityDeploy Include="placementDepartmentDBEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>placementDepartmentDBEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="placementDepartmentDBEntities.edmx.diagram">
+      <DependentUpon>placementDepartmentDBEntities.edmx</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="placementDepartmentModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>placementDepartmentModel.Context.cs</LastGenOutput>
-      <DependentUpon>placementDepartmentModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="placementDepartmentModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>placementDepartmentModel.edmx</DependentUpon>
-      <LastGenOutput>placementDepartmentModel.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\placementDepartmentCOMMON\placementDepartmentCOMMON.csproj">
       <Project>{95ca758f-ae76-4f5d-b5d7-b60996228405}</Project>
       <Name>placementDepartmentCOMMON</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="placementDepartmentDBEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>placementDepartmentDBEntities.edmx</DependentUpon>
+      <LastGenOutput>placementDepartmentDBEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="placementDepartmentDBEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>placementDepartmentDBEntities.edmx</DependentUpon>
+      <LastGenOutput>placementDepartmentDBEntities.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

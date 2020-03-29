@@ -37,7 +37,7 @@ namespace placementDepartmentDAL
             List<ReasonForClosingThePositionDto> reasonForClosingThePositionDtos;
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
-                reasonForClosingThePositionDtos = placementDepartmentDB.Reason_for_closing_the_position
+                reasonForClosingThePositionDtos = placementDepartmentDB.ReasonForClosingThePosition
                     .ProjectTo<ReasonForClosingThePositionDto>(AutoMapperConfiguration.config)
                     .ToList();
                 return reasonForClosingThePositionDtos;
@@ -48,7 +48,7 @@ namespace placementDepartmentDAL
             List<JobCoordinationStatusDto> jobCoordinationStatusDtos;
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
-                jobCoordinationStatusDtos = placementDepartmentDB.Job_coordination_status
+                jobCoordinationStatusDtos = placementDepartmentDB.JobCoordinationStatus
                     .ProjectTo<JobCoordinationStatusDto>(AutoMapperConfiguration.config)
                     .ToList();
                 return jobCoordinationStatusDtos;

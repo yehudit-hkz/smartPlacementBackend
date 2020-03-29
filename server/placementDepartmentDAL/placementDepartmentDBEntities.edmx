@@ -1,0 +1,1259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="placementDepartmentDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="area" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="address" Type="nvarchar" MaxLength="50" />
+          <Property Name="cityId" Type="int" Nullable="false" />
+          <Property Name="mainField" Type="int" Nullable="false" />
+          <Property Name="descriptiovOfActivity" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="companyId" Type="int" Nullable="false" />
+          <Property Name="officePhone" Type="nvarchar" MaxLength="10" />
+          <Property Name="phone" Type="nvarchar" MaxLength="10" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CoordinatingJobsForGraduates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dateReceived" Type="date" Nullable="false" />
+          <Property Name="jobId" Type="int" Nullable="false" />
+          <Property Name="candidateId" Type="nchar" MaxLength="9" Nullable="false" />
+          <Property Name="placementStatus" Type="int" Nullable="false" />
+          <Property Name="lastUpdateDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Expertise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Graduate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nchar" MaxLength="9" Nullable="false" />
+          <Property Name="gender" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="dateOfBirth" Type="date" Nullable="false" />
+          <Property Name="address" Type="nvarchar(max)" />
+          <Property Name="cityId" Type="int" Nullable="false" />
+          <Property Name="zipCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="phone" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="expertiseId" Type="int" Nullable="false" />
+          <Property Name="branchId" Type="int" Nullable="false" />
+          <Property Name="startYear" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="endYear" Type="nchar" MaxLength="4" Nullable="false" />
+          <Property Name="dateOfRegistration" Type="date" Nullable="false" />
+          <Property Name="lastUpdate" Type="date" Nullable="false" />
+          <Property Name="didGraduate" Type="bit" Nullable="false" />
+          <Property Name="hasDiploma" Type="bit" Nullable="false" />
+          <Property Name="isWorkerInProfession" Type="bit" Nullable="false" />
+          <Property Name="companyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="role" Type="nvarchar" MaxLength="50" />
+          <Property Name="placedByThePlacementDepartment" Type="bit" />
+          <Property Name="hasExperience" Type="bit" Nullable="false" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+          <Property Name="linkToCV" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="GraduateLanguages">
+          <Key>
+            <PropertyRef Name="graduateId" />
+            <PropertyRef Name="languageId" />
+          </Key>
+          <Property Name="graduateId" Type="nchar" MaxLength="9" Nullable="false" />
+          <Property Name="languageId" Type="int" Nullable="false" />
+          <Property Name="level" Type="int" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dateReceived" Type="date" Nullable="false" />
+          <Property Name="gettingId" Type="int" />
+          <Property Name="handlesId" Type="int" Nullable="false" />
+          <Property Name="contactId" Type="int" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="ntext" />
+          <Property Name="subjectId" Type="int" Nullable="false" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
+          <Property Name="reasonForClosing" Type="int" />
+          <Property Name="didSendCV" Type="bit" Nullable="false" />
+          <Property Name="lastUpdateDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="JobCoordinationStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReasonForClosingThePosition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reminder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="int" Nullable="false" />
+          <Property Name="description" Type="ntext" Nullable="false" />
+          <Property Name="dateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SubjectsForExpertises">
+          <Key>
+            <PropertyRef Name="subjectId" />
+            <PropertyRef Name="expertiseId" />
+          </Key>
+          <Property Name="subjectId" Type="int" Nullable="false" />
+          <Property Name="expertiseId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="permissionId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Company__city__607251E5">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="cityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Company__mainFie__2EA5EC27">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="mainField" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contact__IDCompa__65370702">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="companyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Coordinat__gradu__1C873BEC">
+          <End Role="Graduate" Type="Self.Graduate" Multiplicity="1" />
+          <End Role="CoordinatingJobsForGraduates" Type="Self.CoordinatingJobsForGraduates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Graduate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CoordinatingJobsForGraduates">
+              <PropertyRef Name="candidateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Coordinat__jobId__32767D0B">
+          <End Role="Job" Type="Self.Job" Multiplicity="1" />
+          <End Role="CoordinatingJobsForGraduates" Type="Self.CoordinatingJobsForGraduates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CoordinatingJobsForGraduates">
+              <PropertyRef Name="jobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Coordinat__place__2F9A1060">
+          <End Role="JobCoordinationStatus" Type="Self.JobCoordinationStatus" Multiplicity="1" />
+          <End Role="CoordinatingJobsForGraduates" Type="Self.CoordinatingJobsForGraduates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobCoordinationStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CoordinatingJobsForGraduates">
+              <PropertyRef Name="placementStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Graduate__branch__4B7734FF">
+          <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
+          <End Role="Graduate" Type="Self.Graduate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Graduate">
+              <PropertyRef Name="branchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Graduate__city__4D5F7D71">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Graduate" Type="Self.Graduate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Graduate">
+              <PropertyRef Name="cityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Graduate__expert__4F47C5E3">
+          <End Role="Expertise" Type="Self.Expertise" Multiplicity="1" />
+          <End Role="Graduate" Type="Self.Graduate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Expertise">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Graduate">
+              <PropertyRef Name="expertiseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GraduateL__gradu__2057CCD0">
+          <End Role="Graduate" Type="Self.Graduate" Multiplicity="1" />
+          <End Role="GraduateLanguages" Type="Self.GraduateLanguages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Graduate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GraduateLanguages">
+              <PropertyRef Name="graduateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GraduateL__langu__214BF109">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="GraduateLanguages" Type="Self.GraduateLanguages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GraduateLanguages">
+              <PropertyRef Name="languageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Job__contactId__3552E9B6">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+          <End Role="Job" Type="Self.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="contactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Job__gettingId__336AA144">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Job" Type="Self.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="gettingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Job__handlesId__345EC57D">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Job" Type="Self.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="handlesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Job__reasonForCl__373B3228">
+          <End Role="ReasonForClosingThePosition" Type="Self.ReasonForClosingThePosition" Multiplicity="0..1" />
+          <End Role="Job" Type="Self.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReasonForClosingThePosition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="reasonForClosing" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Job__subject__36470DEF">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Job" Type="Self.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="subjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reminder__userId__73852659">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Reminder" Type="Self.Reminder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reminder">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SubjectsF__exper__27F8EE98">
+          <End Role="Expertise" Type="Self.Expertise" Multiplicity="1" />
+          <End Role="SubjectsForExpertises" Type="Self.SubjectsForExpertises" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Expertise">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubjectsForExpertises">
+              <PropertyRef Name="expertiseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SubjectsF__subje__382F5661">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="SubjectsForExpertises" Type="Self.SubjectsForExpertises" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SubjectsForExpertises">
+              <PropertyRef Name="subjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User__permission__58D1301D">
+          <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="permissionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="placementDepartmentDBModelStoreContainer">
+          <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoordinatingJobsForGraduates" EntityType="Self.CoordinatingJobsForGraduates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Expertise" EntityType="Self.Expertise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Graduate" EntityType="Self.Graduate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GraduateLanguages" EntityType="Self.GraduateLanguages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobCoordinationStatus" EntityType="Self.JobCoordinationStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReasonForClosingThePosition" EntityType="Self.ReasonForClosingThePosition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reminder" EntityType="Self.Reminder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubjectsForExpertises" EntityType="Self.SubjectsForExpertises" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Company__city__607251E5" Association="Self.FK__Company__city__607251E5">
+            <End Role="City" EntitySet="City" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Company__mainFie__2EA5EC27" Association="Self.FK__Company__mainFie__2EA5EC27">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contact__IDCompa__65370702" Association="Self.FK__Contact__IDCompa__65370702">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Coordinat__gradu__1C873BEC" Association="Self.FK__Coordinat__gradu__1C873BEC">
+            <End Role="Graduate" EntitySet="Graduate" />
+            <End Role="CoordinatingJobsForGraduates" EntitySet="CoordinatingJobsForGraduates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Coordinat__jobId__32767D0B" Association="Self.FK__Coordinat__jobId__32767D0B">
+            <End Role="Job" EntitySet="Job" />
+            <End Role="CoordinatingJobsForGraduates" EntitySet="CoordinatingJobsForGraduates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Coordinat__place__2F9A1060" Association="Self.FK__Coordinat__place__2F9A1060">
+            <End Role="JobCoordinationStatus" EntitySet="JobCoordinationStatus" />
+            <End Role="CoordinatingJobsForGraduates" EntitySet="CoordinatingJobsForGraduates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Graduate__branch__4B7734FF" Association="Self.FK__Graduate__branch__4B7734FF">
+            <End Role="Branch" EntitySet="Branch" />
+            <End Role="Graduate" EntitySet="Graduate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Graduate__city__4D5F7D71" Association="Self.FK__Graduate__city__4D5F7D71">
+            <End Role="City" EntitySet="City" />
+            <End Role="Graduate" EntitySet="Graduate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Graduate__expert__4F47C5E3" Association="Self.FK__Graduate__expert__4F47C5E3">
+            <End Role="Expertise" EntitySet="Expertise" />
+            <End Role="Graduate" EntitySet="Graduate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GraduateL__gradu__2057CCD0" Association="Self.FK__GraduateL__gradu__2057CCD0">
+            <End Role="Graduate" EntitySet="Graduate" />
+            <End Role="GraduateLanguages" EntitySet="GraduateLanguages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GraduateL__langu__214BF109" Association="Self.FK__GraduateL__langu__214BF109">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="GraduateLanguages" EntitySet="GraduateLanguages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Job__contactId__3552E9B6" Association="Self.FK__Job__contactId__3552E9B6">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Job__gettingId__336AA144" Association="Self.FK__Job__gettingId__336AA144">
+            <End Role="User" EntitySet="User" />
+            <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Job__handlesId__345EC57D" Association="Self.FK__Job__handlesId__345EC57D">
+            <End Role="User" EntitySet="User" />
+            <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Job__reasonForCl__373B3228" Association="Self.FK__Job__reasonForCl__373B3228">
+            <End Role="ReasonForClosingThePosition" EntitySet="ReasonForClosingThePosition" />
+            <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Job__subject__36470DEF" Association="Self.FK__Job__subject__36470DEF">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reminder__userId__73852659" Association="Self.FK__Reminder__userId__73852659">
+            <End Role="User" EntitySet="User" />
+            <End Role="Reminder" EntitySet="Reminder" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SubjectsF__exper__27F8EE98" Association="Self.FK__SubjectsF__exper__27F8EE98">
+            <End Role="Expertise" EntitySet="Expertise" />
+            <End Role="SubjectsForExpertises" EntitySet="SubjectsForExpertises" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SubjectsF__subje__382F5661" Association="Self.FK__SubjectsF__subje__382F5661">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="SubjectsForExpertises" EntitySet="SubjectsForExpertises" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User__permission__58D1301D" Association="Self.FK__User__permission__58D1301D">
+            <End Role="Permission" EntitySet="Permission" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="placementDepartmentDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Graduate" Relationship="Self.FK__Graduate__branch__4B7734FF" FromRole="Branch" ToRole="Graduate" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="area" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="Self.FK__Company__city__607251E5" FromRole="City" ToRole="Company" />
+          <NavigationProperty Name="Graduate" Relationship="Self.FK__Graduate__city__4D5F7D71" FromRole="City" ToRole="Graduate" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cityId" Type="Int32" Nullable="false" />
+          <Property Name="mainField" Type="Int32" Nullable="false" />
+          <Property Name="descriptiovOfActivity" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="City" Relationship="Self.FK__Company__city__607251E5" FromRole="Company" ToRole="City" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK__Company__mainFie__2EA5EC27" FromRole="Company" ToRole="Subject" />
+          <NavigationProperty Name="Contact" Relationship="Self.FK__Contact__IDCompa__65370702" FromRole="Company" ToRole="Contact" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="companyId" Type="Int32" Nullable="false" />
+          <Property Name="officePhone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Company" Relationship="Self.FK__Contact__IDCompa__65370702" FromRole="Contact" ToRole="Company" />
+          <NavigationProperty Name="Job" Relationship="Self.FK__Job__contactId__3552E9B6" FromRole="Contact" ToRole="Job" />
+        </EntityType>
+        <EntityType Name="CoordinatingJobsForGraduates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dateReceived" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="jobId" Type="Int32" Nullable="false" />
+          <Property Name="candidateId" Type="String" MaxLength="9" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="placementStatus" Type="Int32" Nullable="false" />
+          <Property Name="lastUpdateDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Graduate" Relationship="Self.FK__Coordinat__gradu__1C873BEC" FromRole="CoordinatingJobsForGraduates" ToRole="Graduate" />
+          <NavigationProperty Name="Job" Relationship="Self.FK__Coordinat__jobId__32767D0B" FromRole="CoordinatingJobsForGraduates" ToRole="Job" />
+          <NavigationProperty Name="JobCoordinationStatus" Relationship="Self.FK__Coordinat__place__2F9A1060" FromRole="CoordinatingJobsForGraduates" ToRole="JobCoordinationStatus" />
+        </EntityType>
+        <EntityType Name="Expertise">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Graduate" Relationship="Self.FK__Graduate__expert__4F47C5E3" FromRole="Expertise" ToRole="Graduate" />
+          <NavigationProperty Name="Subject" Relationship="Self.SubjectsForExpertises" FromRole="Expertise" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="Graduate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="9" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="cityId" Type="Int32" Nullable="false" />
+          <Property Name="zipCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="expertiseId" Type="Int32" Nullable="false" />
+          <Property Name="branchId" Type="Int32" Nullable="false" />
+          <Property Name="startYear" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="endYear" Type="String" MaxLength="4" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="dateOfRegistration" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="lastUpdate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="didGraduate" Type="Boolean" Nullable="false" />
+          <Property Name="hasDiploma" Type="Boolean" Nullable="false" />
+          <Property Name="isWorkerInProfession" Type="Boolean" Nullable="false" />
+          <Property Name="companyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="placedByThePlacementDepartment" Type="Boolean" />
+          <Property Name="hasExperience" Type="Boolean" Nullable="false" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+          <Property Name="linkToCV" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Branch" Relationship="Self.FK__Graduate__branch__4B7734FF" FromRole="Graduate" ToRole="Branch" />
+          <NavigationProperty Name="City" Relationship="Self.FK__Graduate__city__4D5F7D71" FromRole="Graduate" ToRole="City" />
+          <NavigationProperty Name="CoordinatingJobsForGraduates" Relationship="Self.FK__Coordinat__gradu__1C873BEC" FromRole="Graduate" ToRole="CoordinatingJobsForGraduates" />
+          <NavigationProperty Name="Expertise" Relationship="Self.FK__Graduate__expert__4F47C5E3" FromRole="Graduate" ToRole="Expertise" />
+          <NavigationProperty Name="GraduateLanguages" Relationship="Self.FK__GraduateL__gradu__2057CCD0" FromRole="Graduate" ToRole="GraduateLanguages" />
+        </EntityType>
+        <EntityType Name="GraduateLanguages">
+          <Key>
+            <PropertyRef Name="graduateId" />
+            <PropertyRef Name="languageId" />
+          </Key>
+          <Property Name="graduateId" Type="String" MaxLength="9" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="languageId" Type="Int32" Nullable="false" />
+          <Property Name="level" Type="Int32" />
+          <NavigationProperty Name="Graduate" Relationship="Self.FK__GraduateL__gradu__2057CCD0" FromRole="GraduateLanguages" ToRole="Graduate" />
+          <NavigationProperty Name="Language" Relationship="Self.FK__GraduateL__langu__214BF109" FromRole="GraduateLanguages" ToRole="Language" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dateReceived" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="gettingId" Type="Int32" />
+          <Property Name="handlesId" Type="Int32" Nullable="false" />
+          <Property Name="contactId" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="subjectId" Type="Int32" Nullable="false" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
+          <Property Name="reasonForClosing" Type="Int32" />
+          <Property Name="didSendCV" Type="Boolean" Nullable="false" />
+          <Property Name="lastUpdateDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Contact" Relationship="Self.FK__Job__contactId__3552E9B6" FromRole="Job" ToRole="Contact" />
+          <NavigationProperty Name="CoordinatingJobsForGraduates" Relationship="Self.FK__Coordinat__jobId__32767D0B" FromRole="Job" ToRole="CoordinatingJobsForGraduates" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Job__gettingId__336AA144" FromRole="Job" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK__Job__handlesId__345EC57D" FromRole="Job" ToRole="User" />
+          <NavigationProperty Name="ReasonForClosingThePosition" Relationship="Self.FK__Job__reasonForCl__373B3228" FromRole="Job" ToRole="ReasonForClosingThePosition" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK__Job__subject__36470DEF" FromRole="Job" ToRole="Subject" />
+        </EntityType>
+        <EntityType Name="JobCoordinationStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CoordinatingJobsForGraduates" Relationship="Self.FK__Coordinat__place__2F9A1060" FromRole="JobCoordinationStatus" ToRole="CoordinatingJobsForGraduates" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="GraduateLanguages" Relationship="Self.FK__GraduateL__langu__214BF109" FromRole="Language" ToRole="GraduateLanguages" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK__User__permission__58D1301D" FromRole="Permission" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ReasonForClosingThePosition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Job" Relationship="Self.FK__Job__reasonForCl__373B3228" FromRole="ReasonForClosingThePosition" ToRole="Job" />
+        </EntityType>
+        <EntityType Name="Reminder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Reminder__userId__73852659" FromRole="Reminder" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Company" Relationship="Self.FK__Company__mainFie__2EA5EC27" FromRole="Subject" ToRole="Company" />
+          <NavigationProperty Name="Job" Relationship="Self.FK__Job__subject__36470DEF" FromRole="Subject" ToRole="Job" />
+          <NavigationProperty Name="Expertise" Relationship="Self.SubjectsForExpertises" FromRole="Subject" ToRole="Expertise" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="permissionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Job" Relationship="Self.FK__Job__gettingId__336AA144" FromRole="User" ToRole="Job" />
+          <NavigationProperty Name="Job1" Relationship="Self.FK__Job__handlesId__345EC57D" FromRole="User" ToRole="Job" />
+          <NavigationProperty Name="Permission" Relationship="Self.FK__User__permission__58D1301D" FromRole="User" ToRole="Permission" />
+          <NavigationProperty Name="Reminder" Relationship="Self.FK__Reminder__userId__73852659" FromRole="User" ToRole="Reminder" />
+        </EntityType>
+        <Association Name="FK__Graduate__branch__4B7734FF">
+          <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
+          <End Role="Graduate" Type="Self.Graduate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branch">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Graduate">
+              <PropertyRef Name="branchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Company__city__607251E5">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="cityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Graduate__city__4D5F7D71">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Graduate" Type="Self.Graduate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Graduate">
+              <PropertyRef Name="cityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Company__mainFie__2EA5EC27">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="mainField" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Contact__IDCompa__65370702">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="companyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Job__contactId__3552E9B6">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+          <End Role="Job" Type="Self.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="contactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Coordinat__gradu__1C873BEC">
+          <End Role="Graduate" Type="Self.Graduate" Multiplicity="1" />
+          <End Role="CoordinatingJobsForGraduates" Type="Self.CoordinatingJobsForGraduates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Graduate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CoordinatingJobsForGraduates">
+              <PropertyRef Name="candidateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Coordinat__jobId__32767D0B">
+          <End Role="Job" Type="Self.Job" Multiplicity="1" />
+          <End Role="CoordinatingJobsForGraduates" Type="Self.CoordinatingJobsForGraduates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CoordinatingJobsForGraduates">
+              <PropertyRef Name="jobId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Coordinat__place__2F9A1060">
+          <End Role="JobCoordinationStatus" Type="Self.JobCoordinationStatus" Multiplicity="1" />
+          <End Role="CoordinatingJobsForGraduates" Type="Self.CoordinatingJobsForGraduates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobCoordinationStatus">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CoordinatingJobsForGraduates">
+              <PropertyRef Name="placementStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Graduate__expert__4F47C5E3">
+          <End Role="Expertise" Type="Self.Expertise" Multiplicity="1" />
+          <End Role="Graduate" Type="Self.Graduate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Expertise">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Graduate">
+              <PropertyRef Name="expertiseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GraduateL__gradu__2057CCD0">
+          <End Role="Graduate" Type="Self.Graduate" Multiplicity="1" />
+          <End Role="GraduateLanguages" Type="Self.GraduateLanguages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Graduate">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GraduateLanguages">
+              <PropertyRef Name="graduateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GraduateL__langu__214BF109">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="GraduateLanguages" Type="Self.GraduateLanguages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GraduateLanguages">
+              <PropertyRef Name="languageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Job__gettingId__336AA144">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Job" Type="Self.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="gettingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Job__handlesId__345EC57D">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Job" Type="Self.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="handlesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Job__reasonForCl__373B3228">
+          <End Role="ReasonForClosingThePosition" Type="Self.ReasonForClosingThePosition" Multiplicity="0..1" />
+          <End Role="Job" Type="Self.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReasonForClosingThePosition">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="reasonForClosing" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Job__subject__36470DEF">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Job" Type="Self.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="subjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__User__permission__58D1301D">
+          <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="permissionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reminder__userId__73852659">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Reminder" Type="Self.Reminder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Reminder">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SubjectsForExpertises">
+          <End Role="Expertise" Type="Self.Expertise" Multiplicity="*" />
+          <End Role="Subject" Type="Self.Subject" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="placementDepartmentDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Branch" EntityType="Self.Branch" />
+          <EntitySet Name="City" EntityType="Self.City" />
+          <EntitySet Name="Company" EntityType="Self.Company" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" />
+          <EntitySet Name="CoordinatingJobsForGraduates" EntityType="Self.CoordinatingJobsForGraduates" />
+          <EntitySet Name="Expertise" EntityType="Self.Expertise" />
+          <EntitySet Name="Graduate" EntityType="Self.Graduate" />
+          <EntitySet Name="GraduateLanguages" EntityType="Self.GraduateLanguages" />
+          <EntitySet Name="Job" EntityType="Self.Job" />
+          <EntitySet Name="JobCoordinationStatus" EntityType="Self.JobCoordinationStatus" />
+          <EntitySet Name="Language" EntityType="Self.Language" />
+          <EntitySet Name="Permission" EntityType="Self.Permission" />
+          <EntitySet Name="ReasonForClosingThePosition" EntityType="Self.ReasonForClosingThePosition" />
+          <EntitySet Name="Reminder" EntityType="Self.Reminder" />
+          <EntitySet Name="Subject" EntityType="Self.Subject" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK__Graduate__branch__4B7734FF" Association="Self.FK__Graduate__branch__4B7734FF">
+            <End Role="Branch" EntitySet="Branch" />
+            <End Role="Graduate" EntitySet="Graduate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Company__city__607251E5" Association="Self.FK__Company__city__607251E5">
+            <End Role="City" EntitySet="City" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Graduate__city__4D5F7D71" Association="Self.FK__Graduate__city__4D5F7D71">
+            <End Role="City" EntitySet="City" />
+            <End Role="Graduate" EntitySet="Graduate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Company__mainFie__2EA5EC27" Association="Self.FK__Company__mainFie__2EA5EC27">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Contact__IDCompa__65370702" Association="Self.FK__Contact__IDCompa__65370702">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Job__contactId__3552E9B6" Association="Self.FK__Job__contactId__3552E9B6">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Coordinat__gradu__1C873BEC" Association="Self.FK__Coordinat__gradu__1C873BEC">
+            <End Role="Graduate" EntitySet="Graduate" />
+            <End Role="CoordinatingJobsForGraduates" EntitySet="CoordinatingJobsForGraduates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Coordinat__jobId__32767D0B" Association="Self.FK__Coordinat__jobId__32767D0B">
+            <End Role="Job" EntitySet="Job" />
+            <End Role="CoordinatingJobsForGraduates" EntitySet="CoordinatingJobsForGraduates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Coordinat__place__2F9A1060" Association="Self.FK__Coordinat__place__2F9A1060">
+            <End Role="JobCoordinationStatus" EntitySet="JobCoordinationStatus" />
+            <End Role="CoordinatingJobsForGraduates" EntitySet="CoordinatingJobsForGraduates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Graduate__expert__4F47C5E3" Association="Self.FK__Graduate__expert__4F47C5E3">
+            <End Role="Expertise" EntitySet="Expertise" />
+            <End Role="Graduate" EntitySet="Graduate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GraduateL__gradu__2057CCD0" Association="Self.FK__GraduateL__gradu__2057CCD0">
+            <End Role="Graduate" EntitySet="Graduate" />
+            <End Role="GraduateLanguages" EntitySet="GraduateLanguages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GraduateL__langu__214BF109" Association="Self.FK__GraduateL__langu__214BF109">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="GraduateLanguages" EntitySet="GraduateLanguages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Job__gettingId__336AA144" Association="Self.FK__Job__gettingId__336AA144">
+            <End Role="User" EntitySet="User" />
+            <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Job__handlesId__345EC57D" Association="Self.FK__Job__handlesId__345EC57D">
+            <End Role="User" EntitySet="User" />
+            <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Job__reasonForCl__373B3228" Association="Self.FK__Job__reasonForCl__373B3228">
+            <End Role="ReasonForClosingThePosition" EntitySet="ReasonForClosingThePosition" />
+            <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Job__subject__36470DEF" Association="Self.FK__Job__subject__36470DEF">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+          <AssociationSet Name="FK__User__permission__58D1301D" Association="Self.FK__User__permission__58D1301D">
+            <End Role="Permission" EntitySet="Permission" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reminder__userId__73852659" Association="Self.FK__Reminder__userId__73852659">
+            <End Role="User" EntitySet="User" />
+            <End Role="Reminder" EntitySet="Reminder" />
+          </AssociationSet>
+          <AssociationSet Name="SubjectsForExpertises" Association="Self.SubjectsForExpertises">
+            <End Role="Expertise" EntitySet="Expertise" />
+            <End Role="Subject" EntitySet="Subject" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="placementDepartmentDBModelStoreContainer" CdmEntityContainer="placementDepartmentDBEntities">
+          <EntitySetMapping Name="Branch">
+            <EntityTypeMapping TypeName="placementDepartmentDBModel.Branch">
+              <MappingFragment StoreEntitySet="Branch">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="placementDepartmentDBModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="area" ColumnName="area" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Company">
+            <EntityTypeMapping TypeName="placementDepartmentDBModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="cityId" ColumnName="cityId" />
+                <ScalarProperty Name="mainField" ColumnName="mainField" />
+                <ScalarProperty Name="descriptiovOfActivity" ColumnName="descriptiovOfActivity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contact">
+            <EntityTypeMapping TypeName="placementDepartmentDBModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="companyId" ColumnName="companyId" />
+                <ScalarProperty Name="officePhone" ColumnName="officePhone" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoordinatingJobsForGraduates">
+            <EntityTypeMapping TypeName="placementDepartmentDBModel.CoordinatingJobsForGraduates">
+              <MappingFragment StoreEntitySet="CoordinatingJobsForGraduates">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="dateReceived" ColumnName="dateReceived" />
+                <ScalarProperty Name="jobId" ColumnName="jobId" />
+                <ScalarProperty Name="candidateId" ColumnName="candidateId" />
+                <ScalarProperty Name="placementStatus" ColumnName="placementStatus" />
+                <ScalarProperty Name="lastUpdateDate" ColumnName="lastUpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Expertise">
+            <EntityTypeMapping TypeName="placementDepartmentDBModel.Expertise">
+              <MappingFragment StoreEntitySet="Expertise">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Graduate">
+            <EntityTypeMapping TypeName="placementDepartmentDBModel.Graduate">
+              <MappingFragment StoreEntitySet="Graduate">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="cityId" ColumnName="cityId" />
+                <ScalarProperty Name="zipCode" ColumnName="zipCode" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="expertiseId" ColumnName="expertiseId" />
+                <ScalarProperty Name="branchId" ColumnName="branchId" />
+                <ScalarProperty Name="startYear" ColumnName="startYear" />
+                <ScalarProperty Name="endYear" ColumnName="endYear" />
+                <ScalarProperty Name="dateOfRegistration" ColumnName="dateOfRegistration" />
+                <ScalarProperty Name="lastUpdate" ColumnName="lastUpdate" />
+                <ScalarProperty Name="didGraduate" ColumnName="didGraduate" />
+                <ScalarProperty Name="hasDiploma" ColumnName="hasDiploma" />
+                <ScalarProperty Name="isWorkerInProfession" ColumnName="isWorkerInProfession" />
+                <ScalarProperty Name="companyName" ColumnName="companyName" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="placedByThePlacementDepartment" ColumnName="placedByThePlacementDepartment" />
+                <ScalarProperty Name="hasExperience" ColumnName="hasExperience" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="linkToCV" ColumnName="linkToCV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GraduateLanguages">
+            <EntityTypeMapping TypeName="placementDepartmentDBModel.GraduateLanguages">
+              <MappingFragment StoreEntitySet="GraduateLanguages">
+                <ScalarProperty Name="graduateId" ColumnName="graduateId" />
+                <ScalarProperty Name="languageId" ColumnName="languageId" />
+                <ScalarProperty Name="level" ColumnName="level" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Job">
+            <EntityTypeMapping TypeName="placementDepartmentDBModel.Job">
+              <MappingFragment StoreEntitySet="Job">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="dateReceived" ColumnName="dateReceived" />
+                <ScalarProperty Name="gettingId" ColumnName="gettingId" />
+                <ScalarProperty Name="handlesId" ColumnName="handlesId" />
+                <ScalarProperty Name="contactId" ColumnName="contactId" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="subjectId" ColumnName="subjectId" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="reasonForClosing" ColumnName="reasonForClosing" />
+                <ScalarProperty Name="didSendCV" ColumnName="didSendCV" />
+                <ScalarProperty Name="lastUpdateDate" ColumnName="lastUpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobCoordinationStatus">
+            <EntityTypeMapping TypeName="placementDepartmentDBModel.JobCoordinationStatus">
+              <MappingFragment StoreEntitySet="JobCoordinationStatus">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Language">
+            <EntityTypeMapping TypeName="placementDepartmentDBModel.Language">
+              <MappingFragment StoreEntitySet="Language">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permission">
+            <EntityTypeMapping TypeName="placementDepartmentDBModel.Permission">
+              <MappingFragment StoreEntitySet="Permission">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReasonForClosingThePosition">
+            <EntityTypeMapping TypeName="placementDepartmentDBModel.ReasonForClosingThePosition">
+              <MappingFragment StoreEntitySet="ReasonForClosingThePosition">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reminder">
+            <EntityTypeMapping TypeName="placementDepartmentDBModel.Reminder">
+              <MappingFragment StoreEntitySet="Reminder">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="dateTime" ColumnName="dateTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subject">
+            <EntityTypeMapping TypeName="placementDepartmentDBModel.Subject">
+              <MappingFragment StoreEntitySet="Subject">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="placementDepartmentDBModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="permissionId" ColumnName="permissionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="SubjectsForExpertises" TypeName="placementDepartmentDBModel.SubjectsForExpertises" StoreEntitySet="SubjectsForExpertises">
+            <EndProperty Name="Expertise">
+              <ScalarProperty Name="Id" ColumnName="expertiseId" />
+            </EndProperty>
+            <EndProperty Name="Subject">
+              <ScalarProperty Name="Id" ColumnName="subjectId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

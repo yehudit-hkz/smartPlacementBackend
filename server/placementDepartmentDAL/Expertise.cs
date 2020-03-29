@@ -18,7 +18,7 @@ namespace placementDepartmentDAL
         public Expertise()
         {
             this.Graduate = new HashSet<Graduate>();
-            this.subject = new HashSet<subject>();
+            this.Subject = new HashSet<Subject>();
         }
     
         public int Id { get; set; }
@@ -27,6 +27,6 @@ namespace placementDepartmentDAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Graduate> Graduate { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<subject> subject { get; set; }
+        public virtual ICollection<Subject> Subject { get; set; }
     }
 }

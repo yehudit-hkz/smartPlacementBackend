@@ -19,10 +19,10 @@ namespace placementDepartmentCOMMON
         public System.DateTime lastUpdateDate { get; set; }
         public int contactId { get; set; }
         public string contactName { get; set; }
-        public int userGettingId { get; set; }
-        public string userGettingName { get; set; }
-        public int UserHandlesId { get; set; }
-        public string UserHandlesName { get; set; }
+        public int gettingId { get; set; }
+        public string gettingName { get; set; }
+        public int handlesId { get; set; }
+        public string handlesName { get; set; }
 
         public virtual ReasonForClosingThePositionDto ReasonForClosing { get; set; }
         public virtual SubjectDto Subject { get; set; }

@@ -9,18 +9,19 @@ using placementDepartmentBLL;
 
 namespace placementDepartmentWebAPI.Controllers
 {
+    [RoutePrefix("api/JobsCoordination")]
     public class JobsCoordinationController : ApiController
     {
-       //// GET: api/JobsCoordination
-        public List<CoordinatingJobsForGraduatesDto> Get(string graduateId)
+        [Route("GetByGraduate")]
+        public List<CoordinatingJobsForGraduatesDto> Get(string idGraduate)
         {
-            return null;
+            return JobsCoordinationDtoManager.JobsCoordinationDtoListByGraduate(idGraduate);
         }
 
-        //// GET: api/JobsCoordination/5
-        public List<CoordinatingJobsForGraduatesDto> Get(int jobId)
+        [Route("GetByJob")]
+        public List<CoordinatingJobsForGraduatesDto> Get(int idJob)
         {
-            return null;
+            return JobsCoordinationDtoManager.JobsCoordinationDtoByJob(idJob);
         }
 
         // POST: api/JobsCoordination
@@ -28,10 +29,10 @@ namespace placementDepartmentWebAPI.Controllers
         //{
         //}
 
-        // PUT: api/JobsCoordination/5
+        [Route("Edit")]
         public void Put([FromBody]CoordinatingJobsForGraduatesDto jobsCoordinatingDto)
         {
-
+            JobsCoordinationDtoManager.JobsCoordinationDtoEditing(jobsCoordinatingDto);
         }
 
         // DELETE: api/JobsCoordination/5

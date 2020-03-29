@@ -23,10 +23,12 @@ namespace placementDepartmentDAL
         public int Id { get; set; }
         public string name { get; set; }
         public string address { get; set; }
+        public int cityId { get; set; }
+        public int mainField { get; set; }
         public string descriptiovOfActivity { get; set; }
     
         public virtual City City { get; set; }
-        public virtual subject subject { get; set; }
+        public virtual Subject Subject { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contact> Contact { get; set; }
     }

@@ -12,21 +12,21 @@ namespace placementDepartmentDAL
     {
         public static List<SubjectDto> SubjectList()
         {
-            List<SubjectDto> subjectDtos;
+            List<SubjectDto> SubjectDtos;
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
-                subjectDtos = placementDepartmentDB.subject
+                SubjectDtos = placementDepartmentDB.Subject
                    .ProjectTo<SubjectDto>(AutoMapperConfiguration.config)
                    .ToList();
-                return subjectDtos;
+                return SubjectDtos;
             }
         }
-        public static void NewSubject(SubjectDto subjectDto)
+        public static void NewSubject(SubjectDto SubjectDto)
         {
-            subject subject = AutoMapperConfiguration.mapper.Map<subject>(subjectDto);
+            Subject Subject = AutoMapperConfiguration.mapper.Map<Subject>(SubjectDto);
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
-                placementDepartmentDB.subject.Add(subject);
+                placementDepartmentDB.Subject.Add(Subject);
                 placementDepartmentDB.SaveChanges();
             }
         }
@@ -34,8 +34,8 @@ namespace placementDepartmentDAL
         {
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
-                subject Subject = placementDepartmentDB.subject.Find(id);
-                placementDepartmentDB.subject.Remove(Subject);
+                Subject Subject = placementDepartmentDB.Subject.Find(id);
+                placementDepartmentDB.Subject.Remove(Subject);
                 placementDepartmentDB.SaveChanges();
             }
         }

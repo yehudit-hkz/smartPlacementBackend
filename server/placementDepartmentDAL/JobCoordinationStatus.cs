@@ -12,18 +12,18 @@ namespace placementDepartmentDAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Job_coordination_status
+    public partial class JobCoordinationStatus
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Job_coordination_status()
+        public JobCoordinationStatus()
         {
-            this.Coordinating_jobs_for_graduates = new HashSet<Coordinating_jobs_for_graduates>();
+            this.CoordinatingJobsForGraduates = new HashSet<CoordinatingJobsForGraduates>();
         }
     
         public int Id { get; set; }
         public string description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Coordinating_jobs_for_graduates> Coordinating_jobs_for_graduates { get; set; }
+        public virtual ICollection<CoordinatingJobsForGraduates> CoordinatingJobsForGraduates { get; set; }
     }
 }

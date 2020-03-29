@@ -17,23 +17,28 @@ namespace placementDepartmentDAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Job()
         {
-            this.Coordinating_jobs_for_graduates = new HashSet<Coordinating_jobs_for_graduates>();
+            this.CoordinatingJobsForGraduates = new HashSet<CoordinatingJobsForGraduates>();
         }
     
         public int Id { get; set; }
         public System.DateTime dateReceived { get; set; }
+        public Nullable<int> gettingId { get; set; }
+        public int handlesId { get; set; }
+        public int contactId { get; set; }
         public string title { get; set; }
         public string description { get; set; }
+        public int subjectId { get; set; }
         public bool isActive { get; set; }
+        public Nullable<int> reasonForClosing { get; set; }
         public bool didSendCV { get; set; }
         public System.DateTime lastUpdateDate { get; set; }
     
         public virtual Contact Contact { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Coordinating_jobs_for_graduates> Coordinating_jobs_for_graduates { get; set; }
-        public virtual Reason_for_closing_the_position Reason_for_closing_the_position { get; set; }
-        public virtual subject subject { get; set; }
+        public virtual ICollection<CoordinatingJobsForGraduates> CoordinatingJobsForGraduates { get; set; }
         public virtual User User { get; set; }
         public virtual User User1 { get; set; }
+        public virtual ReasonForClosingThePosition ReasonForClosingThePosition { get; set; }
+        public virtual Subject Subject { get; set; }
     }
 }

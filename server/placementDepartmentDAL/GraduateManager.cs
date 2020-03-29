@@ -34,11 +34,12 @@ namespace placementDepartmentDAL
         }
         public static List<GraduateDto> GraduateBySubject(SubjectDto subjectDto)
         {
-            subject subject = AutoMapperConfiguration.mapper.Map<subject>(subjectDto);
+            Subject subject = AutoMapperConfiguration.mapper.Map<Subject>(subjectDto);
             List<GraduateDto> graduateDtos;
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
-                graduateDtos = placementDepartmentDB.Graduate.Where(g => subject.Expertise.Contains(g.Expertise))
+                graduateDtos = placementDepartmentDB.Graduate
+                    .Where(g => subject.Expertise.Contains(g.Expertise))//eq by ref or id?
                     .ProjectTo<GraduateDto>(AutoMapperConfiguration.config).ToList();
                 return graduateDtos;
             }

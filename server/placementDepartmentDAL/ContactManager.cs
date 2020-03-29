@@ -17,7 +17,7 @@ namespace placementDepartmentDAL
                 using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
                 {
                     contactDtos = placementDepartmentDB.Contact
-                        .Where(cn=>cn.Company.Id==idCompany)
+                        .Where(cn=>cn.companyId==idCompany)
                         .ProjectTo<ContactDto>(AutoMapperConfiguration.config)
                         .ToList();
                     //.Skip(p-1*s).Take(s)
