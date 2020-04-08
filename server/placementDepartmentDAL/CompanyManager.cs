@@ -34,6 +34,40 @@ namespace placementDepartmentDAL
                 return companyDtos  ;
             }
         }
+        public static List<CompanyDto> CompanyListByFilters(CompanyFilters filters)
+        {
+            List<CompanyDto> companyDtos;
+
+            //why is it not work like other
+            //using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
+            //{
+            //    companyDtos = placementDepartmentDB.Company
+            //        .ProjectTo<CompanyDto>(AutoMapperConfiguration.config)
+            //        .ToList();
+            //    //.Skip(p-1*s).Take(s)
+            //    return companyDtos;
+            //}
+
+            List<Company> companies;
+            using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
+            {
+                companies = placementDepartmentDB.Company
+                    .Where(cmp=>
+                    (filters.mainSubject == 0  && filters.subjectByJobs == 0) ||
+                  (filters.mainSubject != 0 && cmp.mainField == filters.mainSubject) ||
+                  (filters.subjectByJobs !=0  &&
+                  cmp.Contact.
+                  Where(cnt => cnt.Job.
+                  Where(j => j.subjectId == filters.subjectByJobs)
+                  .ToList().Count > 0).ToList().Count > 0
+                  ))
+                    .ToList();
+                //.Skip(p-1*s).Take(s)
+                companyDtos = AutoMapperConfiguration.mapper.Map<List<CompanyDto>>(companies);
+                return companyDtos;
+            }
+        }
+        
         public static CompanyDto CompanyById(int Id)
         {
             Company Ret;

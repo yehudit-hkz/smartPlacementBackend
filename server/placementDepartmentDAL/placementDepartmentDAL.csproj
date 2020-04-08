@@ -105,6 +105,7 @@
     <Compile Include="JobCoordinationStatus.cs">
       <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="JobManager.cs" />
     <Compile Include="JobsCoordinationManager.cs" />
     <Compile Include="Language.cs">
       <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>

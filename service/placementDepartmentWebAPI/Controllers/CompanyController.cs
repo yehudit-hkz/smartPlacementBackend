@@ -17,6 +17,15 @@ namespace placementDepartmentWebAPI.Controllers
         {
             return CompanyDtoManager.CompanyDtoList();
         }
+        [Route("GetByFilters")]
+        public List<CompanyDto> Get([FromUri]CompanyFilters filters)
+        {
+            if(filters == null)
+            {
+                return Get();
+            }
+            return CompanyDtoManager.CompanyDtoListByFilters(filters);
+        }
 
         [Route("GetById")]
         public CompanyDto Get(int id)

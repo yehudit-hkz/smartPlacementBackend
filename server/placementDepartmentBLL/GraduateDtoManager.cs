@@ -18,9 +18,9 @@ namespace placementDepartmentBLL
         {
             return GraduateManager.GraduateById(Id);
         }
-        public static List<GraduateDto> GraduateDtoBySubject(SubjectDto subjectDto)
+        public static List<GraduateDto> GraduateDtoBySubject(int idSubject)
         {
-            return GraduateManager.GraduateBySubject(subjectDto);
+            return GraduateManager.GraduateBySubject(idSubject);
         }
         public static void NewGraduateDto(GraduateDto graduateDto)
         {

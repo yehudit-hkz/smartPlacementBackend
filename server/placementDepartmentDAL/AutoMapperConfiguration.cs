@@ -66,6 +66,7 @@ namespace placementDepartmentDAL
 
                 cfg.CreateMap<Job, JobDto>()
                   .ForMember(dest => dest.contactName, opt => opt.MapFrom(src => src.Contact.name))
+                  .ForMember(dest => dest.companyName, opt => opt.MapFrom(src => src.Contact.Company.name))
                   .ForMember(dest => dest.gettingName, opt => opt.MapFrom(src => src.User.name))
                   .ForMember(dest => dest.handlesName, opt => opt.MapFrom(src => src.User1.name))
                   .ForMember(dest => dest.ReasonForClosing, opt => opt.MapFrom(src => src.ReasonForClosingThePosition))

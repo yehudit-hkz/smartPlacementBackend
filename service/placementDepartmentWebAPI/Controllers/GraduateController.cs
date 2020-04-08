@@ -27,9 +27,9 @@ namespace placementDepartmentWebAPI.Controllers
         }
 
         [Route("GetBySubject")]
-        public List<GraduateDto> Get(SubjectDto subjectDto)
+        public List<GraduateDto> Get(int idSubject)
         {
-            return GraduateDtoManager.GraduateDtoBySubject(subjectDto);
+            return GraduateDtoManager.GraduateDtoBySubject(idSubject);
         }
 
         [Route("Save")]

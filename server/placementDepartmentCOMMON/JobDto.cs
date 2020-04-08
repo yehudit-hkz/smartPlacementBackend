@@ -19,6 +19,7 @@ namespace placementDepartmentCOMMON
         public System.DateTime lastUpdateDate { get; set; }
         public int contactId { get; set; }
         public string contactName { get; set; }
+        public string companyName { get; set; }
         public int gettingId { get; set; }
         public string gettingName { get; set; }
         public int handlesId { get; set; }

@@ -14,6 +14,10 @@ namespace placementDepartmentBLL
         {
             return placementDepartmentDAL.CompanyManager.CompanyList();
         }
+        public static List<CompanyDto> CompanyDtoListByFilters(CompanyFilters filters)
+        {
+            return placementDepartmentDAL.CompanyManager.CompanyListByFilters(filters);
+        }
         public static CompanyDto CompanyDtoById(int Id)
         {
             return CompanyManager.CompanyById(Id);

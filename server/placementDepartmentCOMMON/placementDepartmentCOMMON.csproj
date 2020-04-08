@@ -44,6 +44,7 @@
     <Compile Include="BranchDto.cs" />
     <Compile Include="CityDto.cs" />
     <Compile Include="CompanyDto.cs" />
+    <Compile Include="CompanyFilters.cs" />
     <Compile Include="ContactDto.cs" />
     <Compile Include="CoordinatingJobsForGraduatesDto.cs" />
     <Compile Include="ExpertiseDto.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="GraduateLanguagesDto.cs" />
     <Compile Include="JobDto.cs" />
     <Compile Include="JobCoordinationStatusDto.cs" />
+    <Compile Include="JobFilters.cs" />
     <Compile Include="LanguageDto.cs" />
     <Compile Include="PermissionDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
