@@ -16,3 +16,5 @@ C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server
 C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentBLL\bin\Debug\AutoMapper.pdb
 C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentBLL\bin\Debug\AutoMapper.xml
 C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentBLL\bin\Debug\EntityFramework.xml
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentBLL\bin\Debug\System.Linq.Dynamic.dll
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentBLL\bin\Debug\System.Linq.Dynamic.pdb

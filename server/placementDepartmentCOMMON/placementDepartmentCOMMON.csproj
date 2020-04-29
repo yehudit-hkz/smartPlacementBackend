@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiRes.cs" />
     <Compile Include="BranchDto.cs" />
     <Compile Include="CityDto.cs" />
     <Compile Include="CompanyDto.cs" />

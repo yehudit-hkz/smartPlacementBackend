@@ -21,3 +21,4 @@ C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server
 C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentDAL\bin\Debug\placementDepartmentCOMMON.pdb
 C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentDAL\bin\Debug\AutoMapper.pdb
 C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentDAL\bin\Debug\AutoMapper.xml
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentDAL\bin\Debug\System.Linq.Dynamic.pdb

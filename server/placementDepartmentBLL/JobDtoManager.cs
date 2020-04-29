@@ -10,6 +10,10 @@ namespace placementDepartmentBLL
 {
     public static class JobDtoManager
     {
+        public static ApiRes<JobDto> JobDtoLazyList(JobFilters filters, string sort, int page, int size)
+        {
+            return JobManager.JobLazyList(filters,sort,page,size);
+        }
         public static List<JobDto> JobDtoList()
         {
             return JobManager.JobList();

@@ -12,7 +12,13 @@ namespace placementDepartmentWebAPI.Controllers
     [RoutePrefix("api/Job")]
     public class JobController : ApiController
     {
-        [Route("GetAll")]
+        
+        [Route("GetLazy")]
+        public ApiRes<JobDto> Get(string sort, int page, int size, [FromUri]JobFilters filters)
+        {
+            return JobDtoManager.JobDtoLazyList(filters,sort,page,size);
+        }
+        [Route("GetAll")]   
         public List<JobDto> Get()
         {
             return JobDtoManager.JobDtoList();
