@@ -16,10 +16,10 @@ namespace placementDepartmentDAL
         {
             ApiRes<JobDto> res = new ApiRes<JobDto>();
             sort = sort == " ," || sort == " , " ? "" : sort;
-            filters.sendCV = (filters.sendCV == null) ? new List<bool>() : filters.sendCV;
-            filters.active = (filters.active == null) ? new List<bool>() : filters.active;
-            filters.subjects = (filters.subjects == null) ? new List<int>() : filters.subjects;
-            DateTime dateMonthAgo = new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, DateTime.Now.Day);
+            filters.sendCV = filters.sendCV ?? new List<bool>();
+            filters.active = filters.active ?? new List<bool>();
+            filters.subjects = filters.subjects ?? new List<int>();
+            DateTime dateMonthAgo = DateTime.Now.AddMonths(-1);
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
                  res.items = placementDepartmentDB.Job
@@ -36,7 +36,14 @@ namespace placementDepartmentDAL
                     .Take(size) 
                     .ProjectTo<JobDto>(AutoMapperConfiguration.config)
                     .ToList();
-                res.totalCount = placementDepartmentDB.Job.Count();
+                res.totalCount = placementDepartmentDB.Job.Where(j =>
+                        (!filters.sendCV.Any() || filters.sendCV.Contains(j.didSendCV)) &&
+                        (!filters.active.Any() || filters.active.Contains(j.isActive)) &&
+                        (filters.period == 0 ||
+                         filters.period == 1 && j.dateReceived >= dateMonthAgo ||
+                         filters.period == 2 && j.dateReceived >= filters.startDate && j.dateReceived <= filters.endDate) &&
+                        (!filters.subjects.Any() || filters.subjects.Contains(j.subjectId))
+                    ).Count();
                 return res;
             }
         }

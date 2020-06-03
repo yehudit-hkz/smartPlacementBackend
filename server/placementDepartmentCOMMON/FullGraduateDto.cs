@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace placementDepartmentCOMMON
 {
-    public class GraduateDto
+    public class FullGraduateDto
     {
-        public GraduateDto()
+        public FullGraduateDto()
         {
             this.Languages = new HashSet<GraduateLanguagesDto>();
         }

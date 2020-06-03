@@ -15,35 +15,42 @@ namespace placementDepartmentWebAPI.Controllers
     public class GraduateController : ApiController
     {
         [Route("GetAll")]
-        public List<GraduateDto> Get()
+        public List<FullGraduateDto> Get()
         { 
             return GraduateDtoManager.GraduateDtoList();
         }
 
         [Route("GetById")]
-        public GraduateDto Get(string id)
+        public FullGraduateDto Get(string id)
         {
            return GraduateDtoManager.GraduateDtoById(id);
         }
 
         [Route("GetBySubject")]
-        public List<GraduateDto> Get(int idSubject)
+        public List<FullGraduateDto> Get(int idSubject)
         {
             return GraduateDtoManager.GraduateDtoBySubject(idSubject);
         }
 
         [Route("Save")]
-        public void Post([FromBody]GraduateDto graduateDto)
+        public void Post([FromBody]FullGraduateDto graduateDto)
         {
             GraduateDtoManager.NewGraduateDto(graduateDto);
         }
 
+        [Route("importFromExcel")]
+        public void Post([FromBody]Dictionary<string,string> keyValues )
+        {
+           // GraduateDtoManager.NewGraduateDto(graduateDto);
+        }
+
         [Route("Edit")]
-        public void Put(/*string id,*/ [FromBody]GraduateDto graduateDto)
+        public void Put(/*string id,*/ [FromBody]FullGraduateDto graduateDto)
         {
             //why id? for case that id is changed
             GraduateDtoManager.GraduateDtoEditing(graduateDto);
         }
+
 
         [Route("UploadCVFile")]
         [HttpPost]

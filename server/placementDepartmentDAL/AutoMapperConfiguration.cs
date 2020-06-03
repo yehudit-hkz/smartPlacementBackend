@@ -48,7 +48,7 @@ namespace placementDepartmentDAL
 
                 cfg.CreateMap<Expertise, ExpertiseDto>().ReverseMap();
 
-                cfg.CreateMap<Graduate, GraduateDto>()
+                cfg.CreateMap<Graduate, FullGraduateDto>()
                   .ForMember(dest => dest.Languages, opt => opt.MapFrom(src => src.GraduateLanguages))
                   .ReverseMap()
                   .ForPath(dest => dest.cityId, opt => opt.MapFrom(src => src.City.Id))

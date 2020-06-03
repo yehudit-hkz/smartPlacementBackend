@@ -82,6 +82,7 @@ namespace placementDepartmentDAL
             Company company = AutoMapperConfiguration.mapper.Map<Company>(companyDto);
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
+                
                 placementDepartmentDB.Company.Add(company);
                 placementDepartmentDB.SaveChanges();
             }

@@ -10,29 +10,34 @@ namespace placementDepartmentBLL
 {
     public static class GraduateDtoManager
     {
-        public static List<GraduateDto> GraduateDtoList()
+        public static List<FullGraduateDto> GraduateDtoList()
         {
             return GraduateManager.GraduateList();
         }
-        public static GraduateDto GraduateDtoById(string Id)
+        public static FullGraduateDto GraduateDtoById(string Id)
         {
             return GraduateManager.GraduateById(Id);
         }
-        public static List<GraduateDto> GraduateDtoBySubject(int idSubject)
+        public static List<FullGraduateDto> GraduateDtoBySubject(int idSubject)
         {
             return GraduateManager.GraduateBySubject(idSubject);
         }
-        public static void NewGraduateDto(GraduateDto graduateDto)
+        public static void NewGraduateDto(FullGraduateDto graduateDto)
         {
             GraduateManager.NewGraduate(graduateDto);
         }
-        public static void GraduateDtoEditing(GraduateDto graduateDto)
+        public static void GraduateDtoEditing(FullGraduateDto graduateDto)
         {
             GraduateManager.GraduateEditing(graduateDto);
+        }
+        public static void GraduateDtoEditingtrue(string id, bool isint)
+        {
+            GraduateManager.GraduateEditingtrue(id,isint);
         }
         public static void DeleteGraduateDto(string id)
         {
             GraduateManager.DeleteGraduate(id);
         }
+
     }
 }

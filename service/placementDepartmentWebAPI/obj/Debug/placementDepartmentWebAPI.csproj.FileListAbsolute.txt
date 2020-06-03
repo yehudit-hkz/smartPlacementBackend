@@ -83,3 +83,16 @@ C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\servic
 C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\service\placementDepartmentWebAPI\obj\Debug\placementDepartmentWebAPI.csproj.ResolveComReference.cache
 C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\service\placementDepartmentWebAPI\bin\System.Linq.Dynamic.dll
 C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\service\placementDepartmentWebAPI\bin\System.Linq.Dynamic.pdb
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\service\placementDepartmentWebAPI\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\service\placementDepartmentWebAPI\bin\System.Web.Helpers.dll
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\service\placementDepartmentWebAPI\bin\System.Web.Mvc.dll
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\service\placementDepartmentWebAPI\bin\System.Web.Razor.dll
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\service\placementDepartmentWebAPI\bin\System.Web.WebPages.Deployment.dll
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\service\placementDepartmentWebAPI\bin\System.Web.WebPages.dll
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\service\placementDepartmentWebAPI\bin\System.Web.WebPages.Razor.dll
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\service\placementDepartmentWebAPI\bin\System.Web.Helpers.xml
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\service\placementDepartmentWebAPI\bin\System.Web.Mvc.xml
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\service\placementDepartmentWebAPI\bin\System.Web.Razor.xml
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\service\placementDepartmentWebAPI\bin\System.Web.WebPages.xml
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\service\placementDepartmentWebAPI\bin\System.Web.WebPages.Deployment.xml
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\service\placementDepartmentWebAPI\bin\System.Web.WebPages.Razor.xml

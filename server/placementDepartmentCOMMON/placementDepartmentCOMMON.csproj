@@ -43,18 +43,22 @@
   <ItemGroup>
     <Compile Include="ApiRes.cs" />
     <Compile Include="BranchDto.cs" />
+    <Compile Include="ChartData.cs" />
+    <Compile Include="ChartsDetails.cs" />
     <Compile Include="CityDto.cs" />
     <Compile Include="CompanyDto.cs" />
     <Compile Include="CompanyFilters.cs" />
     <Compile Include="ContactDto.cs" />
     <Compile Include="CoordinatingJobsForGraduatesDto.cs" />
     <Compile Include="ExpertiseDto.cs" />
-    <Compile Include="GraduateDto.cs" />
+    <Compile Include="FullGraduateDto.cs" />
+    <Compile Include="GraduateFilters.cs" />
     <Compile Include="GraduateLanguagesDto.cs" />
     <Compile Include="JobDto.cs" />
     <Compile Include="JobCoordinationStatusDto.cs" />
     <Compile Include="JobFilters.cs" />
     <Compile Include="LanguageDto.cs" />
+    <Compile Include="MainGraduateDto.cs" />
     <Compile Include="PermissionDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReasonForClosingThePositionDto.cs" />

@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BranchDtoManager.cs" />
+    <Compile Include="ChartBLManager.cs" />
     <Compile Include="CompanyDtoManager.cs" />
     <Compile Include="ContactDtoManager.cs" />
     <Compile Include="EnumerationsDtoManager.cs" />
