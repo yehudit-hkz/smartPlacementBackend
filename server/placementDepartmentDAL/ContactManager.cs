@@ -38,8 +38,9 @@ namespace placementDepartmentDAL
                 Contact contact = AutoMapperConfiguration.mapper.Map<Contact>(contactDto);
                 using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
                 {
-                    placementDepartmentDB.Contact.Add(contact);
-                    placementDepartmentDB.SaveChanges();
+                placementDepartmentDB.Configuration.ValidateOnSaveEnabled = false;
+                placementDepartmentDB.Contact.Add(contact);
+                        placementDepartmentDB.SaveChanges();
                 }
             }
             public static void ContactEditing(ContactDto contactDto)

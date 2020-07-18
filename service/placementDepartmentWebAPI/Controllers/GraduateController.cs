@@ -26,10 +26,10 @@ namespace placementDepartmentWebAPI.Controllers
            return GraduateDtoManager.GraduateDtoById(id);
         }
 
-        [Route("GetBySubject")]
-        public List<FullGraduateDto> Get(int idSubject)
+        [Route("GetForJob")]
+        public List<FullGraduateDto> Get(int idSubject, int idJob)
         {
-            return GraduateDtoManager.GraduateDtoBySubject(idSubject);
+            return GraduateDtoManager.GraduateDtoForJob(idSubject, idJob);
         }
 
         [Route("Save")]
@@ -73,6 +73,8 @@ namespace placementDepartmentWebAPI.Controllers
                         wordDocument.Close();
                         File.Delete(filePath);
                     }
+                    if (file != "file")
+                        GraduateDtoManager.GraduateDtoUploudFile(file, "ResumeFile/"+ postedFile.FileName);
                 }
             }
         }

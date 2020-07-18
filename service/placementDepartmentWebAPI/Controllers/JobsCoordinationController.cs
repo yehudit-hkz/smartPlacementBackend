@@ -24,15 +24,23 @@ namespace placementDepartmentWebAPI.Controllers
             return JobsCoordinationDtoManager.JobsCoordinationDtoByJob(idJob);
         }
 
-        // POST: api/JobsCoordination
-        //public void Post([FromBody]string value)
-        //{
-        //}
+        //POST: api/JobsCoordination
+        [Route("Save")]
+        public void Post(int idJob,[FromBody]List<FullGraduateDto> value)
+        {
+            JobsCoordinationDtoManager.NewJobsCoordinationDto(idJob, value);
+        }
 
         [Route("Edit")]
         public void Put([FromBody]CoordinatingJobsForGraduatesDto jobsCoordinatingDto)
         {
             JobsCoordinationDtoManager.JobsCoordinationDtoEditing(jobsCoordinatingDto);
+        }
+
+        [Route("sendCV")]
+        public void Put(string massege, [FromBody]List<CoordinatingJobsForGraduatesDto> coordinatings)
+        {
+            JobsCoordinationDtoManager.sendingCandidateToContact(massege,coordinatings);
         }
 
         // DELETE: api/JobsCoordination/5

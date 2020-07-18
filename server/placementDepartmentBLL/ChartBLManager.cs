@@ -12,7 +12,7 @@ namespace placementDepartmentBLL
     {
         public static List<ChartData> GetChart(ChartsDetails chartsDetails)
         {
-                switch (chartsDetails.type)
+            switch (chartsDetails.type)
             {
                 case 1: return ChartManager.GetJobsOpenedChart(chartsDetails.start, chartsDetails.end);
                 case 2: return ChartManager.GetGraduatesVSJobs(chartsDetails.branches,chartsDetails.areas);

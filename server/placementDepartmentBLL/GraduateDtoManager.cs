@@ -18,9 +18,9 @@ namespace placementDepartmentBLL
         {
             return GraduateManager.GraduateById(Id);
         }
-        public static List<FullGraduateDto> GraduateDtoBySubject(int idSubject)
+        public static List<FullGraduateDto> GraduateDtoForJob(int idSubject,int idJob)
         {
-            return GraduateManager.GraduateBySubject(idSubject);
+            return GraduateManager.GraduateForJob(idSubject, idJob);
         }
         public static void NewGraduateDto(FullGraduateDto graduateDto)
         {
@@ -33,6 +33,10 @@ namespace placementDepartmentBLL
         public static void GraduateDtoEditingtrue(string id, bool isint)
         {
             GraduateManager.GraduateEditingtrue(id,isint);
+        }
+        public static void GraduateDtoUploudFile(string graduateId,string filePath)
+        {
+            GraduateManager.GraduateUploudFile(graduateId,filePath);
         }
         public static void DeleteGraduateDto(string id)
         {

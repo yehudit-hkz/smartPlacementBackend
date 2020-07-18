@@ -93,26 +93,44 @@ namespace placementDepartmentDAL
                 return AutoMapperConfiguration.mapper.Map<JobDto>(Ret);
             }
         }
-        public static void NewJob(JobDto JobDto)
+        public static int NewJob(JobDto JobDto)
         {
+            int newJobId;
             Job Job = AutoMapperConfiguration.mapper.Map<Job>(JobDto);
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
-                placementDepartmentDB.Job.Add(Job);
+                placementDepartmentDB.Configuration.ValidateOnSaveEnabled = false;
+                Job.dateReceived = Job.lastUpdateDate = DateTime.Now;
+                Job = placementDepartmentDB.Job.Add(Job);
                 placementDepartmentDB.SaveChanges();
+                newJobId = Job.Id;
             }
+            return newJobId;
         }
         public static void JobEditing(JobDto JobDto)
         {
             Job Job = AutoMapperConfiguration.mapper.Map<Job>(JobDto);
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
+                Job.lastUpdateDate = DateTime.Now;
                 placementDepartmentDB.Job.Attach(Job);
                 placementDepartmentDB.Entry(Job).State = EntityState.Modified;
                 placementDepartmentDB.SaveChanges();
             }
         }
-        public static void DeleteJob(int id)
+        public static void JobUpdate(int idJob, bool didSendCV)
+        {
+            Job job = new Job() { Id = idJob, didSendCV = didSendCV, lastUpdateDate = DateTime.Now };//AutoMapperConfiguration.mapper.Map<Graduate>(graduateDto);
+            using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
+            {
+                placementDepartmentDB.Configuration.ValidateOnSaveEnabled = false;
+                placementDepartmentDB.Job.Attach(job);
+                placementDepartmentDB.Entry(job).Property(x => x.didSendCV).IsModified = true;
+                placementDepartmentDB.Entry(job).Property(x => x.lastUpdateDate).IsModified = true;
+                placementDepartmentDB.SaveChanges();
+            }
+        }
+            public static void DeleteJob(int id)
         {
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {

@@ -8,13 +8,19 @@ namespace placementDepartmentCOMMON
 {
     public class CompanyDto
     {
-        public CompanyDto() { }
-       
+        public CompanyDto()
+        {
+            this.Contact = new HashSet<ContactDto>();
+        }
+
         public int Id { get; set; }
         public string name { get; set; }
         public string address { get; set; }
         public string descriptiovOfActivity { get; set; }
         public virtual CityDto City { get; set; }
         public virtual SubjectDto Subject { get; set; }
+
+        public virtual ICollection<ContactDto> Contact { get; set; }
+
     }
 }

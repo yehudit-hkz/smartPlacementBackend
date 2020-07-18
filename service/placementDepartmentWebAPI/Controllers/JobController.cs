@@ -39,9 +39,9 @@ namespace placementDepartmentWebAPI.Controllers
         }
 
         [Route("Save")]
-        public void Post([FromBody]JobDto jobDto)
+        public int Post([FromBody]JobDto jobDto)
         {
-            JobDtoManager.NewJobDto(jobDto);
+            return JobDtoManager.NewJobDto(jobDto);
         }
 
         [Route("Edit")]

@@ -18,14 +18,67 @@ namespace placementDepartmentBLL
         {
             return JobsCoordinationManager.JobsCoordinationListByJob(IdJob);
         }
-        //public static void NewJobsCoordinationDto(CoordinatingJobsForGraduatesDto JobsCoordinationDto)
-        //{
-        //    JobsCoordinationManager.NewJobsCoordination(JobsCoordinationDto);
-        //}
+        public static void NewJobsCoordinationDto(int idJob, List<FullGraduateDto> fullGraduateDtos)
+        {
+            List<CoordinatingJobsForGraduates> coordinatingJobs = new List<CoordinatingJobsForGraduates>();
+            foreach (FullGraduateDto graduate in fullGraduateDtos)
+            {
+                coordinatingJobs.Add(
+                    new CoordinatingJobsForGraduates()
+                    {
+                        candidateId = graduate.Id,
+                        jobId = idJob,
+                        dateReceived = DateTime.Now,
+                        lastUpdateDate = DateTime.Now
+                    });
+            }
+            coordinatingJobs= JobsCoordinationManager.NewJobsCoordination(coordinatingJobs);
+            JobDto job= JobManager.JobById(idJob);
+            for (int i = 0; i < coordinatingJobs.Count; i++)
+            {
+                if(fullGraduateDtos[i].Id==coordinatingJobs[i].candidateId)
+                {
+                    coordinatingJobs[i].Graduate =
+                        new Graduate()
+                        {
+                            firstName = fullGraduateDtos[i].firstName,
+                            linkToCV = fullGraduateDtos[i].linkToCV,
+                            email = fullGraduateDtos[i].email
+                        };
+                }
+                coordinatingJobs[i].Job = new Job()
+                {
+                    description = job.description,
+                    title = job.title
+                };
+            }
+            MailManager.sendjobOfferToGraduates(coordinatingJobs);
+        }
+        public static void sendingCandidateToContact(string massege, List<CoordinatingJobsForGraduatesDto> coordinatings)
+        {
+            List<FullGraduateDto> graduates = new List<FullGraduateDto>();
+            foreach (var item in coordinatings)
+            {
+                graduates.Add(GraduateManager.GraduateById(item.candidateId));
+            }
+            MailManager.sendCVCandidateToContact(massege, graduates);
+            foreach (var crd in coordinatings)
+            {
+                JobsCoordinationDtoUpdate(crd.Id, "נשלחו קו\"ח");
+            }
+            JobManager.JobUpdate(coordinatings[0].jobId, true);
+
+        }
         public static void JobsCoordinationDtoEditing(CoordinatingJobsForGraduatesDto JobsCoordinationDto)
         {
             JobsCoordinationManager.JobsCoordinationEditing(JobsCoordinationDto);
         }
+
+        public static void JobsCoordinationDtoUpdate( int idCRD,string status)
+        {
+            JobsCoordinationManager.JobsCoordinationUpdate(idCRD,status);
+        }
+
         //public static void DeleteJobsCoordinationDto(int id)
         //{
         //    JobsCoordinationManager.DeleteJobsCoordination(id);

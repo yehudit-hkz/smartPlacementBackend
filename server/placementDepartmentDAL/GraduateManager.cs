@@ -66,16 +66,20 @@ namespace placementDepartmentDAL
                 return AutoMapperConfiguration.mapper.Map<FullGraduateDto>(Ret);
             }
         }
-        public static List<FullGraduateDto> GraduateBySubject(int idSubject)
+        public static List<FullGraduateDto> GraduateForJob(int idSubject, int idJob)
         {
-            Subject subject;
             List<FullGraduateDto> graduateDtos;
+            List<int> ExpertisesBySubject;
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
-                subject = placementDepartmentDB.Subject.Find(idSubject);
+                ExpertisesBySubject = placementDepartmentDB.Subject.Find(idSubject)
+                    .Expertise.Select(ex=>ex.Id).ToList();
                 graduateDtos = placementDepartmentDB.Graduate
-                    .Where(g => subject.Expertise.Contains(g.Expertise))//eq by ref or id?
-                    .ProjectTo<FullGraduateDto>(AutoMapperConfiguration.config).ToList();
+                    .Where(g =>  ExpertisesBySubject.Contains(g.expertiseId)
+                    && g.isActive==true
+                    && !g.CoordinatingJobsForGraduates.Any(cd => cd.jobId == idJob))
+                    .ProjectTo<FullGraduateDto>(AutoMapperConfiguration.config)
+                    .ToList();
                 return graduateDtos;
             }
         }
@@ -105,15 +109,27 @@ namespace placementDepartmentDAL
                 placementDepartmentDB.SaveChanges();
             }
         }
-        public static void GraduateEditingtrue(string id,bool isint)
+        public static void GraduateUploudFile(string graduateId, string filePath)
         {
-            Graduate graduate = new Graduate() { Id = id ,isActive=isint};//AutoMapperConfiguration.mapper.Map<Graduate>(graduateDto);
+            Graduate graduate = new Graduate() { Id = graduateId, linkToCV=filePath, lastUpdate = DateTime.Now };//AutoMapperConfiguration.mapper.Map<Graduate>(graduateDto);
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
                 placementDepartmentDB.Configuration.ValidateOnSaveEnabled = false;
-                //graduate.lastUpdate = DateTime.Now;
+                placementDepartmentDB.Graduate.Attach(graduate);
+                placementDepartmentDB.Entry(graduate).Property(x => x.linkToCV).IsModified = true;
+                placementDepartmentDB.Entry(graduate).Property(x => x.lastUpdate).IsModified = true;
+                placementDepartmentDB.SaveChanges();
+            }
+        }
+        public static void GraduateEditingtrue(string id,bool isint)
+        {
+            Graduate graduate = new Graduate() { Id = id ,isActive=isint ,lastUpdate= DateTime.Now };//AutoMapperConfiguration.mapper.Map<Graduate>(graduateDto);
+            using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
+            {
+                placementDepartmentDB.Configuration.ValidateOnSaveEnabled = false;
                 placementDepartmentDB.Graduate.Attach(graduate);
                 placementDepartmentDB.Entry(graduate).Property(x => x.isActive).IsModified = true;
+                placementDepartmentDB.Entry(graduate).Property(x => x.lastUpdate).IsModified = true;
                 placementDepartmentDB.SaveChanges();
             }
         }

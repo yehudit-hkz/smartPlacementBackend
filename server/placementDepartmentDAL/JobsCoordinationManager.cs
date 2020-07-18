@@ -14,7 +14,7 @@ namespace placementDepartmentDAL
             public static List<CoordinatingJobsForGraduatesDto> JobsCoordinationListByGraduate(string idGraduate)
             {
                 List<CoordinatingJobsForGraduatesDto> JobsCoordinationDtos;
-                List<CoordinatingJobsForGraduates> JobsCoordinations;
+                //List<CoordinatingJobsForGraduates> JobsCoordinations;
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
                 {
                 JobsCoordinationDtos = placementDepartmentDB.CoordinatingJobsForGraduates
@@ -38,24 +38,49 @@ namespace placementDepartmentDAL
                 return JobsCoordinationDtos;
                 }
             }
-            public static void NewJobsCoordination(CoordinatingJobsForGraduatesDto JobsCoordinationDto)
+            public static List<CoordinatingJobsForGraduates> NewJobsCoordination(List<CoordinatingJobsForGraduates> JobsCoordination)
             {
-            CoordinatingJobsForGraduates JobsCoordination = AutoMapperConfiguration.mapper.Map<CoordinatingJobsForGraduates>(JobsCoordinationDto);
+            List<CoordinatingJobsForGraduates> res;
                 using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
                 {
-                    placementDepartmentDB.CoordinatingJobsForGraduates.Add(JobsCoordination);
+               
+                var status = placementDepartmentDB.JobCoordinationStatus.Where(s=>s.description=="נשלחה הצעה").FirstOrDefault();
+                JobsCoordination.ForEach(jc => {
+                    jc.JobCoordinationStatus = status;
+                    jc.placementStatus = status.Id;
+                });
+                  res=placementDepartmentDB.CoordinatingJobsForGraduates.AddRange(JobsCoordination).ToList();
                     placementDepartmentDB.SaveChanges();
+                    return res;
                 }
             }
-            public static void JobsCoordinationEditing(CoordinatingJobsForGraduatesDto JobsCoordinationDto)
-            {
+        public static void JobsCoordinationEditing(CoordinatingJobsForGraduatesDto JobsCoordinationDto)
+        {
             CoordinatingJobsForGraduates JobsCoordination = AutoMapperConfiguration.mapper.Map<CoordinatingJobsForGraduates>(JobsCoordinationDto);
-                using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
-                {
-                    placementDepartmentDB.CoordinatingJobsForGraduates.Attach(JobsCoordination);
-                    placementDepartmentDB.Entry(JobsCoordination).State = EntityState.Modified;
-                    placementDepartmentDB.SaveChanges();
-                }
+            using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
+            {
+                placementDepartmentDB.CoordinatingJobsForGraduates.Attach(JobsCoordination);
+                placementDepartmentDB.Entry(JobsCoordination).State = EntityState.Modified;
+                placementDepartmentDB.SaveChanges();
+            }
+        }
+        public static void JobsCoordinationUpdate(int idCoordinatingJobsForGraduate, string statusString)
+        {
+            CoordinatingJobsForGraduates coordination = new CoordinatingJobsForGraduates()
+            {
+                Id = idCoordinatingJobsForGraduate,
+                lastUpdateDate = DateTime.Now
+            };
+            using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
+            {
+                var status = placementDepartmentDB.JobCoordinationStatus.Where(s => s.description == statusString).FirstOrDefault();
+                coordination.placementStatus = status.Id;
+                placementDepartmentDB.Configuration.ValidateOnSaveEnabled = false;
+                placementDepartmentDB.CoordinatingJobsForGraduates.Attach(coordination);
+                placementDepartmentDB.Entry(coordination).Property(x => x.placementStatus).IsModified = true;
+                placementDepartmentDB.Entry(coordination).Property(x => x.lastUpdateDate).IsModified = true;
+                placementDepartmentDB.SaveChanges();
+            }
             }
             public static void DeleteJobsCoordination(int id)
             {

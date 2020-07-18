@@ -108,6 +108,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="logo\icon-b.png" />
+    <Content Include="logo\logo-b.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -116,12 +118,12 @@
     <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\EnumerationsController.cs" />
     <Compile Include="Controllers\ExpertiseController.cs" />
     <Compile Include="Controllers\GraduateController.cs" />
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\JobsCoordinationController.cs" />
-    <Compile Include="Controllers\ResController.cs" />
     <Compile Include="Controllers\SubjectController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -130,7 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="Views\Email\res.cshtml" />
+    <Content Include="Views\Email\OKJobRes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

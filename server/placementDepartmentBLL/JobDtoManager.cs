@@ -26,9 +26,9 @@ namespace placementDepartmentBLL
         {
             return JobManager.JobById(Id);
         }
-        public static void NewJobDto(JobDto JobDto)
+        public static int NewJobDto(JobDto JobDto)
         {
-            JobManager.NewJob(JobDto);
+           return JobManager.NewJob(JobDto);
         }
         public static void JobDtoEditing(JobDto JobDto)
         {

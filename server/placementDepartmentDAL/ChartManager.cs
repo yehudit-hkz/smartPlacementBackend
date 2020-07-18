@@ -48,13 +48,14 @@ namespace placementDepartmentDAL
             areas = areas ?? new List<string>();
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
+                
                 res[0].data = placementDepartmentDB.Subject
-                 .Select(s => s.Expertise.Sum(e=>e.Graduate
+                 .Select(s => s.Expertise.Sum(e=> (int?)e.Graduate
                     .Where(g =>
                     g.isActive == true &&
                     (!branches.Any() || branches.Contains(g.branchId)) &&
                     (!areas.Any() || areas.Contains(g.City.area)))
-                    .Count()))
+                    .ToList().Count ) ?? 0)
                  .ToList();
                 res[1].data = placementDepartmentDB.Subject
                  .Select(s => s.Job
