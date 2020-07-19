@@ -14,16 +14,13 @@ namespace placementDepartmentDAL
             public static List<CoordinatingJobsForGraduatesDto> JobsCoordinationListByGraduate(string idGraduate)
             {
                 List<CoordinatingJobsForGraduatesDto> JobsCoordinationDtos;
-                //List<CoordinatingJobsForGraduates> JobsCoordinations;
-            using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
+                using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
                 {
-                JobsCoordinationDtos = placementDepartmentDB.CoordinatingJobsForGraduates
-                        .Where(cj => cj.candidateId== idGraduate)
-                        .ProjectTo<CoordinatingJobsForGraduatesDto>(AutoMapperConfiguration.config)
-                        .ToList();
-               // JobsCoordinationDtos = AutoMapperConfiguration.mapper.Map<List<CoordinatingJobsForGraduatesDto>>(JobsCoordinations);
-
-                return JobsCoordinationDtos;
+                    JobsCoordinationDtos = placementDepartmentDB.CoordinatingJobsForGraduates
+                            .Where(cj => cj.candidateId== idGraduate)
+                            .ProjectTo<CoordinatingJobsForGraduatesDto>(AutoMapperConfiguration.config)
+                            .ToList();
+                    return JobsCoordinationDtos;
                 }
             }
             public static List<CoordinatingJobsForGraduatesDto> JobsCoordinationListByJob(int IdJob)
@@ -59,6 +56,7 @@ namespace placementDepartmentDAL
             CoordinatingJobsForGraduates JobsCoordination = AutoMapperConfiguration.mapper.Map<CoordinatingJobsForGraduates>(JobsCoordinationDto);
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
+                JobsCoordination.lastUpdateDate = DateTime.Now;
                 placementDepartmentDB.CoordinatingJobsForGraduates.Attach(JobsCoordination);
                 placementDepartmentDB.Entry(JobsCoordination).State = EntityState.Modified;
                 placementDepartmentDB.SaveChanges();

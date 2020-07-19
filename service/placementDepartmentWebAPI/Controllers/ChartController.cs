@@ -14,7 +14,14 @@ namespace placementDepartmentWebAPI.Controllers
         // GET: api/Chart
         public List<ChartData> Get([FromUri]ChartsDetails chartsDetails)
         {
-            return ChartBLManager.GetChart(chartsDetails);
+            try
+            {
+                return ChartBLManager.GetChart(chartsDetails);
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
 
         //// GET: api/Chart/5

@@ -15,31 +15,66 @@ namespace placementDepartmentWebAPI.Controllers
         [Route("GetByCompany")]
         public List<ContactDto> GetByCompany(int idCompany)
         {
-            return ContactDtoManager.ContactDtoListByCompany(idCompany);
+            try
+            {
+                return ContactDtoManager.ContactDtoListByCompany(idCompany);
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
 
         [Route("GetById")]
         public ContactDto GetById(int id)
         {
-            return ContactDtoManager.ContactDtoById(id);
+            try
+            {
+                return ContactDtoManager.ContactDtoById(id);
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
 
         [Route("Save")]
         public void Post([FromBody]ContactDto contactDto)
         {
-            ContactDtoManager.NewContactDto(contactDto);
+            try
+            {
+                ContactDtoManager.NewContactDto(contactDto);
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
 
         [Route("Edit")]
         public void Put([FromBody]ContactDto contactDto)
         {
-            ContactDtoManager.ContactDtoEditing(contactDto);
+            try
+            {
+                ContactDtoManager.ContactDtoEditing(contactDto);
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
 
         [Route("Delete")]
         public void Delete(int id)
         {
-            ContactDtoManager.DeleteContactDto(id);
+            try
+            {
+                ContactDtoManager.DeleteContactDto(id);
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
     }
 }

@@ -56,16 +56,15 @@ namespace placementDepartmentDAL
                     .OrderByDescending(j=>j.dateReceived)
                     .ProjectTo<JobDto>(AutoMapperConfiguration.config)
                     .ToList();
-                //.Skip(p-1*s).Take(s)
                 return JobDtos;
             }
         }
         public static List<JobDto> JobListByFilters(JobFilters filters)
         {
             List<JobDto> JobDtos;
-            filters.sendCV = (filters.sendCV == null) ? new List<bool>(): filters.sendCV;
-            filters.active = (filters.active == null) ? new List<bool>(): filters.active;
-            filters.subjects = (filters.subjects == null) ? new List<int>(): filters.subjects;
+            filters.sendCV = filters.sendCV ?? new List<bool>();
+            filters.active = filters.active ?? new List<bool>();
+            filters.subjects = filters.subjects ?? new List<int>();
             DateTime dateMonthAgo = new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, DateTime.Now.Day);
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
@@ -93,6 +92,18 @@ namespace placementDepartmentDAL
                 return AutoMapperConfiguration.mapper.Map<JobDto>(Ret);
             }
         }
+
+        public static List<string> get0TitleAnd1ContactMailOfJobById(int Id)
+        {
+            List<string> detailes = new List<string>();
+            using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
+            {
+                detailes.Add(placementDepartmentDB.Job.Find(Id).title);
+                detailes.Add(placementDepartmentDB.Job.Find(Id).Contact.email);
+                return detailes;
+            }
+        }
+
         public static int NewJob(JobDto JobDto)
         {
             int newJobId;
@@ -120,7 +131,7 @@ namespace placementDepartmentDAL
         }
         public static void JobUpdate(int idJob, bool didSendCV)
         {
-            Job job = new Job() { Id = idJob, didSendCV = didSendCV, lastUpdateDate = DateTime.Now };//AutoMapperConfiguration.mapper.Map<Graduate>(graduateDto);
+            Job job = new Job() { Id = idJob, didSendCV = didSendCV, lastUpdateDate = DateTime.Now };
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
                 placementDepartmentDB.Configuration.ValidateOnSaveEnabled = false;

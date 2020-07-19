@@ -15,28 +15,49 @@ namespace placementDepartmentWebAPI.Controllers
         [Route("GetAll")]
         public List<BranchDto> Get()
         {
-            return BranchDtoManager.BranchDtoList();
+            try
+            {
+                return BranchDtoManager.BranchDtoList();
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
 
         // GET: api/Branch/5
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
         [Route("Save")]
         public void Post([FromBody]BranchDto branchDto)
         {
-            BranchDtoManager.newDtoBranch(branchDto);
+            try
+            {
+                BranchDtoManager.newDtoBranch(branchDto);
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
 
         // PUT: api/Branch/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+        //public void Put(int id, [FromBody]string value)
+        //{
+        //}
         [Route("Delete")]
         public void Delete(int id)
         {
-            BranchDtoManager.DeleteDtoBranch(id);
+            try
+            {
+                BranchDtoManager.DeleteDtoBranch(id);
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
     }
 }

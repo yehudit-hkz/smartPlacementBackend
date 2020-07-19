@@ -59,7 +59,6 @@
     <Compile Include="EnumerationsDtoManager.cs" />
     <Compile Include="ExpertiseDtoManager.cs" />
     <Compile Include="GraduateDtoManager.cs" />
-    <Compile Include="ImportGraduateFromExcel.cs" />
     <Compile Include="JobDtoManager.cs" />
     <Compile Include="JobsCoordinationDtoManager.cs" />
     <Compile Include="MailManager.cs" />

@@ -61,7 +61,8 @@ namespace placementDepartmentBLL
             {
                 graduates.Add(GraduateManager.GraduateById(item.candidateId));
             }
-            MailManager.sendCVCandidateToContact(massege, graduates);
+            List<string> detailes = JobManager.get0TitleAnd1ContactMailOfJobById(coordinatings[0].jobId);
+            MailManager.sendCVCandidateToContact(detailes[0],massege, graduates,detailes[1]);
             foreach (var crd in coordinatings)
             {
                 JobsCoordinationDtoUpdate(crd.Id, "נשלחו קו\"ח");

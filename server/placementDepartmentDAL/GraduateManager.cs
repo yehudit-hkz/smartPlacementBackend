@@ -12,29 +12,36 @@ namespace placementDepartmentDAL
 {
     public static class GraduateManager
     {
-        public static ApiRes<FullGraduateDto> GraduateList(GraduateFilters filters, string sort, int page, int size)
+        public static ApiRes<MainGraduateDto> GraduateLazyList(GraduateFilters filters, string sort, int page, int size)
         {
-            ApiRes<FullGraduateDto> res = new ApiRes<FullGraduateDto>();
+            ApiRes<MainGraduateDto> res = new ApiRes<MainGraduateDto>();
             sort = sort == " ," || sort == " , " ? "" : sort;
-            filters.active = (filters.active == null) ? new List<bool>() : filters.active;
-            filters.gender = (filters.gender == null) ? new List<string>() : filters.gender;
-            filters.expertise = (filters.expertise == null) ? new List<int>() : filters.expertise;
-            filters.branch = (filters.branch == null) ? new List<int>() : filters.branch;
+            filters.active = filters.active ?? new List<bool>(); 
+            filters.gender = filters.gender ?? new List<string>();
+            filters.expertise = filters.expertise ?? new List<int>();
+            filters.branch = filters.branch ?? new List<int>();
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
                 res.items = placementDepartmentDB.Graduate
-                    .Where(g=>
-                   $"{g.firstName} {g.lastName}".IndexOf(filters.name)!=-1&&
+                    .Where(g =>
+                   $"{g.firstName} {g.lastName}".IndexOf(filters.name) != -1 &&
                         (!filters.active.Any() || filters.active.Contains(g.isActive)) &&
                         (!filters.gender.Any() || filters.gender.Contains(g.gender)) &&
                         (!filters.expertise.Any() || filters.expertise.Contains(g.expertiseId)) &&
-                        (!filters.branch.Any() || filters.branch.Contains(g.branchId)) 
+                        (!filters.branch.Any() || filters.branch.Contains(g.branchId))
                     )
                     .OrderBy("dateOfRegistration desc" + sort)
                     .Skip(page * size)
                     .Take(size)
-                    .ProjectTo<FullGraduateDto>(AutoMapperConfiguration.config)
-                    .ToList();
+                    .Select(g => new MainGraduateDto()
+                    {
+                        Id = g.Id,
+                        Name = $"{g.firstName} {g.lastName}",
+                        branchName = g.Branch.name,
+                        expertiseName=g.Expertise.name, 
+                        endYear=g.Expertise.name,
+                        isActive=g.isActive
+                    }).ToList();
                 res.totalCount = placementDepartmentDB.Graduate.Where(g =>
                     $"{g.firstName} {g.lastName}".IndexOf(filters.name) != -1 &&
                          (!filters.active.Any() || filters.active.Contains(g.isActive)) &&
@@ -53,7 +60,6 @@ namespace placementDepartmentDAL
                 graduateDtos = placementDepartmentDB.Graduate
                     .ProjectTo<FullGraduateDto>(AutoMapperConfiguration.config)
                     .ToList();
-                //.Skip(p-1*s).Take(s)
                 return graduateDtos;
             }
         }
@@ -111,7 +117,7 @@ namespace placementDepartmentDAL
         }
         public static void GraduateUploudFile(string graduateId, string filePath)
         {
-            Graduate graduate = new Graduate() { Id = graduateId, linkToCV=filePath, lastUpdate = DateTime.Now };//AutoMapperConfiguration.mapper.Map<Graduate>(graduateDto);
+            Graduate graduate = new Graduate() { Id = graduateId, linkToCV=filePath, lastUpdate = DateTime.Now };
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
                 placementDepartmentDB.Configuration.ValidateOnSaveEnabled = false;
@@ -123,7 +129,7 @@ namespace placementDepartmentDAL
         }
         public static void GraduateEditingtrue(string id,bool isint)
         {
-            Graduate graduate = new Graduate() { Id = id ,isActive=isint ,lastUpdate= DateTime.Now };//AutoMapperConfiguration.mapper.Map<Graduate>(graduateDto);
+            Graduate graduate = new Graduate() { Id = id ,isActive=isint ,lastUpdate= DateTime.Now };
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
                 placementDepartmentDB.Configuration.ValidateOnSaveEnabled = false;

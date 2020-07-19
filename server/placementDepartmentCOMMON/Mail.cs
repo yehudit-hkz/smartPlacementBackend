@@ -7,7 +7,6 @@ using System.Net;
 using System.Threading;
 using System.Net.Mail;
 using System.Web;
-using System.ComponentModel;
 
 namespace placementDepartmentCOMMON
 {
@@ -42,17 +41,17 @@ namespace placementDepartmentCOMMON
                 AlternateView htmlView =
                        AlternateView.CreateAlternateViewFromString(htmlText, Encoding.UTF8, "text/html");
                 mail.AlternateViews.Add(htmlView); // And a html attachment to make sure.
-
                 mail.IsBodyHtml = true;
                 mail.BodyEncoding = UTF8Encoding.UTF8;
+
                 smtp.Send(mail);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-              //
+                throw;
             }
         }
-        public MailMessage SendEmailCVtoContact(string htmlText, string subject,List<string> linkToCVs, string contactMail)
+        public void SendEmailCVtoContact(string htmlText, string subject,List<string> linkToCVs, string contactMail)
         {
             try
             {
@@ -72,23 +71,17 @@ namespace placementDepartmentCOMMON
                     mail.Attachments.Add(new Attachment(filePath));
                 }
                 
-                
                AlternateView htmlView =
                        AlternateView.CreateAlternateViewFromString(htmlText, Encoding.UTF8, "text/html");
                 mail.AlternateViews.Add(htmlView); // And a html attachment to make sure.
                 mail.IsBodyHtml = true;
                 mail.BodyEncoding = UTF8Encoding.UTF8;
                 
-
                 smtp.Send(mail);
-               
-                return new MailMessage();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                var x = ex.Message;
-                return new MailMessage();
-
+                throw;
             }
 
         }

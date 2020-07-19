@@ -20,7 +20,6 @@ namespace placementDepartmentDAL
                         .Where(cn=>cn.companyId==idCompany)
                         .ProjectTo<ContactDto>(AutoMapperConfiguration.config)
                         .ToList();
-                    //.Skip(p-1*s).Take(s)
                     return contactDtos;
                 }
             }

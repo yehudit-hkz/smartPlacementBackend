@@ -29,7 +29,6 @@ namespace placementDepartmentDAL
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
                 companies = placementDepartmentDB.Company.ToList();
-                //.Skip(p-1*s).Take(s)
                 companyDtos = AutoMapperConfiguration.mapper.Map<List<CompanyDto>>(companies);
                 return companyDtos  ;
             }
@@ -37,16 +36,6 @@ namespace placementDepartmentDAL
         public static List<CompanyDto> CompanyListByFilters(CompanyFilters filters)
         {
             List<CompanyDto> companyDtos;
-
-            //why is it not work like other
-            //using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
-            //{
-            //    companyDtos = placementDepartmentDB.Company
-            //        .ProjectTo<CompanyDto>(AutoMapperConfiguration.config)
-            //        .ToList();
-            //    return companyDtos;
-            //}
-
             List<Company> companies;
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
@@ -61,7 +50,6 @@ namespace placementDepartmentDAL
                   .ToList().Count > 0).ToList().Count > 0
                   ))
                     .ToList();
-                //.Skip(p-1*s).Take(s)
                 companyDtos = AutoMapperConfiguration.mapper.Map<List<CompanyDto>>(companies);
                 return companyDtos;
             }

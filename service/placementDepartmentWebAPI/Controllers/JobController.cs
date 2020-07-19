@@ -16,44 +16,93 @@ namespace placementDepartmentWebAPI.Controllers
         [Route("GetLazyList")]
         public ApiRes<JobDto> Get(int page, int size, string sort, [FromUri]JobFilters filters)
         {
-            return JobDtoManager.JobDtoLazyList(filters,sort,page,size);
+            try
+            {
+                return JobDtoManager.JobDtoLazyList(filters, sort, page, size);
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
         [Route("GetAll")]   
         public List<JobDto> Get()
         {
-            return JobDtoManager.JobDtoList();
+            try
+            {
+                return JobDtoManager.JobDtoList();
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }   
         [Route("GetByFilters")]
         public List<JobDto> Get([FromUri]JobFilters filters)
         {
-            if (filters==null)
+            try
             {
-                return Get();
+                if (filters == null)
+                {
+                    return Get();
+                }
+                return JobDtoManager.JobDtoListByFilters(filters);
             }
-            return JobDtoManager.JobDtoListByFilters(filters);
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
         [Route("GetById")]
         public JobDto Get(int id)
         {
-            return JobDtoManager.JobDtoById(id);
+            try
+            {
+                return JobDtoManager.JobDtoById(id);
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
 
         [Route("Save")]
         public int Post([FromBody]JobDto jobDto)
         {
-            return JobDtoManager.NewJobDto(jobDto);
+            try
+            {
+                return JobDtoManager.NewJobDto(jobDto);
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
 
         [Route("Edit")]
         public void Put([FromBody]JobDto jobDto)
         {
-            JobDtoManager.JobDtoEditing(jobDto);
+            try
+            {
+                JobDtoManager.JobDtoEditing(jobDto);
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
 
         [Route("Delete")]
         public void Delete(int id)
         {
-            JobDtoManager.DeleteJobDto(id);
+            try
+            {
+                JobDtoManager.DeleteJobDto(id);
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
     }
 }

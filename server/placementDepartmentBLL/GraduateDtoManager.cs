@@ -10,6 +10,10 @@ namespace placementDepartmentBLL
 {
     public static class GraduateDtoManager
     {
+        public static ApiRes<MainGraduateDto> GraduateDtoLazyList(GraduateFilters filters, string sort, int page, int size)
+        {
+            return GraduateManager.GraduateLazyList(filters, sort, page, size);
+        }
         public static List<FullGraduateDto> GraduateDtoList()
         {
             return GraduateManager.GraduateList();

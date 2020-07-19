@@ -15,30 +15,51 @@ namespace placementDepartmentWebAPI.Controllers
         [Route("GetAll")]
         public List<SubjectDto> Get()
         {
-            return SubjectDtoManager.SubjectDtoList();
+            try
+            {
+                return SubjectDtoManager.SubjectDtoList();
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
 
         // GET: api/Subject/5
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
 
         [Route("Save")]
         public void Post([FromBody]SubjectDto subjectDto)
         {
-            SubjectDtoManager.newDtoSubject(subjectDto);
+            try
+            {
+                SubjectDtoManager.newDtoSubject(subjectDto);
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
 
         // PUT: api/Subject/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+        //public void Put(int id, [FromBody]string value)
+        //{
+        //}
 
         [Route("Delete")]
         public void Delete(int id)
         {
-            SubjectDtoManager.DeleteDtoSubject(id);
+            try
+            {
+                SubjectDtoManager.DeleteDtoSubject(id);
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
     }
 }

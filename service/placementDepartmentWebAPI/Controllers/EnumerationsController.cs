@@ -17,46 +17,53 @@ namespace placementDepartmentWebAPI.Controllers
         [HttpGet]
         public List<CityDto> GetCities()
         {
-            return EnumerationsDtoManager.CityDtoList();
+            try
+            {
+                return EnumerationsDtoManager.CityDtoList();
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
         [Route("GetLanguages")]
         [HttpGet]
         public List<LanguageDto> GetLanguages()
         {
-            return EnumerationsDtoManager.LanguageDtoList();
+            try
+            {
+                return EnumerationsDtoManager.LanguageDtoList();
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
         [Route("GetReasonForClosing")]
-       [HttpGet]
+        [HttpGet]
         public List<ReasonForClosingThePositionDto> GetReasonForClosing()
         {
-            return EnumerationsDtoManager.ReasonForClosingDtoList();
+            try
+            {
+                return EnumerationsDtoManager.ReasonForClosingDtoList();
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
         [Route("GetJobCoordinationStatus")]
         [HttpGet]
         public List<JobCoordinationStatusDto> GetJobCoordinationStatus()
         {
-            return EnumerationsDtoManager.JobCoordinationStatusDtoList();
-        }
-        ////
-        // GET: api/City/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST: api/City
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT: api/City/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/City/5
-        public void Delete(int id)
-        {
+            try
+            {
+                return EnumerationsDtoManager.JobCoordinationStatusDtoList();
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
     }
 }

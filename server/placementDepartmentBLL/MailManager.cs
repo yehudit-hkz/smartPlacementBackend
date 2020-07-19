@@ -74,7 +74,7 @@ namespace placementDepartmentBLL
                     crd.Graduate.email);
             }
         }
-        public static void sendCVCandidateToContact(string massege, List<FullGraduateDto> graduates, string contactMail = "joodyhktz@gmail.com")
+        public static void sendCVCandidateToContact(string title, string massege, List<FullGraduateDto> graduates, string contactMail)
         {
             Mail mail = new Mail();
             mail.SendEmailCVtoContact(
@@ -85,8 +85,7 @@ namespace placementDepartmentBLL
                       </style>
                     </head>
                 <pre class='text'>{massege}</pre>",
-               // "שלום וברכה<br/> מצ\"ב קו\"ח של המעמדים המובחרים במדינה",
-                "מועמדים המרכז החרדי",
+                "מועמדים המרכז החרדי למשרה "+title,
                 graduates.Select(g => g.linkToCV).ToList(),
                 contactMail);
         }

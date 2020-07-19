@@ -9,33 +9,76 @@ using Microsoft.Office.Interop.Word;
 using System.IO;
 using placementDepartmentCOMMON;
 using placementDepartmentBLL;
+
 namespace placementDepartmentWebAPI.Controllers
 {
     [RoutePrefix("api/Graduate")]
     public class GraduateController : ApiController
     {
+        [Route("GetLazyList")]
+        public ApiRes<MainGraduateDto> Get(int page, int size, string sort, [FromUri]GraduateFilters filters)
+        {
+            try
+            {
+                return GraduateDtoManager.GraduateDtoLazyList(filters, sort, page, size);
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
+        }
+
         [Route("GetAll")]
         public List<FullGraduateDto> Get()
-        { 
-            return GraduateDtoManager.GraduateDtoList();
+        {
+            try
+            {
+                return GraduateDtoManager.GraduateDtoList();
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
 
         [Route("GetById")]
         public FullGraduateDto Get(string id)
         {
-           return GraduateDtoManager.GraduateDtoById(id);
+            try
+            { 
+                return GraduateDtoManager.GraduateDtoById(id);
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
+
         }
 
         [Route("GetForJob")]
         public List<FullGraduateDto> Get(int idSubject, int idJob)
         {
-            return GraduateDtoManager.GraduateDtoForJob(idSubject, idJob);
+            try
+            {
+                return GraduateDtoManager.GraduateDtoForJob(idSubject, idJob);
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
 
         [Route("Save")]
         public void Post([FromBody]FullGraduateDto graduateDto)
         {
-            GraduateDtoManager.NewGraduateDto(graduateDto);
+            try
+            {
+                GraduateDtoManager.NewGraduateDto(graduateDto);
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
 
         [Route("importFromExcel")]
@@ -47,8 +90,15 @@ namespace placementDepartmentWebAPI.Controllers
         [Route("Edit")]
         public void Put(/*string id,*/ [FromBody]FullGraduateDto graduateDto)
         {
-            //why id? for case that id is changed
-            GraduateDtoManager.GraduateDtoEditing(graduateDto);
+            try
+            {
+                //why id? for case that id is changed
+                GraduateDtoManager.GraduateDtoEditing(graduateDto);
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
 
 
@@ -82,7 +132,14 @@ namespace placementDepartmentWebAPI.Controllers
         [Route("Delete")]
         public void Delete(string id)
         {
-            GraduateDtoManager.DeleteGraduateDto(id);
+            try
+            {
+                GraduateDtoManager.DeleteGraduateDto(id);
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }
         }
     }
 }
