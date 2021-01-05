@@ -11,12 +11,12 @@ namespace placementDepartmentCOMMON
         public JobDto() { }
 
         public int Id { get; set; }
-        public System.DateTime dateReceived { get; set; }
+        public DateTime dateReceived { get; set; }
         public string title { get; set; }
         public string description { get; set; }
         public bool isActive { get; set; }
         public bool didSendCV { get; set; }
-        public System.DateTime lastUpdateDate { get; set; }
+        public DateTime lastUpdateDate { get; set; }
         public int contactId { get; set; }
         public string contactName { get; set; }
         public int companyId { get; set; }

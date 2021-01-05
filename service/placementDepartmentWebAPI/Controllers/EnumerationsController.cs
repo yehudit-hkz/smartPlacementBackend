@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using placementDepartmentCOMMON;
 using placementDepartmentBLL;
+using System.Web;
 
 namespace placementDepartmentWebAPI.Controllers
 {
@@ -13,57 +14,52 @@ namespace placementDepartmentWebAPI.Controllers
 
     public class EnumerationsController : ApiController
     {
-        [Route("GetCities")]
-        [HttpGet]
-        public List<CityDto> GetCities()
-        {
-            try
-            {
-                return EnumerationsDtoManager.CityDtoList();
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
-        }
-        [Route("GetLanguages")]
-        [HttpGet]
-        public List<LanguageDto> GetLanguages()
-        {
-            try
-            {
-                return EnumerationsDtoManager.LanguageDtoList();
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
-        }
         [Route("GetReasonForClosing")]
         [HttpGet]
         public List<ReasonForClosingThePositionDto> GetReasonForClosing()
         {
-            try
-            {
-                return EnumerationsDtoManager.ReasonForClosingDtoList();
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
+            return EnumerationsDtoManager.ReasonForClosingDtoList();
         }
+
         [Route("GetJobCoordinationStatus")]
         [HttpGet]
         public List<JobCoordinationStatusDto> GetJobCoordinationStatus()
         {
-            try
+            return EnumerationsDtoManager.JobCoordinationStatusDtoList();
+        }
+
+        [Route("GetPermissions")]
+        [HttpGet]
+        public List<PermissionDto> GetPermissions()
+        {
+            return EnumerationsDtoManager.PermissionsDtoList();
+        }
+
+        [Route("GetPages")]
+        [HttpGet]
+        public System.Object GetPages()
+        {
+            var v = new[]
             {
-                return EnumerationsDtoManager.JobCoordinationStatusDtoList();
-            }
-            catch (Exception)
+                new { uri= "graduates" , name= "בוגרים" },
+                new { uri= "jobs" ,      name= "משרות" },
+                new { uri= "companies" , name= "חברות" },
+                new { uri= "Placements", name= "השמות" },
+                new { uri= "Charts" ,    name= "תרשימים" },
+
+                new { uri= "users" , name= "משתשים" },
+                new { uri= "lists" , name= "תחזוקה" }
+            };
+            var list = v.ToList();
+
+            var userId = Int32.Parse(HttpContext.Current.User.Identity.Name);
+            if (UserBLManager.UserDtoById(userId).Permission.Id != 1)
             {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+                list.RemoveAt(6);
+                list.RemoveAt(5);
             }
+
+            return list;
         }
     }
 }

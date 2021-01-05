@@ -1,0 +1,832 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{814DEB72-C6C4-4319-98D3-6E3012B58164}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>placementDepartmentWebClient</RootNamespace>
+    <AssemblyName>placementDepartmentWebClient</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Exchange.WebServices, Version=15.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Exchange.WebServices.2.2\lib\40\Microsoft.Exchange.WebServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Exchange.WebServices.Auth, Version=15.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Exchange.WebServices.2.2\lib\40\Microsoft.Exchange.WebServices.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MailConnection.cs" />
+    <Compile Include="Connected Services\ExchangeWebService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Connected Services\ExchangeWebService\messages.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.AddDelegateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.AddDelegateResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.AddDistributionGroupToImListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.AddDistributionGroupToImListResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.AddImContactToGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.AddImContactToGroupResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.AddImGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.AddImGroupResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.AddNewImContactToGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.AddNewImContactToGroupResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.AddNewTelUriContactToGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.AddNewTelUriContactToGroupResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.AddTagResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.AddTagResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.ApplyConversationActionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.ApplyConversationActionResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.ArchiveItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.ArchiveItemResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.ConvertIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.ConvertIdResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.CopyFolderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.CopyFolderResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.CopyItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.CopyItemResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.CreateAttachmentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.CreateAttachmentResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.CreateFolderPathResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.CreateFolderPathResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.CreateFolderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.CreateFolderResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.CreateItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.CreateItemResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.CreateManagedFolderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.CreateManagedFolderResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.CreateMeetingInstanceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.CreateMeetingInstanceResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.CreateMeetingSpaceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.CreateMeetingSpaceResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.CreateUserConfigurationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.CreateUserConfigurationResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.DeleteAttachmentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.DeleteAttachmentResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.DeleteFolderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.DeleteFolderResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.DeleteItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.DeleteItemResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.DeleteMeetingInstanceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.DeleteMeetingInstanceResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.DeleteMeetingSpaceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.DeleteMeetingSpaceResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.DeleteSearchSuggestionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.DeleteSearchSuggestionResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.DeleteUserConfigurationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.DeleteUserConfigurationResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.DisableAppResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.DisableAppResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.DisconnectPhoneCallResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.DisconnectPhoneCallResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.EmptyFolderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.EmptyFolderResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.EndSearchSessionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.EndSearchSessionResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.ExecuteSearchResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.ExecuteSearchResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.ExpandDLResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.ExpandDLResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.ExportItemsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.ExportItemsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.FindAvailableMeetingTimesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.FindAvailableMeetingTimesResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.FindConversationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.FindConversationResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.FindFolderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.FindFolderResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.FindItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.FindItemResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.FindMeetingSpaceByJoinUrlResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.FindMeetingSpaceByJoinUrlResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.FindMeetingTimeCandidatesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.FindMeetingTimeCandidatesResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.FindMessageTrackingReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.FindMessageTrackingReportResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.FindPeopleResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.FindPeopleResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.FindTagsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.FindTagsResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetAppManifestsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetAppManifestsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetAppMarketplaceUrlResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetAppMarketplaceUrlResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetAttachmentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetAttachmentResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetClientAccessTokenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetClientAccessTokenResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetConversationItemsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetConversationItemsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetDelegateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetDelegateResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetDiscoverySearchConfigurationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetDiscoverySearchConfigurationResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetEventsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetEventsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetFolderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetFolderResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetHoldOnMailboxesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetHoldOnMailboxesResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetImItemListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetImItemListResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetImItemsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetImItemsResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetInboxRulesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetInboxRulesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetItemResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetLastPrivateCatalogUpdateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetLastPrivateCatalogUpdateResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetMailTipsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetMailTipsResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetMeetingInstanceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetMeetingInstanceResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetMeetingSpaceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetMeetingSpaceResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetMessageTrackingReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetMessageTrackingReportResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetNonIndexableItemDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetNonIndexableItemDetailsResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetNonIndexableItemStatisticsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetNonIndexableItemStatisticsResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetPasswordExpirationDateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetPasswordExpirationDateResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetPersonaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetPersonaResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetPhoneCallInformationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetPhoneCallInformationResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetPrivateCatalogAddInsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetPrivateCatalogAddInsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetRoomListsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetRoomListsResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetRoomsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetRoomsResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetSearchableMailboxesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetSearchableMailboxesResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetSearchSuggestionsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetSearchSuggestionsResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetServerTimeZonesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetServerTimeZonesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetServiceConfigurationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetServiceConfigurationResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetSharingFolderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetSharingFolderResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetSharingMetadataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetSharingMetadataResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetSpecificUserConfigurationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetSpecificUserConfigurationResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetStreamingEventsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetStreamingEventsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetUserAvailabilityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetUserAvailabilityResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetUserConfigurationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetUserConfigurationResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetUserOofSettingsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetUserOofSettingsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetUserPhotoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetUserPhotoResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetUserRetentionPolicyTagsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.GetUserRetentionPolicyTagsResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.HideTagResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.HideTagResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.InstallAppResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.InstallAppResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.MarkAllItemsAsReadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.MarkAllItemsAsReadResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.MarkAsJunkResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.MarkAsJunkResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.MoveFolderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.MoveFolderResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.MoveItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.MoveItemResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.PlayOnPhoneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.PlayOnPhoneResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.RefreshSharingFolderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.RefreshSharingFolderResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.RemoveContactFromImListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.RemoveContactFromImListResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.RemoveDelegateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.RemoveDelegateResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.RemoveDistributionGroupFromImListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.RemoveDistributionGroupFromImListResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.RemoveImContactFromGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.RemoveImContactFromGroupResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.RemoveImGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.RemoveImGroupResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.ReportMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.ReportMessageResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.ResolveNamesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.ResolveNamesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.SearchMailboxesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.SearchMailboxesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.SendItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.SendItemResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.ServerVersionInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.SetHoldOnMailboxesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.SetHoldOnMailboxesResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.SetImGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.SetImGroupResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.SetImListMigrationCompletedResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.SetImListMigrationCompletedResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.SetTeamMailboxResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.SetTeamMailboxResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.SetUserOofSettingsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.SetUserOofSettingsResponse1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.SetUserPhotoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.SetUserPhotoResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.StartSearchSessionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.StartSearchSessionResponseMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.SubscribeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.SubscribeResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.SyncFolderHierarchyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.SyncFolderHierarchyResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.SyncFolderItemsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.SyncFolderItemsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.UninstallAppResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.UninstallAppResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.UnpinTeamMailboxResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.UnpinTeamMailboxResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.UnsubscribeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.UnsubscribeResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.UpdateDelegateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.UpdateDelegateResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.UpdateFolderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.UpdateFolderResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.UpdateInboxRulesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.UpdateInboxRulesResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.UpdateItemInRecoverableItemsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.UpdateItemInRecoverableItemsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.UpdateItemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.UpdateItemResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.UpdateMeetingInstanceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.UpdateMeetingInstanceResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.UpdateMeetingSpaceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.UpdateMeetingSpaceResponseMessageType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.UpdateUserConfigurationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.UpdateUserConfigurationResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.UploadItemsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\placementDepartmentWebClient.ExchangeWebService.UploadItemsResponseType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ExchangeWebService\Services.wsdl" />
+    <None Include="Connected Services\ExchangeWebService\types.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ExchangeWebService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ExchangeWebService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ExchangeWebService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ExchangeWebService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\placementDepartmentCOMMON\placementDepartmentCOMMON.csproj">
+      <Project>{95ca758f-ae76-4f5d-b5d7-b60996228405}</Project>
+      <Name>placementDepartmentCOMMON</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

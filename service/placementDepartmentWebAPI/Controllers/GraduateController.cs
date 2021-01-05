@@ -9,6 +9,9 @@ using Microsoft.Office.Interop.Word;
 using System.IO;
 using placementDepartmentCOMMON;
 using placementDepartmentBLL;
+using Newtonsoft.Json;
+using System.Net.Http.Headers;
+using System.Configuration;
 
 namespace placementDepartmentWebAPI.Controllers
 {
@@ -18,89 +21,89 @@ namespace placementDepartmentWebAPI.Controllers
         [Route("GetLazyList")]
         public ApiRes<MainGraduateDto> Get(int page, int size, string sort, [FromUri]GraduateFilters filters)
         {
-            try
-            {
-                return GraduateDtoManager.GraduateDtoLazyList(filters, sort, page, size);
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
+            return GraduateDtoManager.GraduateDtoLazyList(filters, sort, page, size);
         }
 
         [Route("GetAll")]
-        public List<FullGraduateDto> Get()
+        public List<MainGraduateDto> Get()
         {
-            try
-            {
-                return GraduateDtoManager.GraduateDtoList();
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
+            return GraduateDtoManager.GraduateDtoList();
         }
 
         [Route("GetById")]
         public FullGraduateDto Get(string id)
         {
-            try
-            { 
-                return GraduateDtoManager.GraduateDtoById(id);
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
-
+            return GraduateDtoManager.GraduateDtoById(id);
         }
 
         [Route("GetForJob")]
         public List<FullGraduateDto> Get(int idSubject, int idJob)
         {
-            try
-            {
-                return GraduateDtoManager.GraduateDtoForJob(idSubject, idJob);
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
+            return GraduateDtoManager.GraduateDtoForJob(idSubject, idJob);
         }
 
         [Route("Save")]
-        public void Post([FromBody]FullGraduateDto graduateDto)
+        public FullGraduateDto Post([FromBody]FullGraduateDto graduateDto)
         {
-            try
-            {
-                GraduateDtoManager.NewGraduateDto(graduateDto);
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
+            var userId = Int32.Parse(HttpContext.Current.User.Identity.Name);
+            return GraduateDtoManager.NewGraduateDto(graduateDto,userId);
         }
 
         [Route("importFromExcel")]
-        public void Post([FromBody]Dictionary<string,string> keyValues )
+        [HttpPost]
+        public ImportRes importFromExcel()
         {
-           // GraduateDtoManager.NewGraduateDto(graduateDto);
+            var httpRequest = HttpContext.Current.Request;
+            var file = httpRequest.Files["file"];
+            Dictionary<string, string> keyValues =
+                JsonConvert.DeserializeObject<Dictionary<string, string>>(
+                    httpRequest.Form["data"]
+                    );
+            int startLine = int.Parse(httpRequest.Form["start"]);
+            int endLine = int.Parse(httpRequest.Form["end"]);
+            ImportGraduateFromExcel importGraduate = new ImportGraduateFromExcel();
+            return importGraduate.execut(keyValues, file.InputStream, startLine, endLine);
+            
+        }
+
+        [Route("sendActiveMSG")]
+        [HttpPost]
+        public List<string> Post([FromBody]List<FullGraduateDto> graduatesDto)
+        {
+            var userId = Int32.Parse(HttpContext.Current.User.Identity.Name);
+            string email = ConfigurationManager.AppSettings["byEmail"];
+            string password = ConfigurationManager.AppSettings["password"];
+            var url = HttpContext.Current.Request.Url.AbsoluteUri;
+            url = url.Substring(0, url.IndexOf("/api"));
+
+            MailManager mail = new MailManager(email, password, url);
+            return mail.sendActivatedToGraduates(graduatesDto, userId);
         }
 
         [Route("Edit")]
-        public void Put(/*string id,*/ [FromBody]FullGraduateDto graduateDto)
+        public void Put([FromBody]FullGraduateDto graduateDto)
         {
-            try
-            {
-                //why id? for case that id is changed
-                GraduateDtoManager.GraduateDtoEditing(graduateDto);
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
+            GraduateDtoManager.GraduateDtoEditing(graduateDto);
         }
 
+        [Route("Delete")]
+        public void Delete(string id)
+        {
+            GraduateDtoManager.DeleteGraduateDto(id);
+        }
+
+        [Route("GetCVFile")]
+        [HttpGet]
+        public HttpResponseMessage GetFile(string fileName)
+        {
+            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.OK);
+            string folderPeth = ConfigurationManager.AppSettings["CVpath"];
+            FileStream fileStream = File.OpenRead(folderPeth + "\\" + fileName);
+            response.Content = new StreamContent(fileStream);
+            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/pdf");
+
+            return response;
+        }
 
         [Route("UploadCVFile")]
         [HttpPost]
@@ -108,37 +111,27 @@ namespace placementDepartmentWebAPI.Controllers
         {
             //recaived file, convert word document to ptf, save, and update linkToCV.
             var httpRequest = HttpContext.Current.Request;
-            string temp = "~/ResumeFile/";
+            string folderPeth = ConfigurationManager.AppSettings["CVpath"];
             if (httpRequest.Files.Count > 0)
             {
                 foreach (string file in httpRequest.Files)
                 {
                     var postedFile = httpRequest.Files[file];
-                    var filePath = HttpContext.Current.Server.MapPath(temp + postedFile.FileName);
+                    var filePath = folderPeth + "\\" + postedFile.FileName;
                     postedFile.SaveAs(filePath);
-                    if (Path.GetExtension(filePath)==".doc" || Path.GetExtension(filePath)==".docx") {
-                        Application appWord = new Application();
-                        var wordDocument = appWord.Documents.Open(filePath);
-                        wordDocument.ExportAsFixedFormat(Path.ChangeExtension(filePath, ".pdf"), WdExportFormat.wdExportFormatPDF);
-                        wordDocument.Close();
-                        File.Delete(filePath);
-                    }
+                    //if (Path.GetExtension(filePath) == ".doc" || Path.GetExtension(filePath) == ".docx")
+                    //{
+                    //    Application appWord = new Application();
+                    //    var wordDocument = appWord.Documents.Open(filePath);
+                    //    var nfilePath = Path.ChangeExtension(filePath, ".pdf");
+                    //    wordDocument.ExportAsFixedFormat(nfilePath, WdExportFormat.wdExportFormatPDF);
+                    //    wordDocument.Close();
+                    //    File.Delete(filePath);
+                    //    filePath = nfilePath;
+                    //}
                     if (file != "file")
-                        GraduateDtoManager.GraduateDtoUploudFile(file, "ResumeFile/"+ postedFile.FileName);
+                        GraduateDtoManager.GraduateDtoUploudFile(file, Path.GetFileName(filePath));
                 }
-            }
-        }
-
-        [Route("Delete")]
-        public void Delete(string id)
-        {
-            try
-            {
-                GraduateDtoManager.DeleteGraduateDto(id);
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
             }
         }
     }

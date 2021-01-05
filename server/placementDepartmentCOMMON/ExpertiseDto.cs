@@ -10,8 +10,8 @@ namespace placementDepartmentCOMMON
     public class ExpertiseDto
     {
         public ExpertiseDto() { }
+
         public int Id { get; set; }
         public string name { get; set; }
-
     }
 }

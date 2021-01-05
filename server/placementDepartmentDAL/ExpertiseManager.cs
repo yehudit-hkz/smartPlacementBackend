@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using placementDepartmentCOMMON;
 using AutoMapper.QueryableExtensions;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 
 namespace placementDepartmentDAL
 {
@@ -21,12 +24,23 @@ namespace placementDepartmentDAL
                 return expertiseDtos;
             }
         }
-        public static void NewExpertise(ExpertiseDto expertiseDto)
+        public static int NewExpertise(ExpertiseDto expertiseDto)
         {
             Expertise expertise = AutoMapperConfiguration.mapper.Map<Expertise>(expertiseDto);
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
-                placementDepartmentDB.Expertise.Add(expertise);
+                expertise = placementDepartmentDB.Expertise.Add(expertise);
+                placementDepartmentDB.SaveChanges();
+                return expertise.Id;
+            }
+        }
+        public static void editExpertise(ExpertiseDto expertiseDto)
+        {
+            Expertise expertise = AutoMapperConfiguration.mapper.Map<Expertise>(expertiseDto);
+            using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
+            {
+                placementDepartmentDB.Expertise.Attach(expertise);
+                placementDepartmentDB.Entry(expertise).State = EntityState.Modified;
                 placementDepartmentDB.SaveChanges();
             }
         }
@@ -34,9 +48,23 @@ namespace placementDepartmentDAL
         {
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
-                Expertise expertise = placementDepartmentDB.Expertise.Find(id);
-                placementDepartmentDB.Expertise.Remove(expertise);
-                placementDepartmentDB.SaveChanges();
+                try
+                {
+                    Expertise expertise = placementDepartmentDB.Expertise.Find(id);
+                    placementDepartmentDB.Expertise.Remove(expertise);
+                    placementDepartmentDB.SaveChanges();
+                }
+                catch (DbUpdateException ex)
+                {
+                    var sqlException = ex.GetBaseException() as SqlException;
+                    if (sqlException != null)
+                    {
+                        if (sqlException.Number == 547)
+                        {
+                            throw new DbUpdateException("547");
+                        }
+                    }
+                }
             }
         }
     }

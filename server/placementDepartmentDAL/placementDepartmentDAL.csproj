@@ -81,6 +81,7 @@
     <Compile Include="City.cs">
       <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="CityManager.cs" />
     <Compile Include="Company.cs">
       <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
     </Compile>
@@ -93,6 +94,7 @@
       <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="EnumerationsManager.cs" />
+    <Compile Include="EwithSManager.cs" />
     <Compile Include="Expertise.cs">
       <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
     </Compile>
@@ -115,6 +117,7 @@
     <Compile Include="Language.cs">
       <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="LanguageManager.cs" />
     <Compile Include="Permission.cs">
       <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
     </Compile>
@@ -137,9 +140,6 @@
     <Compile Include="ReasonForClosingThePosition.cs">
       <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Reminder.cs">
-      <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Subject.cs">
       <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
     </Compile>
@@ -147,12 +147,15 @@
     <Compile Include="User.cs">
       <DependentUpon>placementDepartmentDBEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <EntityDeploy Include="placementDepartmentDBEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

@@ -19,7 +19,6 @@ namespace placementDepartmentDAL
         {
             this.Job = new HashSet<Job>();
             this.Job1 = new HashSet<Job>();
-            this.Reminder = new HashSet<Reminder>();
         }
     
         public int Id { get; set; }
@@ -27,13 +26,13 @@ namespace placementDepartmentDAL
         public string email { get; set; }
         public string password { get; set; }
         public int permissionId { get; set; }
+        public bool isInitialPassword { get; set; }
+        public bool isActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Job> Job { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Job> Job1 { get; set; }
         public virtual Permission Permission { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reminder> Reminder { get; set; }
     }
 }

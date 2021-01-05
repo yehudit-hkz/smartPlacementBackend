@@ -10,28 +10,6 @@ namespace placementDepartmentDAL
 {
    public static class EnumerationsManager
     {
-        public static List<CityDto> CityList()
-        {
-            List<CityDto> cityDtos;
-            using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
-            {
-                cityDtos = placementDepartmentDB.City
-                    .ProjectTo<CityDto>(AutoMapperConfiguration.config)
-                    .ToList();
-                return cityDtos;
-            }
-        }
-        public static List<LanguageDto> LanguageList()
-        {
-            List<LanguageDto> languageDtos;
-            using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
-            {
-                languageDtos = placementDepartmentDB.Language
-                    .ProjectTo<LanguageDto>(AutoMapperConfiguration.config)
-                    .ToList();
-                return languageDtos;
-            }
-        }
         public static List<ReasonForClosingThePositionDto> ReasonForClosingList()
         {
             List<ReasonForClosingThePositionDto> reasonForClosingThePositionDtos;
@@ -52,6 +30,17 @@ namespace placementDepartmentDAL
                     .ProjectTo<JobCoordinationStatusDto>(AutoMapperConfiguration.config)
                     .ToList();
                 return jobCoordinationStatusDtos;
+            }
+        }
+        public static List<PermissionDto> PermissionsList()
+        {
+            List<PermissionDto> permissionDtos;
+            using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
+            {
+                permissionDtos = placementDepartmentDB.Permission
+                    .ProjectTo<PermissionDto>(AutoMapperConfiguration.config)
+                    .ToList();
+                return permissionDtos;
             }
         }
     }

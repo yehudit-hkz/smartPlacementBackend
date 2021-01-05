@@ -15,51 +15,25 @@ namespace placementDepartmentWebAPI.Controllers
         [Route("GetAll")]
         public List<ExpertiseDto> Get()
         {
-            try
-            {
-                return ExpertiseDtoManager.ExpertiseDtoList();
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
+            return ExpertiseDtoManager.ExpertiseDtoList();
         }
-
-        // GET: api/Expertise/5
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
 
         [Route("Save")]
-        public void Post([FromBody]ExpertiseDto expertiseDto)
+        public int Post([FromBody]ExpertiseDto expertiseDto)
         {
-            try
-            {
-                ExpertiseDtoManager.newDtoExpertise(expertiseDto);
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
+            return ExpertiseDtoManager.newDtoExpertise(expertiseDto);
         }
 
-        // PUT: api/Expertise/5
-        //public void Put(int id, [FromBody]string value)
-        //{
-        //}
+        [Route("Edit")]
+        public void Put([FromBody]ExpertiseDto expertiseDto)
+        {
+            ExpertiseDtoManager.editDtoExpertise(expertiseDto);
+        }
 
         [Route("Delete")]
         public void Delete(int id)
         {
-            try
-            {
-                ExpertiseDtoManager.DeleteDtoExpertise(id);
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
+            ExpertiseDtoManager.DeleteDtoExpertise(id);
         }
     }
 }

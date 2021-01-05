@@ -10,15 +10,19 @@ namespace placementDepartmentBLL
 {
     public static class ExpertiseDtoManager
     {
-            public static List<ExpertiseDto> ExpertiseDtoList()
-            {
-                return ExpertiseManager.ExpertiseList();
-            }
-            public static void newDtoExpertise(ExpertiseDto expertiseDto)
-            {
-                ExpertiseManager.NewExpertise(expertiseDto);
-            }
-            public static void DeleteDtoExpertise(int id)
+        public static List<ExpertiseDto> ExpertiseDtoList()
+        {
+            return ExpertiseManager.ExpertiseList();
+        }
+        public static int newDtoExpertise(ExpertiseDto expertiseDto)
+        {
+            return ExpertiseManager.NewExpertise(expertiseDto);
+        }
+        public static void editDtoExpertise(ExpertiseDto expertiseDto)
+        {
+            ExpertiseManager.editExpertise(expertiseDto);
+        }
+        public static void DeleteDtoExpertise(int id)
             {
                 ExpertiseManager.DeleteExpertise(id);
             }

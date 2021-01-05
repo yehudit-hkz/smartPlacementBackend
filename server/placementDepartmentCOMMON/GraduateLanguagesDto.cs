@@ -12,8 +12,5 @@ namespace placementDepartmentCOMMON
         public int languageId { get; set; }
         public Nullable<int> level { get; set; }
         public string languageName { get; set; }
-
-        //public string graduateName { get; set; }
-
     }
 }

@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace placementDepartmentCOMMON
 {
-        public class ChartsDetails
-        {
-            public int type { get; set; }
-            public DateTime start { get; set; }
-            public DateTime end { get; set; }
-            public List<int> branches { get; set; }
-            public List<string> areas { get; set; }
+    public class ChartsDetails
+    {
+        public int type { get; set; }
+        public DateTime start { get; set; }
+        public DateTime end { get; set; }
+        public List<int> branches { get; set; }
+        public List<string> areas { get; set; }
+        public int userid { get; set; }
+        public int curUserid { get; set; }
     }
 }

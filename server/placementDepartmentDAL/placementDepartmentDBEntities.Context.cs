@@ -38,7 +38,6 @@ namespace placementDepartmentDAL
         public virtual DbSet<Language> Language { get; set; }
         public virtual DbSet<Permission> Permission { get; set; }
         public virtual DbSet<ReasonForClosingThePosition> ReasonForClosingThePosition { get; set; }
-        public virtual DbSet<Reminder> Reminder { get; set; }
         public virtual DbSet<Subject> Subject { get; set; }
         public virtual DbSet<User> User { get; set; }
     }

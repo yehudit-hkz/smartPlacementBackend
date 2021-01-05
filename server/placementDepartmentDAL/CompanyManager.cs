@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +23,6 @@ namespace placementDepartmentDAL
             //    companyDtos = placementDepartmentDB.Company
             //        .ProjectTo<CompanyDto>(AutoMapperConfiguration.config)
             //        .ToList();
-            //    //.Skip(p-1*s).Take(s)
             //    return companyDtos;
             //}
 
@@ -30,7 +31,7 @@ namespace placementDepartmentDAL
             {
                 companies = placementDepartmentDB.Company.ToList();
                 companyDtos = AutoMapperConfiguration.mapper.Map<List<CompanyDto>>(companies);
-                return companyDtos  ;
+                return companyDtos;
             }
         }
         public static List<CompanyDto> CompanyListByFilters(CompanyFilters filters)
@@ -40,21 +41,21 @@ namespace placementDepartmentDAL
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
                 companies = placementDepartmentDB.Company
-                    .Where(cmp=>
-                    (filters.mainSubject == 0  && filters.subjectByJobs == 0) ||
-                  (filters.mainSubject != 0 && cmp.mainField == filters.mainSubject) ||
-                  (filters.subjectByJobs !=0  &&
-                  cmp.Contact.
-                  Where(cnt => cnt.Job.
-                  Where(j => j.subjectId == filters.subjectByJobs)
-                  .ToList().Count > 0).ToList().Count > 0
-                  ))
+                    .Where(cmp =>
+                    (filters.mainSubject == 0 && filters.subjectByJobs == 0) ||
+                    (filters.mainSubject != 0 && cmp.mainField == filters.mainSubject) ||
+                    (filters.subjectByJobs != 0 &&
+                        cmp.Contact.
+                            Where(cnt => cnt.Job.
+                            Where(j => j.subjectId == filters.subjectByJobs).ToList().Count > 0)
+                        .ToList().Count > 0
+                    ))
                     .ToList();
                 companyDtos = AutoMapperConfiguration.mapper.Map<List<CompanyDto>>(companies);
                 return companyDtos;
             }
         }
-        
+
         public static CompanyDto CompanyById(int Id)
         {
             Company Ret;
@@ -87,9 +88,23 @@ namespace placementDepartmentDAL
         {
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
-                Company company = placementDepartmentDB.Company.Find(id);
-                placementDepartmentDB.Company.Remove(company);
-                placementDepartmentDB.SaveChanges();
+                try
+                {
+                    Company company = placementDepartmentDB.Company.Find(id);
+                    placementDepartmentDB.Company.Remove(company);
+                    placementDepartmentDB.SaveChanges();
+                }
+                catch (DbUpdateException ex)
+                {
+                    var sqlException = ex.GetBaseException() as SqlException;
+                    if (sqlException != null)
+                    {
+                        if (sqlException.Number == 547)
+                        {
+                            throw new DbUpdateException("547");
+                        }
+                    }
+                }
             }
         }
     }

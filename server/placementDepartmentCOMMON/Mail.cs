@@ -23,69 +23,82 @@ namespace placementDepartmentCOMMON
                 Host = "smtp.gmail.com",
                 Port = 587,
                 EnableSsl = false,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
                 UseDefaultCredentials = false,
                 Credentials = new NetworkCredential(fromEmail, password)// Enter senders User name and password
             };
         }
 
-        public void SendEmailToGraduates(string htmlText, string subject, string toMail )
+        public void SendEmailToGraduates(string htmlText, string subject, string toMail)
         {
             try
             {
-                AlternateView plainView =
-                    AlternateView.CreateAlternateViewFromString("Some plaintext", Encoding.UTF8, "text/plain");
-                // We have something to show in real old mail clients.
-                smtp.EnableSsl = true;
                 MailMessage mail = new MailMessage(fromEmail, toMail, subject, htmlText);
+
+                AlternateView plainView =
+                   AlternateView.CreateAlternateViewFromString("Some plaintext", Encoding.UTF8, "text/plain");
                 mail.AlternateViews.Add(plainView);
                 AlternateView htmlView =
                        AlternateView.CreateAlternateViewFromString(htmlText, Encoding.UTF8, "text/html");
-                mail.AlternateViews.Add(htmlView); // And a html attachment to make sure.
+                mail.AlternateViews.Add(htmlView); // And a html attachsmtpment to make sure.
+
                 mail.IsBodyHtml = true;
                 mail.BodyEncoding = UTF8Encoding.UTF8;
+                mail.SubjectEncoding = UTF8Encoding.UTF8;
+
+                smtp.EnableSsl = true;
 
                 smtp.Send(mail);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw;
+                throw e;
             }
         }
-        public void SendEmailCVtoContact(string htmlText, string subject,List<string> linkToCVs, string contactMail)
+        public List<FullGraduateDto> SendEmailCVtoContact(string htmlText, string subject, List<FullGraduateDto> graduates, string contactMail)
         {
+            List<FullGraduateDto> errCV = new List<FullGraduateDto>();
             try
             {
-                AlternateView plainView = AlternateView
-                .CreateAlternateViewFromString("Some plaintext", Encoding.UTF8, "text/plain");
-                // We have something to show in real old mail clients.
-                smtp.EnableSsl = true;
                 MailMessage mail = new MailMessage(fromEmail, contactMail, subject, htmlText);
+
+                AlternateView plainView =
+                     AlternateView.CreateAlternateViewFromString("Some plaintext", Encoding.UTF8, "text/plain");
                 mail.AlternateViews.Add(plainView);
-                mail.DeliveryNotificationOptions = DeliveryNotificationOptions.OnFailure;
+                AlternateView htmlView =
+                      AlternateView.CreateAlternateViewFromString(htmlText, Encoding.UTF8, "text/html");
+                mail.AlternateViews.Add(htmlView); // And a html attachment to make sure.
 
                 //Add file as attachment.
-                //var linkToCV = "ResumeFile/123456795.pdf";
-                foreach (var linkToCV in linkToCVs)
+                foreach (var graduate in graduates)
                 {
-                    var filePath = HttpContext.Current.Server.MapPath("~/" + linkToCV);
-                    mail.Attachments.Add(new Attachment(filePath));
+                    try
+                    {
+                        var filePath = HttpContext.Current.Server.MapPath("~/" + graduate.linkToCV);
+                        mail.Attachments.Add(new Attachment(filePath));
+                    }
+                    catch (Exception)
+                    {
+                        errCV.Add(graduate);
+                    }
+
                 }
-                
-               AlternateView htmlView =
-                       AlternateView.CreateAlternateViewFromString(htmlText, Encoding.UTF8, "text/html");
-                mail.AlternateViews.Add(htmlView); // And a html attachment to make sure.
+
                 mail.IsBodyHtml = true;
                 mail.BodyEncoding = UTF8Encoding.UTF8;
-                
+                mail.SubjectEncoding = UTF8Encoding.UTF8;
+
+                smtp.EnableSsl = true;
+
                 smtp.Send(mail);
             }
             catch (Exception)
             {
                 throw;
             }
-
+            return errCV;
         }
-      
+
 
     }
 }

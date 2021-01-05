@@ -14,9 +14,13 @@ namespace placementDepartmentBLL
         {
             return BranchManager.BranchList();
         }
-        public static void newDtoBranch(BranchDto branchDto)
+        public static int newDtoBranch(BranchDto branchDto)
         {
-            BranchManager.NewBranch(branchDto);
+           return BranchManager.NewBranch(branchDto);
+        }
+        public static void editDtoBranch(BranchDto branchDto)
+        {
+            BranchManager.editBranch(branchDto);
         }
         public static void DeleteDtoBranch(int id )
         {

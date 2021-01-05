@@ -1,4 +1,5 @@
-﻿using System;
+﻿using placementDepartmentWebAPI.util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
@@ -10,8 +11,6 @@ namespace placementDepartmentWebAPI
     {
         public static void Register(HttpConfiguration config)
         {
-
-
             // Web API configuration and services
             config.MapHttpAttributeRoutes();
 
@@ -23,6 +22,9 @@ namespace placementDepartmentWebAPI
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            //add auth filter
+            config.Filters.Add(new authFilter());
         }
     }
 }

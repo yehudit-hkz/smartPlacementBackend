@@ -10,16 +10,22 @@ namespace placementDepartmentBLL
 {
     public static class JobsCoordinationDtoManager
     {
-        public static List<CoordinatingJobsForGraduatesDto> JobsCoordinationDtoListByGraduate(string idGraduate)
+        public static ApiRes<CoordinatingJobsForGraduatesDto> JobCoordinationDtoLazyList(JobCoordinationFilters filters, string sort, int page, int size)
         {
-            return JobsCoordinationManager.JobsCoordinationListByGraduate(idGraduate);
+            return JobsCoordinationManager.JobCoordinationLazyList(filters, sort, page, size);
+        }
+        public static List<CoordinatingJobsForGraduatesDto> JobsCoordinationDtoListByGraduate(string idGraduate, int idUser)
+        {
+            return JobsCoordinationManager.JobsCoordinationListByGraduate(idGraduate,idUser);
         }
         public static List<CoordinatingJobsForGraduatesDto> JobsCoordinationDtoByJob(int IdJob)
         {
             return JobsCoordinationManager.JobsCoordinationListByJob(IdJob);
         }
-        public static void NewJobsCoordinationDto(int idJob, List<FullGraduateDto> fullGraduateDtos)
+
+        public static List<string> NewJobsCoordinationDto(int idJob, List<FullGraduateDto> fullGraduateDtos, int userId, string byEmail, string password,string url)
         {
+            JobDto job = JobManager.JobById(idJob);
             List<CoordinatingJobsForGraduates> coordinatingJobs = new List<CoordinatingJobsForGraduates>();
             foreach (FullGraduateDto graduate in fullGraduateDtos)
             {
@@ -28,12 +34,13 @@ namespace placementDepartmentBLL
                     {
                         candidateId = graduate.Id,
                         jobId = idJob,
+                        placementStatus = 1,
                         dateReceived = DateTime.Now,
                         lastUpdateDate = DateTime.Now
                     });
             }
             coordinatingJobs= JobsCoordinationManager.NewJobsCoordination(coordinatingJobs);
-            JobDto job= JobManager.JobById(idJob);
+
             for (int i = 0; i < coordinatingJobs.Count; i++)
             {
                 if(fullGraduateDtos[i].Id==coordinatingJobs[i].candidateId)
@@ -41,7 +48,7 @@ namespace placementDepartmentBLL
                     coordinatingJobs[i].Graduate =
                         new Graduate()
                         {
-                            firstName = fullGraduateDtos[i].firstName,
+                           firstName = fullGraduateDtos[i].firstName,
                             linkToCV = fullGraduateDtos[i].linkToCV,
                             email = fullGraduateDtos[i].email
                         };
@@ -52,37 +59,45 @@ namespace placementDepartmentBLL
                     title = job.title
                 };
             }
-            MailManager.sendjobOfferToGraduates(coordinatingJobs);
-        }
-        public static void sendingCandidateToContact(string massege, List<CoordinatingJobsForGraduatesDto> coordinatings)
-        {
-            List<FullGraduateDto> graduates = new List<FullGraduateDto>();
-            foreach (var item in coordinatings)
-            {
-                graduates.Add(GraduateManager.GraduateById(item.candidateId));
-            }
-            List<string> detailes = JobManager.get0TitleAnd1ContactMailOfJobById(coordinatings[0].jobId);
-            MailManager.sendCVCandidateToContact(detailes[0],massege, graduates,detailes[1]);
-            foreach (var crd in coordinatings)
-            {
-                JobsCoordinationDtoUpdate(crd.Id, "נשלחו קו\"ח");
-            }
-            JobManager.JobUpdate(coordinatings[0].jobId, true);
 
+            MailManager mail = new MailManager(byEmail, password, url);
+            var errList = mail.sendjobOfferToGraduates(coordinatingJobs,userId);
+
+            //delete JobsCoordination feild sending offer and return
+            JobsCoordinationManager.DeleteJobsCoordination(errList.Select(crd => crd.Id).ToList());
+            return errList.Select(crd=>$"{crd.Graduate.firstName} {crd.Graduate.lastName}").ToList();
         }
+       
         public static void JobsCoordinationDtoEditing(CoordinatingJobsForGraduatesDto JobsCoordinationDto)
         {
-            JobsCoordinationManager.JobsCoordinationEditing(JobsCoordinationDto);
+            JobsCoordinationManager.JobsCoordinationUpdate(
+                new List<int>() { JobsCoordinationDto.Id }, JobsCoordinationDto.Status.Id
+                );
         }
-
-        public static void JobsCoordinationDtoUpdate( int idCRD,string status)
+        public static void JobsCoordinationDtoUpdate( int idCRD,int status)
         {
-            JobsCoordinationManager.JobsCoordinationUpdate(idCRD,status);
+            JobsCoordinationManager.JobsCoordinationUpdate(new List<int>() { idCRD },status);
         }
 
-        //public static void DeleteJobsCoordinationDto(int id)
-        //{
-        //    JobsCoordinationManager.DeleteJobsCoordination(id);
-        //}
+        public static List<FullGraduateDto> sendingCandidateToContact(string massege, List<CoordinatingJobsForGraduatesDto> coordinatings, int userId, string byEmail, string password, string fldCVPath)
+        {
+            List<FullGraduateDto> graduates = GraduateManager.GraduateListById(
+                coordinatings.Select(c => c.candidateId).ToList());
+
+            List<string> detailes = JobManager.get0TitleAnd1ContactMailOfJobById(coordinatings[0].jobId);
+
+            MailManager mail = new MailManager(byEmail,password,fldCVPath);
+            graduates = mail.sendCVCandidateToContact(detailes[0], massege, graduates, detailes[1], userId);
+
+            coordinatings.RemoveAll(c => graduates.Any(g => g.Id == c.candidateId));
+
+            JobsCoordinationManager.JobsCoordinationUpdate(
+                coordinatings.Select(c => c.Id).ToList()
+                , 3); //send CV
+            JobManager.JobUpdate(coordinatings[0].jobId, true);
+
+            return graduates;
+
+        }
     }
 }

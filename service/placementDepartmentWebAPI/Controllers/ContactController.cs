@@ -15,66 +15,31 @@ namespace placementDepartmentWebAPI.Controllers
         [Route("GetByCompany")]
         public List<ContactDto> GetByCompany(int idCompany)
         {
-            try
-            {
-                return ContactDtoManager.ContactDtoListByCompany(idCompany);
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
+            return ContactDtoManager.ContactDtoListByCompany(idCompany);
         }
 
         [Route("GetById")]
         public ContactDto GetById(int id)
         {
-            try
-            {
-                return ContactDtoManager.ContactDtoById(id);
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
+            return ContactDtoManager.ContactDtoById(id);
         }
 
         [Route("Save")]
         public void Post([FromBody]ContactDto contactDto)
         {
-            try
-            {
-                ContactDtoManager.NewContactDto(contactDto);
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
+            ContactDtoManager.NewContactDto(contactDto);
         }
 
         [Route("Edit")]
         public void Put([FromBody]ContactDto contactDto)
         {
-            try
-            {
-                ContactDtoManager.ContactDtoEditing(contactDto);
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
+            ContactDtoManager.ContactDtoEditing(contactDto);
         }
 
         [Route("Delete")]
         public void Delete(int id)
         {
-            try
-            {
-                ContactDtoManager.DeleteContactDto(id);
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
+            ContactDtoManager.DeleteContactDto(id);
         }
     }
 }

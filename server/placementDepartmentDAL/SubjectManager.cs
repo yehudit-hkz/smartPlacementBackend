@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,12 +24,23 @@ namespace placementDepartmentDAL
                 return SubjectDtos;
             }
         }
-        public static void NewSubject(SubjectDto SubjectDto)
+        public static int NewSubject(SubjectDto SubjectDto)
         {
             Subject Subject = AutoMapperConfiguration.mapper.Map<Subject>(SubjectDto);
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
-                placementDepartmentDB.Subject.Add(Subject);
+                Subject = placementDepartmentDB.Subject.Add(Subject);
+                placementDepartmentDB.SaveChanges();
+                return Subject.Id;
+            }
+        }
+        public static void editSubject(SubjectDto SubjectDto)
+        {
+            Subject Subject = AutoMapperConfiguration.mapper.Map<Subject>(SubjectDto);
+            using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
+            {
+                placementDepartmentDB.Subject.Attach(Subject);
+                placementDepartmentDB.Entry(Subject).State = EntityState.Modified;
                 placementDepartmentDB.SaveChanges();
             }
         }
@@ -34,9 +48,23 @@ namespace placementDepartmentDAL
         {
             using (placementDepartmentDBEntities placementDepartmentDB = new placementDepartmentDBEntities())
             {
-                Subject Subject = placementDepartmentDB.Subject.Find(id);
-                placementDepartmentDB.Subject.Remove(Subject);
-                placementDepartmentDB.SaveChanges();
+                try
+                {
+                    Subject Subject = placementDepartmentDB.Subject.Find(id);
+                    placementDepartmentDB.Subject.Remove(Subject);
+                    placementDepartmentDB.SaveChanges();
+                }
+                catch (DbUpdateException ex)
+                {
+                    var sqlException = ex.GetBaseException() as SqlException;
+                    if (sqlException != null)
+                    {
+                        if (sqlException.Number == 547)
+                        {
+                            throw new DbUpdateException("547");
+                        }
+                    }
+                }
             }
         }
     }

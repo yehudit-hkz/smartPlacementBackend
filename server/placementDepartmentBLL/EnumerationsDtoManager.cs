@@ -10,14 +10,6 @@ namespace placementDepartmentBLL
 {
     public static class EnumerationsDtoManager
     {
-        public static List<CityDto> CityDtoList()
-        {
-            return EnumerationsManager.CityList();
-        }
-        public static List<LanguageDto> LanguageDtoList()
-        {
-            return EnumerationsManager.LanguageList();
-        }
         public static List<ReasonForClosingThePositionDto> ReasonForClosingDtoList()
         {
             return EnumerationsManager.ReasonForClosingList();
@@ -25,6 +17,10 @@ namespace placementDepartmentBLL
         public static List<JobCoordinationStatusDto> JobCoordinationStatusDtoList()
         {
             return EnumerationsManager.JobCoordinationStatusList();
+        }
+        public static List<PermissionDto> PermissionsDtoList()
+        {
+            return EnumerationsManager.PermissionsList();
         }
     }
 }

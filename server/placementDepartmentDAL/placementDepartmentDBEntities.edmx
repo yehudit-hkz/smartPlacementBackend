@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="placementDepartmentDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="placementDepartmentDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Branch">
           <Key>
             <PropertyRef Name="Id" />
@@ -120,7 +120,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="description" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Language">
@@ -134,24 +134,15 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="description" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="ReasonForClosingThePosition">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="description" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Reminder">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="userId" Type="int" Nullable="false" />
-          <Property Name="description" Type="ntext" Nullable="false" />
-          <Property Name="dateTime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Subject">
           <Key>
@@ -175,8 +166,10 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="isInitialPassword" Type="bit" Nullable="false" />
           <Property Name="permissionId" Type="int" Nullable="false" />
+          <Property Name="isActive" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK__Company__city__607251E5">
           <End Role="City" Type="Self.City" Multiplicity="1" />
@@ -202,8 +195,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Contact__IDCompa__65370702">
-          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+        <Association Name="FK__Contact__company__7073AF84">
+          <End Role="Company" Type="Self.Company" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Company">
@@ -214,7 +209,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Coordinat__gradu__1C873BEC">
+        <Association Name="FK__Coordinat__candi__6E8B6712">
           <End Role="Graduate" Type="Self.Graduate" Multiplicity="1" />
           <End Role="CoordinatingJobsForGraduates" Type="Self.CoordinatingJobsForGraduates" Multiplicity="*" />
           <ReferentialConstraint>
@@ -226,7 +221,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Coordinat__jobId__32767D0B">
+        <Association Name="FK__Coordinat__jobId__52E34C9D">
           <End Role="Job" Type="Self.Job" Multiplicity="1" />
           <End Role="CoordinatingJobsForGraduates" Type="Self.CoordinatingJobsForGraduates" Multiplicity="*" />
           <ReferentialConstraint>
@@ -238,7 +233,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Coordinat__place__2F9A1060">
+        <Association Name="FK__Coordinat__place__6D9742D9">
           <End Role="JobCoordinationStatus" Type="Self.JobCoordinationStatus" Multiplicity="1" />
           <End Role="CoordinatingJobsForGraduates" Type="Self.CoordinatingJobsForGraduates" Multiplicity="*" />
           <ReferentialConstraint>
@@ -286,8 +281,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__GraduateL__gradu__2057CCD0">
-          <End Role="Graduate" Type="Self.Graduate" Multiplicity="1" />
+        <Association Name="FK__GraduateL__gradu__7167D3BD">
+          <End Role="Graduate" Type="Self.Graduate" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="GraduateLanguages" Type="Self.GraduateLanguages" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Graduate">
@@ -310,7 +307,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Job__contactId__3552E9B6">
+        <Association Name="FK__Job__contactId__725BF7F6">
           <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
           <End Role="Job" Type="Self.Job" Multiplicity="*" />
           <ReferentialConstraint>
@@ -322,7 +319,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Job__gettingId__336AA144">
+        <Association Name="FK__Job__gettingId__55BFB948">
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Job" Type="Self.Job" Multiplicity="*" />
           <ReferentialConstraint>
@@ -334,7 +331,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Job__handlesId__345EC57D">
+        <Association Name="FK__Job__handlesId__56B3DD81">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Job" Type="Self.Job" Multiplicity="*" />
           <ReferentialConstraint>
@@ -346,7 +343,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Job__reasonForCl__373B3228">
+        <Association Name="FK__Job__reasonForCl__67DE6983">
           <End Role="ReasonForClosingThePosition" Type="Self.ReasonForClosingThePosition" Multiplicity="0..1" />
           <End Role="Job" Type="Self.Job" Multiplicity="*" />
           <ReferentialConstraint>
@@ -370,20 +367,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reminder__userId__73852659">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Reminder" Type="Self.Reminder" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Reminder">
-              <PropertyRef Name="userId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SubjectsF__exper__27F8EE98">
-          <End Role="Expertise" Type="Self.Expertise" Multiplicity="1" />
+        <Association Name="FK__SubjectsF__exper__73501C2F">
+          <End Role="Expertise" Type="Self.Expertise" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="SubjectsForExpertises" Type="Self.SubjectsForExpertises" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Expertise">
@@ -394,8 +381,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SubjectsF__subje__382F5661">
-          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+        <Association Name="FK__SubjectsF__subje__74444068">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="SubjectsForExpertises" Type="Self.SubjectsForExpertises" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Subject">
@@ -406,7 +395,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__User__permission__58D1301D">
+        <Association Name="FK__User__permission__6ABAD62E">
           <End Role="Permission" Type="Self.Permission" Multiplicity="1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
@@ -432,7 +421,6 @@
           <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Permission" EntityType="Self.Permission" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ReasonForClosingThePosition" EntityType="Self.ReasonForClosingThePosition" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Reminder" EntityType="Self.Reminder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubjectsForExpertises" EntityType="Self.SubjectsForExpertises" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
@@ -444,19 +432,19 @@
             <End Role="Subject" EntitySet="Subject" />
             <End Role="Company" EntitySet="Company" />
           </AssociationSet>
-          <AssociationSet Name="FK__Contact__IDCompa__65370702" Association="Self.FK__Contact__IDCompa__65370702">
+          <AssociationSet Name="FK__Contact__company__7073AF84" Association="Self.FK__Contact__company__7073AF84">
             <End Role="Company" EntitySet="Company" />
             <End Role="Contact" EntitySet="Contact" />
           </AssociationSet>
-          <AssociationSet Name="FK__Coordinat__gradu__1C873BEC" Association="Self.FK__Coordinat__gradu__1C873BEC">
+          <AssociationSet Name="FK__Coordinat__candi__6E8B6712" Association="Self.FK__Coordinat__candi__6E8B6712">
             <End Role="Graduate" EntitySet="Graduate" />
             <End Role="CoordinatingJobsForGraduates" EntitySet="CoordinatingJobsForGraduates" />
           </AssociationSet>
-          <AssociationSet Name="FK__Coordinat__jobId__32767D0B" Association="Self.FK__Coordinat__jobId__32767D0B">
+          <AssociationSet Name="FK__Coordinat__jobId__52E34C9D" Association="Self.FK__Coordinat__jobId__52E34C9D">
             <End Role="Job" EntitySet="Job" />
             <End Role="CoordinatingJobsForGraduates" EntitySet="CoordinatingJobsForGraduates" />
           </AssociationSet>
-          <AssociationSet Name="FK__Coordinat__place__2F9A1060" Association="Self.FK__Coordinat__place__2F9A1060">
+          <AssociationSet Name="FK__Coordinat__place__6D9742D9" Association="Self.FK__Coordinat__place__6D9742D9">
             <End Role="JobCoordinationStatus" EntitySet="JobCoordinationStatus" />
             <End Role="CoordinatingJobsForGraduates" EntitySet="CoordinatingJobsForGraduates" />
           </AssociationSet>
@@ -472,7 +460,7 @@
             <End Role="Expertise" EntitySet="Expertise" />
             <End Role="Graduate" EntitySet="Graduate" />
           </AssociationSet>
-          <AssociationSet Name="FK__GraduateL__gradu__2057CCD0" Association="Self.FK__GraduateL__gradu__2057CCD0">
+          <AssociationSet Name="FK__GraduateL__gradu__7167D3BD" Association="Self.FK__GraduateL__gradu__7167D3BD">
             <End Role="Graduate" EntitySet="Graduate" />
             <End Role="GraduateLanguages" EntitySet="GraduateLanguages" />
           </AssociationSet>
@@ -480,19 +468,19 @@
             <End Role="Language" EntitySet="Language" />
             <End Role="GraduateLanguages" EntitySet="GraduateLanguages" />
           </AssociationSet>
-          <AssociationSet Name="FK__Job__contactId__3552E9B6" Association="Self.FK__Job__contactId__3552E9B6">
+          <AssociationSet Name="FK__Job__contactId__725BF7F6" Association="Self.FK__Job__contactId__725BF7F6">
             <End Role="Contact" EntitySet="Contact" />
             <End Role="Job" EntitySet="Job" />
           </AssociationSet>
-          <AssociationSet Name="FK__Job__gettingId__336AA144" Association="Self.FK__Job__gettingId__336AA144">
+          <AssociationSet Name="FK__Job__gettingId__55BFB948" Association="Self.FK__Job__gettingId__55BFB948">
             <End Role="User" EntitySet="User" />
             <End Role="Job" EntitySet="Job" />
           </AssociationSet>
-          <AssociationSet Name="FK__Job__handlesId__345EC57D" Association="Self.FK__Job__handlesId__345EC57D">
+          <AssociationSet Name="FK__Job__handlesId__56B3DD81" Association="Self.FK__Job__handlesId__56B3DD81">
             <End Role="User" EntitySet="User" />
             <End Role="Job" EntitySet="Job" />
           </AssociationSet>
-          <AssociationSet Name="FK__Job__reasonForCl__373B3228" Association="Self.FK__Job__reasonForCl__373B3228">
+          <AssociationSet Name="FK__Job__reasonForCl__67DE6983" Association="Self.FK__Job__reasonForCl__67DE6983">
             <End Role="ReasonForClosingThePosition" EntitySet="ReasonForClosingThePosition" />
             <End Role="Job" EntitySet="Job" />
           </AssociationSet>
@@ -500,25 +488,20 @@
             <End Role="Subject" EntitySet="Subject" />
             <End Role="Job" EntitySet="Job" />
           </AssociationSet>
-          <AssociationSet Name="FK__Reminder__userId__73852659" Association="Self.FK__Reminder__userId__73852659">
-            <End Role="User" EntitySet="User" />
-            <End Role="Reminder" EntitySet="Reminder" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SubjectsF__exper__27F8EE98" Association="Self.FK__SubjectsF__exper__27F8EE98">
+          <AssociationSet Name="FK__SubjectsF__exper__73501C2F" Association="Self.FK__SubjectsF__exper__73501C2F">
             <End Role="Expertise" EntitySet="Expertise" />
             <End Role="SubjectsForExpertises" EntitySet="SubjectsForExpertises" />
           </AssociationSet>
-          <AssociationSet Name="FK__SubjectsF__subje__382F5661" Association="Self.FK__SubjectsF__subje__382F5661">
+          <AssociationSet Name="FK__SubjectsF__subje__74444068" Association="Self.FK__SubjectsF__subje__74444068">
             <End Role="Subject" EntitySet="Subject" />
             <End Role="SubjectsForExpertises" EntitySet="SubjectsForExpertises" />
           </AssociationSet>
-          <AssociationSet Name="FK__User__permission__58D1301D" Association="Self.FK__User__permission__58D1301D">
+          <AssociationSet Name="FK__User__permission__6ABAD62E" Association="Self.FK__User__permission__6ABAD62E">
             <End Role="Permission" EntitySet="Permission" />
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="placementDepartmentDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -691,16 +674,6 @@
           <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Job" Relationship="Self.FK__Job__reasonForCl__373B3228" FromRole="ReasonForClosingThePosition" ToRole="Job" />
         </EntityType>
-        <EntityType Name="Reminder">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="userId" Type="Int32" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="dateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="User" Relationship="Self.FK__Reminder__userId__73852659" FromRole="Reminder" ToRole="User" />
-        </EntityType>
         <EntityType Name="Subject">
           <Key>
             <PropertyRef Name="Id" />
@@ -718,12 +691,13 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="permissionId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Job" Relationship="Self.FK__Job__gettingId__336AA144" FromRole="User" ToRole="Job" />
           <NavigationProperty Name="Job1" Relationship="Self.FK__Job__handlesId__345EC57D" FromRole="User" ToRole="Job" />
           <NavigationProperty Name="Permission" Relationship="Self.FK__User__permission__58D1301D" FromRole="User" ToRole="Permission" />
-          <NavigationProperty Name="Reminder" Relationship="Self.FK__Reminder__userId__73852659" FromRole="User" ToRole="Reminder" />
+          <Property Name="isInitialPassword" Type="Boolean" Nullable="false" />
+          <Property Name="isActive" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK__Graduate__branch__4B7734FF">
           <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
@@ -929,18 +903,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Reminder__userId__73852659">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Reminder" Type="Self.Reminder" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Reminder">
-              <PropertyRef Name="userId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="SubjectsForExpertises">
           <End Role="Expertise" Type="Self.Expertise" Multiplicity="*" />
           <End Role="Subject" Type="Self.Subject" Multiplicity="*" />
@@ -959,7 +921,6 @@
           <EntitySet Name="Language" EntityType="Self.Language" />
           <EntitySet Name="Permission" EntityType="Self.Permission" />
           <EntitySet Name="ReasonForClosingThePosition" EntityType="Self.ReasonForClosingThePosition" />
-          <EntitySet Name="Reminder" EntityType="Self.Reminder" />
           <EntitySet Name="Subject" EntityType="Self.Subject" />
           <EntitySet Name="User" EntityType="Self.User" />
           <AssociationSet Name="FK__Graduate__branch__4B7734FF" Association="Self.FK__Graduate__branch__4B7734FF">
@@ -1029,10 +990,6 @@
           <AssociationSet Name="FK__User__permission__58D1301D" Association="Self.FK__User__permission__58D1301D">
             <End Role="Permission" EntitySet="Permission" />
             <End Role="User" EntitySet="User" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Reminder__userId__73852659" Association="Self.FK__Reminder__userId__73852659">
-            <End Role="User" EntitySet="User" />
-            <End Role="Reminder" EntitySet="Reminder" />
           </AssociationSet>
           <AssociationSet Name="SubjectsForExpertises" Association="Self.SubjectsForExpertises">
             <End Role="Expertise" EntitySet="Expertise" />
@@ -1196,16 +1153,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Reminder">
-            <EntityTypeMapping TypeName="placementDepartmentDBModel.Reminder">
-              <MappingFragment StoreEntitySet="Reminder">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="userId" ColumnName="userId" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="dateTime" ColumnName="dateTime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Subject">
             <EntityTypeMapping TypeName="placementDepartmentDBModel.Subject">
               <MappingFragment StoreEntitySet="Subject">
@@ -1217,6 +1164,8 @@
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="placementDepartmentDBModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="isInitialPassword" ColumnName="isInitialPassword" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="email" ColumnName="email" />

@@ -1,23 +1,40 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
+using System.Web;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using placementDepartmentCOMMON;
 using placementDepartmentDAL;
+using System.Net.Http;
 
 namespace placementDepartmentBLL
 {
-    public static class MailManager
+    public class MailManager
     {
+        private string host; //url for link or path for CV file
+        private string byEmail;
+        private string password;
+
+        public MailManager(string byEmail, string password, string host)
+        {
+            this.byEmail = byEmail;
+            this.password = password;
+            this.host = host;
+
+        }
+
         static string fontStyle = @"
                         .text{
                             font-family:Arial,Verdana;
-                            color:rgb(41, 23, 121);
+                            color:rgb(20, 84, 41);
+                            font-size:16px;
                         }";
         static string OKBottunCSS = @"
                 .myButton {
-                        background-color:#6ddf8b;
+                        background-color:rgb(250, 221, 75);
                         border:0px;
                         border-radius:5px;
                         display:inline-block;
@@ -28,13 +45,15 @@ namespace placementDepartmentBLL
 	                    text-decoration:none;
                         }
                         .myButton:hover {
-                            background-color: #3aba5c;
+                            background-color: rgb(255, 214, 0);
                         }
                         .myButton:active {
                             position: relative;
                             top: 1px;
                         }";
-        private static string jobOffer(string descJob, string graduateId, string graduateName,bool CV,int idCRD)
+
+
+        private string Activated(string graduateId, string graduateName, bool CV, string sendName)
         {
             string htmlText = $@"
                     <head>
@@ -43,51 +62,133 @@ namespace placementDepartmentBLL
                             {fontStyle}
                       </style>
                     </head>
-                    <body style='width:60%;text-align:right;' class='text'>";
+                    <body style='width:60%;text-align:right;direction: rtl;' class='text'>";
             htmlText += "בס\"ד<br/><br/>";
             htmlText += $@"שלום {graduateName},<br/>
-                        <pre class='text'>
-{descJob}
-
-במידה ורלוונטי עבורך, נא אשר\י את מועמדותך:
-                       </pre>
-                       <div style = 'text-align:center;' >
-                            <a href='http://localhost:55968/api/Email?idCRD=" + idCRD + "&idGRD="+graduateId+ $@"&status=נענה%20להצעה'>
+                        <div style='font-family:inherit;' class='text'>
+<br/><br/>
+מחלקת ההשמה של המרכז החרדי, מעדכנת את מאגרי המידע אודות התלמידים \ בוגרים בהקשר לנסיונות איתור משרות מתאימות בעתיד.
+<br/><br/>
+ במדה והנך מעוניין\ת להיכלל במאגר הפעיל כזמין למשרות, נא אשר\י את הרשמתך
+<br/><br/>
+תוכל לעדכן את הסטטוס בכל עת על ידי שליחת הודעה יזומה למחלקת ההשמה.
+<br/><br/>";
+            htmlText += $@"</div><br/><div style = 'text-align:center;' >
+                            <a href='{host}/api/Email/Activated?idGRD={graduateId}'>
                                 <button class='myButton'>אישור</button>
                             </a>
-                        </div><br/><br/>";
-            htmlText += !CV ? "במערכת אין קו\"ח שלך נא צרפ\\י אותם בעת רישומך אחרת לא נוכל לטפל במועמדותך<br/>" : "";
-            htmlText +=$@" בברכת הצלחה תמיד<br/>
-                        יהודית.<br/>
+                        </div><br/>";
+            htmlText += $@" בברכת הצלחה תמיד<br/>{sendName}
                     </body>";
 
             return htmlText;
         }
-        public static void sendjobOfferToGraduates(List<CoordinatingJobsForGraduates> coordinatingJob)
+
+        private string jobOffer(string descJob, string graduateId, string graduateName,bool CV,int idCRD, string sendName)
         {
-            Mail mail = new Mail();
+            string htmlText = $@"
+                    <head>
+                        <style>
+                            {OKBottunCSS}
+                            {fontStyle}
+                      </style>
+                    </head>
+                    <body style='width:60%;text-align:right;direction: rtl;' class='text'>";
+            htmlText += "בס\"ד<br/><br/>";
+            htmlText += $@"שלום {graduateName},<br/>
+                        <div class='text'>
+<br/>
+{descJob}
+<br/><br/><br/>
+במידה ורלוונטי עבורך, נא אשר\י את מועמדותך:
+<br/><br/>";
+            htmlText += !CV ? "**במערכת אין קו\"ח שלך נא צרפ\\י אותם בעת רישומך אחרת לא נוכל לטפל במועמדותך<br/>" : "";
+            htmlText += $@"</div><br/><div style = 'text-align:center;' >
+                            <a href='{host}/api/Email/AcceptedOffer?idCRD=" + idCRD + "&idGRD="+graduateId+ $@"&status=2'>
+                                <button class='myButton'>אישור</button>
+                            </a>
+                        </div><br/>";
+            htmlText +=$@" בברכת הצלחה תמיד<br/>{sendName}
+                    </body>";
+
+            return htmlText;
+        }
+
+
+        public List<string> sendActivatedToGraduates(List<FullGraduateDto> graduateDtos, int userId)
+        {
+            UserDto user = UserManager.UserById(userId);
+            MailConnection mail = new MailConnection(user.email,byEmail,password);
+            List<string> errLine = new List<string>();
+            foreach (var graduate in graduateDtos)
+            {
+                try
+                {
+                    mail.sendMessageToGraduates(
+                      graduate.email,
+                      "הצטרפות למחלקת השמה",
+                      Activated(graduate.Id, graduate.firstName, graduate.linkToCV != null, user.name)
+                      );
+                }
+                catch (Exception)
+                {
+                    errLine.Add($"{graduate.firstName} {graduate.lastName}");
+                }
+            }
+            if (errLine.Count == graduateDtos.Count)
+                throw new Exception();
+            return errLine;
+        }
+        public List<CoordinatingJobsForGraduates> sendjobOfferToGraduates(List<CoordinatingJobsForGraduates> coordinatingJob, int userId)
+        {
+            UserDto user = UserManager.UserById(userId);
+            MailConnection mail = new MailConnection(user.email,byEmail,password);
+            List<CoordinatingJobsForGraduates> errLine = new List<CoordinatingJobsForGraduates>();
             foreach (var crd in coordinatingJob)
             {
-                mail.SendEmailToGraduates(
-                    jobOffer(crd.Job.description, crd.candidateId, crd.Graduate.firstName, crd.Graduate.linkToCV != null, crd.Id),
+                try
+                {
+                    mail.sendMessageToGraduates(
+                    crd.Graduate.email,
                     crd.Job.title,
-                    crd.Graduate.email);
+                    jobOffer(
+                        Regex.Replace(crd.Job.description, @"\r\n?|\n", "<br/>"), 
+                        crd.candidateId, 
+                        crd.Graduate.firstName, 
+                        crd.Graduate.linkToCV != null, 
+                        crd.Id, 
+                        user.name)
+                    );
+                }
+                catch (Exception)
+                {
+                    errLine.Add(crd);
+                }
             }
+            if (errLine.Count == coordinatingJob.Count)
+                throw new Exception();
+            return errLine;
         }
-        public static void sendCVCandidateToContact(string title, string massege, List<FullGraduateDto> graduates, string contactMail)
+        public List<FullGraduateDto> sendCVCandidateToContact(string title, string massege, List<FullGraduateDto> graduates, string contactMail, int userId)
         {
-            Mail mail = new Mail();
-            mail.SendEmailCVtoContact(
-                $@"
+            UserDto user = UserManager.UserById(userId);
+            MailConnection mail = new MailConnection(user.email,byEmail,password);
+            List<FullGraduateDto> disSendCV =
+            mail.sendCVtoContact(
+                    contactMail,
+                    "מועמדים המרכז החרדי למשרה " + title,
+                    $@"
                     <head>
                         <style>
                             {fontStyle}
                       </style>
                     </head>
-                <pre class='text'>{massege}</pre>",
-                "מועמדים המרכז החרדי למשרה "+title,
-                graduates.Select(g => g.linkToCV).ToList(),
-                contactMail);
+                    <div class='text'>{massege}</div>",
+                    graduates,
+                    host);
+            if (disSendCV.Count == graduates.Count)
+                throw new Exception();
+            return disSendCV;
         }
     }
 }

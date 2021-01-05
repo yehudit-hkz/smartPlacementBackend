@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using placementDepartmentCOMMON;
 using placementDepartmentBLL;
+using System.Web;
 
 namespace placementDepartmentWebAPI.Controllers
 {
@@ -14,35 +15,8 @@ namespace placementDepartmentWebAPI.Controllers
         // GET: api/Chart
         public List<ChartData> Get([FromUri]ChartsDetails chartsDetails)
         {
-            try
-            {
-                return ChartBLManager.GetChart(chartsDetails);
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
+            chartsDetails.curUserid = Int32.Parse(HttpContext.Current.User.Identity.Name);
+            return ChartBLManager.GetChart(chartsDetails);
         }
-
-        //// GET: api/Chart/5
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
-        //// POST: api/Chart
-        //public void Post([FromBody]string value)
-        //{
-        //}
-
-        //// PUT: api/Chart/5
-        //public void Put(int id, [FromBody]string value)
-        //{
-        //}
-
-        //// DELETE: api/Chart/5
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

@@ -15,82 +15,40 @@ namespace placementDepartmentWebAPI.Controllers
         [Route("GetAll")]
         public List<CompanyDto> Get()
         {
-            try
-            {
-                return CompanyDtoManager.CompanyDtoList();
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
+            return CompanyDtoManager.CompanyDtoList();
         }
         [Route("GetByFilters")]
         public List<CompanyDto> Get([FromUri]CompanyFilters filters)
         {
-            try
+            if (filters == null)
             {
-                if (filters == null)
-                {
-                    return Get();
-                }
-                return CompanyDtoManager.CompanyDtoListByFilters(filters);
+                return Get();
             }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
+            return CompanyDtoManager.CompanyDtoListByFilters(filters);
         }
 
         [Route("GetById")]
         public CompanyDto Get(int id)
         {
-            try
-            {
-                return CompanyDtoManager.CompanyDtoById(id);
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
+            return CompanyDtoManager.CompanyDtoById(id);
         }
 
         [Route("Save")]
         public void Post([FromBody]CompanyDto companyDto)
         {
-            try
-            {
-                CompanyDtoManager.NewCompanyDto(companyDto);
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
+            CompanyDtoManager.NewCompanyDto(companyDto);
         }
 
         [Route("Edit")]
         public void Put([FromBody] CompanyDto companyDto)
         {
-            try
-            {
-                CompanyDtoManager.CompanyDtoEditing(companyDto);
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
+            CompanyDtoManager.CompanyDtoEditing(companyDto);
         }
 
         [Route("Delete")]
         public void Delete(int id)
         {
-            try
-            {
-                CompanyDtoManager.DeleteCompanyDto(id);
-            }
-            catch (Exception)
-            {
-                throw new HttpResponseException(HttpStatusCode.InternalServerError);
-            }
+            CompanyDtoManager.DeleteCompanyDto(id);
         }
     }
 }

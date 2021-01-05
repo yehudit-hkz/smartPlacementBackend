@@ -14,9 +14,13 @@ namespace placementDepartmentBLL
         {
             return SubjectManager.SubjectList();
         }
-        public static void newDtoSubject(SubjectDto subjectDto)
+        public static int newDtoSubject(SubjectDto subjectDto)
         {
-            SubjectManager.NewSubject(subjectDto);
+            return SubjectManager.NewSubject(subjectDto);
+        }
+        public static void editDtoSubject(SubjectDto subjectDto)
+        {
+            SubjectManager.editSubject(subjectDto);
         }
         public static void DeleteDtoSubject(int id)
         {

@@ -1,0 +1,16 @@
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentCOMMON\bin\Release\placementDepartmentCOMMON.dll
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentCOMMON\bin\Release\placementDepartmentCOMMON.pdb
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentCOMMON\bin\Release\Microsoft.Exchange.WebServices.Auth.dll
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentCOMMON\bin\Release\Microsoft.Exchange.WebServices.dll
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentCOMMON\bin\Release\Newtonsoft.Json.dll
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentCOMMON\bin\Release\Microsoft.IdentityModel.Extensions.dll
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentCOMMON\bin\Release\Microsoft.Exchange.WebServices.pdb
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentCOMMON\bin\Release\Microsoft.Exchange.WebServices.xml
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentCOMMON\bin\Release\Microsoft.Exchange.WebServices.Auth.pdb
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentCOMMON\bin\Release\Microsoft.Exchange.WebServices.Auth.xml
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentCOMMON\bin\Release\Newtonsoft.Json.xml
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentCOMMON\obj\Release\placementDepartmentCOMMON.csprojAssemblyReference.cache
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentCOMMON\obj\Release\placementDepartmentCOMMON.csproj.CoreCompileInputs.cache
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentCOMMON\obj\Release\placementDepartmentCOMMON.csproj.CopyComplete
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentCOMMON\obj\Release\placementDepartmentCOMMON.dll
+C:\Users\יהודית\Documents\פרויקט-גמר\smartPlacementBackend\server\placementDepartmentCOMMON\obj\Release\placementDepartmentCOMMON.pdb

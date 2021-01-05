@@ -14,9 +14,9 @@ namespace placementDepartmentBLL
         {
             switch (chartsDetails.type)
             {
-                case 1: return ChartManager.GetJobsOpenedChart(chartsDetails.start, chartsDetails.end);
-                case 2: return ChartManager.GetGraduatesVSJobs(chartsDetails.branches,chartsDetails.areas);
-                case 3: return ChartManager.GetPlacementsChart(chartsDetails.start, chartsDetails.end);
+                case 1: return ChartManager.GetJobsOpenedChart(chartsDetails.start, chartsDetails.end, chartsDetails.userid, chartsDetails.curUserid);
+                case 2: return ChartManager.GetGraduatesVSJobs(chartsDetails.branches,chartsDetails.areas, chartsDetails.userid, chartsDetails.curUserid);
+                case 3: return ChartManager.GetPlacementsChart(chartsDetails.start, chartsDetails.end, chartsDetails.userid, chartsDetails.curUserid);
                 default:
                     return null;
             }
